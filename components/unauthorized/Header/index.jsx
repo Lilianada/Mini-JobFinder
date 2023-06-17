@@ -30,7 +30,7 @@ export default function UnauthorizedHeader() {
   };
 
   return (
-    <header className="unauthorized__header">
+    <header className= {`unauthorized__header ${showMenu ? "blue__header" : "unauthorized__header"}`}>
       {/* Desktop Header */}
       <div className="desktop__header">
         <div className="header__logo">
@@ -85,31 +85,73 @@ export default function UnauthorizedHeader() {
           <h2 className="logo__name">MinuJobs</h2>
         </div>
         <button type="button" className="menu__button" onClick={toggleMenu}>
-          <FiMenu size={32} stroke="white" fill="white" />
+          <FiMenu size={32} stroke="#2563eb" fill="#2563eb" />
+          {/* {
+            showMenu ? <GrClose size={32} stroke="#2563eb" fill="#2563eb" /> : <FiMenu size={32} stroke="#2563eb" fill="#2563eb" />
+          } */}
         </button>
 
         <nav className={`nav__bar ${showMenu ? "show__navbar" : "nav__bar"}`}>
-          <button type="button" className="close__menu" onClick={closeMenu}>
+          {/* <button type="button" className="close__menu" onClick={closeMenu}>
             <GrClose />
-          </button>
-          <ul className="nav__list">
-            <li className="nav__item">
-              <h6 className="nav__title">Menu</h6>
+          </button> */}
+
+          {/* Navigation List */}
+          <ul className="dropdown__list">
+          <h4 className="nav__head">
+            Find job
+            <BsChevronDown fill="#827f7f" size={10} />
+          </h4>
+            <li className="dropdown__link">
+              <Link href="/minu" className="link">
+                How Minu works
+              </Link>
+            </li>
+            <li className="dropdown__link">
+              <Link href="/testimonials" className="link">
+                Testimonials
+              </Link>
+            </li>
+            <li className="dropdown__link">
+              <Link href="/become-talent" className="link">
+                Become a Talent
+              </Link>
+            </li>
+            <li className="dropdown__link">
+              <Link href="/terms" className="link">
+                Terms
+              </Link>
             </li>
           </ul>
 
-          {/* Navigation List */}
+          <ul className="dropdown__list">
+          <h4 className="nav__head">
+            Hire talent
+            <BsChevronDown fill="#827f7f" size={10} />
+          </h4>
+            <li className="dropdown__link">
+              <Link href="/settings" className="link">
+                Post Jobs
+              </Link>
+            </li>
+            <li className="dropdown__link">
+              <Link href="/support" className="link">
+                Testimonials
+              </Link>
+            </li>
+            <li className="dropdown__link">
+              <Link href="/become-member" className="link">
+                Partnership
+              </Link>
+            </li>
+            <li className="dropdown__link">
+              <Link href="/terms" className="link">
+                Terms
+              </Link>
+            </li>
+          </ul>
+
           <ul className="nav__list">
-            <li className="nav__item">
-              <Link href="/login" className="nav__link">
-                Resources
-              </Link>
-            </li>
-            <li className="nav__item">
-              <Link href="/login" className="nav__link">
-                Start Writing
-              </Link>
-            </li>
             <li className="nav__item">
               <Link href="/blog" className="nav__link">
                 Blog
@@ -117,12 +159,12 @@ export default function UnauthorizedHeader() {
             </li>
             <li className="nav__item">
               <Link href="/login" className="nav__link">
-                Login
+                Sign In
               </Link>
             </li>
             <li className="nav__item">
               <Link href="/signup" className="nav__button">
-                Register
+                Get Started
               </Link>
             </li>
           </ul>

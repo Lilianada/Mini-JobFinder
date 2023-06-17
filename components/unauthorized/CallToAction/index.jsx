@@ -20,7 +20,7 @@ export default function CallToAction() {
             adipisicing ipsum dolor sit
           </h3>
 
-          <button className="cta__button">Get started now</button>
+          <button className="cta__button">Find talents now</button>
         </div>
       </div>
     </section>

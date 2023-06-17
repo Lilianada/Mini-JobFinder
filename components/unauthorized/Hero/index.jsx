@@ -20,10 +20,10 @@ export default function Hero() {
         </div>
         <div className="hero__buttons">
         <Link href="/signup">
-         <button className="hero__button">Find job</button> 
+         <button className="hero__button">Find jobs</button> 
           </Link>
         <Link href="/signup">
-         <button  className="hero__button_border">Hire talent</button> 
+         <button  className="hero__button_border">Hire talents</button> 
          </Link>
         </div>
       </div>

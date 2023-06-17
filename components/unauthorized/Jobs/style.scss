@@ -1,0 +1,137 @@
+@import "../../../app/global.scss";
+
+.browse__jobs {
+  .jobs__container {
+    max-width: 1140px;
+    padding: 2rem;
+    margin: 0 auto;
+
+    .jobs__header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 2rem;
+
+      .jobs__title {
+        font-size: $font-thirtySix;
+        font-weight: $font-weight-600;
+        color: $black;
+      }
+
+      .jobs__subtitle {
+        font-size: $font-twenty;
+        font-weight: $font-weight-500;
+        color: $gray;
+      }
+    }
+
+    .jobs__categories {
+      .categories__list {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        .list__tab {
+          padding: 0.5rem 1rem;
+          border-radius: 5px;
+          background-color: transparent;
+          border: 1px solid $secondary;
+          color: $black;
+          font-size: $font-fourteen;
+          font-weight: $font-weight-500;
+          cursor: pointer;
+
+          &:hover {
+            border: 1px solid $primary;
+            color: $primary;
+          }
+        }
+      }
+    }
+
+    .jobs__listings {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-top: 2rem;
+
+      .jobs__card {
+        width: 25%;
+        border: 1px solid #e0e6f7;
+        overflow: hidden;
+        margin-bottom: 24px;
+        position: relative;
+        background: #f8faff;
+        border-radius: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.85rem;
+        padding: 1rem;
+
+        .card__info {
+          .card__title {
+            font-size: $font-eighteen;
+            font-weight: $font-weight-600;
+            color: $black;
+          }
+
+          .card__flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .card__location,
+            .card__time {
+              font-size: $font-fourteen;
+              color: $lightGray;
+            }
+          }
+
+          .card__tags {
+            display: flex;
+            gap: .5rem;
+            margin-top: 1rem;
+
+            li {
+              width: fit-content;
+              padding: .35rem .5rem;
+              background: $secondary;
+              color: $black;
+              font-size: $font-fourteen;
+              text-align: center;
+              border-radius: 10px;
+            }
+          }
+        }
+
+        .card__company {
+          /* Your card company styles here */
+
+          .card__logo img {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            background-color: $secondary;
+          }
+
+          .company__info {
+            /* Your company info styles here */
+
+            .company__name {
+              /* Your company name styles here */
+            }
+
+            .company__location {
+              /* Your company location styles here */
+            }
+
+            .company__pay {
+              /* Your company pay styles here */
+            }
+          }
+        }
+      }
+    }
+  }
+}

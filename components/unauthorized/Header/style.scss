@@ -1,5 +1,10 @@
 @import "../../../app/global.scss";
 
+.blue__header{
+    position: fixed;
+    z-index: 50;
+}
+
 .unauthorized__header {
     background-color: transparent;
     width: 100%;
@@ -9,14 +14,14 @@
     }
 
     .mobile__header {
-        padding: 1.5rem 0;
+        padding: 1.5rem;
         display: flex;
         justify-content: space-between;
-        width: 90%;
+        width: 100%;
+        background: $white;
         margin: 0 auto;
 
         .header__logo {
-            height: 2rem;
             display: flex;
             align-items: center;
 
@@ -30,6 +35,7 @@
                 font-size: $font-twentySix;
                 font-weight: $font-weight-700;
                 margin-left: 0.5rem;
+                line-height: 0;
             }
         }
 
@@ -40,12 +46,14 @@
             background: none;
             border: none;
             outline: none;
-            box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 10px;
+            line-height: 0;
         }
 
         .nav__bar {
             display: grid;
-            height: 100vh;
+            height: 79vh;
+            grid-template-rows: repeat(5, 1fr);
+            gap: 3rem;
             width: 100vw;
             position: fixed;
             overflow: scroll;
@@ -53,9 +61,10 @@
             left: 0;
             top: -120%;
             background: $white;
+            border-bottom: 3px solid $primary;
             text-align: left;
             padding: 1.5rem 1rem 1rem;
-            transition: all 800ms ease-in-out;
+            transition: top .5s ease-out;
 
             @media screen and (min-width: 414px) {
                 display: flex;
@@ -80,11 +89,40 @@
                 }
             }
 
-            .nav__list {
-                margin-top: 2rem;
+            .dropdown__list {
+                .nav__head {
+                    color: $black;
+                    font-size: $font-eighteen;
+                    font-weight: 500;
+                    text-transform: capitalize;
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                }
 
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+
+                .dropdown__link {
+                    .link {
+                        display: flex;
+                        align-items: center;
+                        font-weight: $font-weight-400;
+                        font-size: $font-fourteen;
+                        color: $black;
+
+                        &:hover {
+                            color: $primary;
+                        }
+                    }
+                }
+            }
+
+            .nav__list {
                 .nav__item {
-                    padding-bottom: 1.5rem;
+                    padding-bottom: 3rem;
 
                     .nav__title {
                         color: $primary;
@@ -127,8 +165,9 @@
         }
 
         .show__navbar {
-            top: 0;
-            transition: top 0.8s ease-in-out;
+            top: 5rem;
+            transition: top 0.5s ease-in-out;
+            z-index: -2;
         }
     }
 
