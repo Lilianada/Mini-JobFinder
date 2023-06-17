@@ -1,6 +1,6 @@
 import React from "react";
-import "./style.css";
-import { Link } from "react-router-dom";
+import "./style.scss";
+import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -8,25 +8,23 @@ export default function Hero() {
       <div className="hero__content">
         <div className="hero__text">
           <h1 className="hero__title">
-            Hire
+            Hire 
             <span className="primary__text"> a rising talent</span>
             <br />
             Find
             <span className="primary__text"> your next job</span>
           </h1>
           <h6 className="hero__description">
-            Everyone has an opinion that needs to be heard, we provide you the
-            platform that helps you get heard. Enjoy beautiful stories written
-            by talented writers.
+          Looking for a new role? Create a profile on Hired to connect directly with growing tech teams. Hiring? We're the go-to platform for sourcing the best tech talent out there.
           </h6>
         </div>
         <div className="hero__buttons">
-        <a href="/signup">
+        <Link href="/signup">
          <button className="hero__button">Find job</button> 
-          </a>
-        <a href="/signup">
+          </Link>
+        <Link href="/signup">
          <button  className="hero__button_border">Hire talent</button> 
-         </a>
+         </Link>
         </div>
       </div>
     </section>

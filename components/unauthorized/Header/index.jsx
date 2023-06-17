@@ -1,106 +1,117 @@
-import React from "react";
-import "./style.css";
+import React, { useState } from "react";
+import { GrClose } from "react-icons/gr";
+import { FiMenu } from "react-icons/fi";
+import { BsChevronDown } from "react-icons/bs";
+import Link from "next/link";
+import "./style.scss";
 
 export default function UnauthorizedHeader() {
- 
+  const [showMenu, setShowMenu] = useState(false);
+  const [jobDropdown, setJobDropdown] = useState(false);
+  const [hireDropdown, setHireDropdown] = useState(false);
+
+  const toggleMenu = () => {
+    setShowMenu(!showMenu);
+  };
+
+  const toggleJobDropdown = () => {
+    setJobDropdown(!jobDropdown);
+  };
+
+  const toggleHireDropdown = () => {
+    setHireDropdown(!hireDropdown);
+  };
+
+  const closeMenu = () => {
+    setShowMenu(false);
+  };
+
   return (
-    <header className="navbar bg-base-100">
-    <div className="navbar-start">
-      <div className="dropdown">
-        <label tabIndex={0} className="btn btn-ghost lg:hidden">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M4 6h16M4 12h8m-8 6h16"
-            />
-          </svg>
-        </label>
-        <ul
-          tabIndex={0}
-          className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
-        >
-          {/* <li>
-          <a>Item 1</a>
-        </li> */}
-          <li>
-            <a>Find Job</a>
-            <ul className="p-2">
-              <li>
-                <a>Submenu 1</a>
-              </li>
-              <li>
-                <a>Submenu 2</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a>Hire Talent</a>
-            <ul className="p-2">
-              <li>
-                <a>Submenu 1</a>
-              </li>
-              <li>
-                <a>Submenu 2</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a>Item 3</a>
-          </li>
-        </ul>
+    <header className="unauthorized__header">
+      <div className="desktop__header">
+        <div className="header__logo">
+          <h2 className="logo__name">MinuJobs</h2>
+        </div>
+        <nav className="nav__bar">
+          <ul className="nav__list">
+            <li
+              className={jobDropdown ? "active__menu" : "nav__menu"}
+              onClick={toggleJobDropdown}
+            >
+              Find job
+              <BsChevronDown fill="#827f7f" size={10} />
+            </li>
+            <div className={`${jobDropdown ? "findJob_modal" : "no__show"}`}>
+              {/* <FindJobModal /> */}
+            </div>
+            <li
+              className={hireDropdown ? "active__menu" : "nav__menu"}
+              onClick={toggleHireDropdown}
+            >
+              Hire talent
+              <BsChevronDown fill="#827f7f" size={10} />
+            </li>
+            <div className={`${hireDropdown ? "hireTalent__modal" : "no__show"}`}>
+              {/* <HireTalentModal /> */}
+            </div>
+            <li className="nav__item">
+              <Link href="/login" className="nav__link">
+                Sign In
+              </Link>
+            </li>
+            <li className="nav__item">
+              <Link href="/signup" className="nav__button">
+                Get Started
+              </Link>
+            </li>
+          </ul>
+        </nav>
       </div>
-      <a className="btn btn-ghost normal-case text-xl">MinuJobs</a>
-    </div>
-    <div className="navbar-center hidden lg:flex">
-      <ul className="menu menu-horizontal px-1">
-        {/* <li>
-        <a>Item 1</a>
-      </li> */}
-        <li tabIndex={0}>
-          <details>
-            <summary>Find Job</summary>
-            <ul className="p-2">
-              <li>
-                <a>Success Stories</a>
-              </li>
-              <li>
-                <a>FAQ</a>
-              </li>
-            </ul>
-          </details>
-        </li>
-        <li tabIndex={0}>
-          <details>
-            <summary>Hire Talent</summary>
-            <ul className="p-2">
-              <li>
-                <a>Why MinuJobs</a>
-              </li>
-              <li>
-                <a>Pricing</a>
-              </li>
-              <li>
-                <a>Success Stories</a>
-              </li>
-            </ul>
-          </details>
-        </li>
-        <li>
-          <a>Item 3</a>
-        </li>
-      </ul>
-    </div>
-    <div className="navbar-end">
-      <a className="btn">Get Started</a>
-    </div>
-  </header>
+
+      {/* Mobile Header */}
+      <div className="mobile__header">
+        <div className="header__logo">
+          <h2 className="logo__name">MinuJobs</h2>
+        </div>
+        <button type="button" className="menu__button" onClick={toggleMenu}>
+          <FiMenu size={32} stroke="white" fill="white" />
+        </button>
+
+        <nav className={`nav__bar ${showMenu ? "show__navbar" : "nav__bar"}`}>
+          <button type="button" className="close__menu" onClick={closeMenu}>
+            <GrClose />
+          </button>
+          <ul className="nav__list">
+            <li className="nav__item">
+              <h6 className="nav__title">Menu</h6>
+            </li>
+          </ul>
+
+          {/* Navigation List */}
+          <ul className="nav__list">
+            <li className="nav__item">
+              <Link href="/login" className="nav__link">
+                Resources
+              </Link>
+            </li>
+            <li className="nav__item">
+              <Link href="/login" className="nav__link">
+                Start Writing
+              </Link>
+            </li>
+            <li className="nav__item">
+              <Link href="/login" className="nav__link">
+                Login
+              </Link>
+            </li>
+            <li className="nav__item">
+              <Link href="/signup" className="nav__button">
+                Register
+              </Link>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
   );
 }
