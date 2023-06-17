@@ -1,0 +1,128 @@
+@import '../../../styles/global.css';
+
+.hero__component {
+    background-color: var(--offWhite);
+    width: 100%;
+    height: calc(100vh - 5rem);
+    background-image: url("../../../public/assets/images/hero-bg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+@media screen and (min-width: 900px) {
+    .hero__component {
+        background-image: url("../../../public/assets/images/hero-bg.png");
+    }
+}
+
+.hero__component .hero__content {
+    width: 90%;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (min-width: 900px) {
+    .hero__component .hero__content {
+        width: 80%;
+    }
+}
+
+.hero__component .hero__content .hero__text {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.hero__component .hero__content .hero__text .hero__title {
+    font-family: var(--font-logo);
+    font-size: 56px;
+    font-weight: 700;
+    color: var(--black);
+    text-align: center;
+    margin-bottom: 1rem;
+    line-height: 1;
+}
+
+.hero__component .hero__content .hero__text .hero__description {
+    /* font-family: var(--font-text); */
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--gray);
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+@media screen and (min-width: 900px) {
+    .hero__component .hero__content .hero__text .hero__description {
+        font-size: 24px;
+    }
+}
+
+.hero__component .hero__content .hero__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 0 auto;
+}
+
+@media screen and (min-width: 768px) {
+    .hero__component .hero__content .hero__buttons {
+        gap: 1.5rem;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .hero__component .hero__content .hero__buttons {
+        justify-content: space-between;
+        width: 30rem;
+    }
+}
+
+.hero__component .hero__content .hero__buttons .hero__button {
+    background-color: var(--black);
+    color: var(--white);
+    font-size: 20px;
+    font-weight: 400;
+    display: block;
+    height: 4rem;
+    width: 14rem;
+    margin-top: 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 300ms ease-in-out;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 10px;
+}
+
+.hero__component .hero__content .hero__buttons .hero__button:hover {
+    background-color: var(--primary);
+    color: var(--white);
+}
+
+.hero__component .hero__content .hero__buttons .hero__button_border {
+    background-color: transparent;
+    color: var(--black);
+    font-size: 20px;
+    font-weight: 400;
+    display: block;
+    height: 4rem;
+    width: 14rem;
+    margin-top: 1rem;
+    border: 1px solid var(--black);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 300ms ease-in-out;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 10px;
+}
+
+.hero__component .hero__content .hero__buttons .hero__button_border:hover {
+    background-color: var(--primary);
+    color: var(--white);
+    border: none;
+}
