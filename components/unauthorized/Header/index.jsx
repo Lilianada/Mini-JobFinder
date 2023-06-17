@@ -4,7 +4,8 @@ import { FiMenu } from "react-icons/fi";
 import { BsChevronDown } from "react-icons/bs";
 import Link from "next/link";
 import "./style.scss";
-
+import HireTalent from "../Dropdowns/HireTalent/index.jsx";
+import FindJob from "../Dropdowns/FindJob";
 export default function UnauthorizedHeader() {
   const [showMenu, setShowMenu] = useState(false);
   const [jobDropdown, setJobDropdown] = useState(false);
@@ -16,10 +17,12 @@ export default function UnauthorizedHeader() {
 
   const toggleJobDropdown = () => {
     setJobDropdown(!jobDropdown);
+    setHireDropdown(false); // Close the hireDropdown
   };
 
   const toggleHireDropdown = () => {
     setHireDropdown(!hireDropdown);
+    setJobDropdown(false); // Close the jobDropdown
   };
 
   const closeMenu = () => {
@@ -28,6 +31,7 @@ export default function UnauthorizedHeader() {
 
   return (
     <header className="unauthorized__header">
+      {/* Desktop Header */}
       <div className="desktop__header">
         <div className="header__logo">
           <h2 className="logo__name">MinuJobs</h2>
@@ -40,20 +44,27 @@ export default function UnauthorizedHeader() {
             >
               Find job
               <BsChevronDown fill="#827f7f" size={10} />
+              <div className={`${jobDropdown ? "findJob_modal" : "no__show"}`}>
+                <FindJob />
+              </div>
             </li>
-            <div className={`${jobDropdown ? "findJob_modal" : "no__show"}`}>
-              {/* <FindJobModal /> */}
-            </div>
             <li
               className={hireDropdown ? "active__menu" : "nav__menu"}
               onClick={toggleHireDropdown}
             >
               Hire talent
               <BsChevronDown fill="#827f7f" size={10} />
+              <div
+                className={`${hireDropdown ? "hireTalent__modal" : "no__show"}`}
+              >
+                <HireTalent />
+              </div>
             </li>
-            <div className={`${hireDropdown ? "hireTalent__modal" : "no__show"}`}>
-              {/* <HireTalentModal /> */}
-            </div>
+            <li className="nav__item">
+              <Link href="/blog" className="nav__link">
+                Blog
+              </Link>
+            </li>
             <li className="nav__item">
               <Link href="/login" className="nav__link">
                 Sign In
@@ -97,6 +108,11 @@ export default function UnauthorizedHeader() {
             <li className="nav__item">
               <Link href="/login" className="nav__link">
                 Start Writing
+              </Link>
+            </li>
+            <li className="nav__item">
+              <Link href="/blog" className="nav__link">
+                Blog
               </Link>
             </li>
             <li className="nav__item">

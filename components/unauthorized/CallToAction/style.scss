@@ -1,0 +1,59 @@
+@import "../../../app/global.scss";
+$cta-bg: url("/assets/images/cta-bg.jpeg");
+
+.cta__component {
+    width: 100%;
+    padding: 6rem 0;
+    background-color: $white;
+   
+
+    .cta__container {
+        background: $primary;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        display: grid;
+        place-items: center;
+        align-content: center;
+        width: 90%;
+        margin: 0 auto;
+        border-radius: 16px;
+        max-width: 1140px;
+        height: 400px;
+
+        @media screen and (min-width: $breakpoint-2) {
+        }
+
+        .cta__description {
+            text-align: center;
+            font-family: $font-text;
+            font-size: $font-thirtySix;
+            font-weight: $font-weight-500;
+            line-height: 1.2;
+            color: $white;
+
+            @media screen and (min-width: $breakpoint-2) {
+                font-size: $font-fortyTwo;
+            }
+        }
+
+        .cta__button {
+            background-color: $white;
+            color: $black;
+            font-size: $font-twenty;
+            font-weight: $font-weight-400;
+            display: block;
+            height: 4rem;
+            width: 14rem;
+            margin-top: 2rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 300ms ease-in-out;
+            box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 10px;
+
+            &:hover {
+                background-color: $primary;
+            }
+        }
+    }
+}
