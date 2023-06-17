@@ -5,12 +5,9 @@ $cta-bg: url("/assets/images/cta-bg.jpeg");
     width: 100%;
     padding: 6rem 0;
     background-color: $white;
-   
+    overflow: hidden;
 
     .cta__container {
-        background: $primary;
-        background-size: cover;
-        background-position: center;
         background-repeat: no-repeat;
         display: grid;
         place-items: center;
@@ -25,35 +22,103 @@ $cta-bg: url("/assets/images/cta-bg.jpeg");
         }
 
         .cta__description {
-            text-align: center;
-            font-family: $font-text;
-            font-size: $font-thirtySix;
-            font-weight: $font-weight-500;
-            line-height: 1.2;
-            color: $white;
+            display: grid;
+            place-items: center;
+            align-content: center;
+            gap: 2rem;
 
-            @media screen and (min-width: $breakpoint-2) {
-                font-size: $font-fortyTwo;
+            .description {
+                text-align: center;
+                font-family: $font-text;
+                font-size: $font-twentyFour;
+                font-weight: $font-weight-500;
+                line-height: 1.2;
+                color: $white;
+
+
+                @media screen and (min-width: $breakpoint-3) {
+                    font-size: $font-thirtyTwo;
+                }
+
+                @media screen and (min-width: $breakpoint-4) {
+                    font-size: $font-fortyTwo;
+                }
+            }
+            .cta__button {
+                background-color: $white;
+                color: $black;
+                font-size: $font-twenty;
+                font-weight: $font-weight-400;
+                display: block;
+                height: 4rem;
+                width: 14rem;
+                border-radius: 0.5rem;
+                cursor: pointer;
+                box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 10px;
             }
         }
 
-        .cta__button {
-            background-color: $white;
-            color: $black;
-            font-size: $font-twenty;
-            font-weight: $font-weight-400;
-            display: block;
-            height: 4rem;
-            width: 14rem;
-            margin-top: 2rem;
-            border-radius: 0.5rem;
-            cursor: pointer;
-            transition: all 300ms ease-in-out;
-            box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 10px;
-
-            &:hover {
-                background-color: $primary;
-            }
-        }
     }
+
+
+// .cta__component {
+//     width: 100%;
+//     padding: 6rem 0;
+//     background-color: $white;
+
+//     .cta__container {
+//         position: relative;
+//         width: 90%;
+//         margin: 0 auto;
+//         height: 400px;
+//         gap: 2rem;
+//         border-radius: 20px;
+
+
+//         .cta__description {
+            // display: grid;
+            // place-items: center;
+            // align-content: center;
+            // gap: 2rem;
+
+            // .description {
+            //     text-align: center;
+            //     font-family: $font-text;
+            //     font-size: $font-twentyFour;
+            //     font-weight: $font-weight-500;
+            //     line-height: 1.2;
+            //     color: $white;
+
+            //     @media screen and (min-width: $breakpoint-3) {
+            //         font-size: $font-thirtySix;
+            //     }
+
+            //     @media screen and (min-width: $breakpoint-4) {
+            //         font-size: $font-fortyTwo;
+            //     }
+            // }
+            
+//             @media screen and (min-width: $breakpoint-3) {
+//                 width: 80%;
+//             }
+
+//             .cta__button {
+//                 position: absolute;
+//                 top: 55%;
+//                 left: 50%;
+//                 transform: translate(-50%, -50%);
+//                 background-color: $white;
+//                 color: $black;
+//                 font-size: $font-twenty;
+//                 font-weight: $font-weight-400;
+//                 display: block;
+//                 height: 4rem;
+//                 width: 14rem;
+//                 margin-top: 2rem;
+//                 border-radius: 0.5rem;
+//                 box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 10px;
+//             }
+//         }
+
+//     }
 }

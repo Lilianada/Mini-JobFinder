@@ -148,7 +148,12 @@ button {
     border: none;
     outline: none;
     cursor: pointer;
+    transition: .5s ease-in-out;
     font-family: $font-text;
+
+    &:hover{
+        transform: scale(.9, 1);
+    }
 }
 
 input {

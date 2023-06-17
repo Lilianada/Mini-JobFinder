@@ -4,7 +4,7 @@ import { FiMenu } from "react-icons/fi";
 import { BsChevronDown } from "react-icons/bs";
 import Link from "next/link";
 import "./style.scss";
-import HireTalent from "../Dropdowns/HireTalent/index.jsx";
+import HireTalent from "../Dropdowns/HireTalent/";
 import FindJob from "../Dropdowns/FindJob";
 export default function UnauthorizedHeader() {
   const [showMenu, setShowMenu] = useState(false);

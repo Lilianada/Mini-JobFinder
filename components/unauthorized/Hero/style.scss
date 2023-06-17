@@ -89,10 +89,6 @@
     box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 10px;
 }
 
-.hero__component .hero__content .hero__buttons .hero__button:hover {
-    background-color: $primary;
-    color: $white;
-}
 
 .hero__component .hero__content .hero__buttons .hero__button_border {
     background-color: transparent;
@@ -110,8 +106,3 @@
     box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 10px;
 }
 
-.hero__component .hero__content .hero__buttons .hero__button_border:hover {
-    background-color: $primary;
-    color: $white;
-    border: none;
-}

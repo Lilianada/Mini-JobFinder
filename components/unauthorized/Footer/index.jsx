@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <footer className="unauthorized__footer">
       <div className="footer__top">
-        <div className="">
+        <div className="logo">
           <svg
             width="50"
             height="50"
