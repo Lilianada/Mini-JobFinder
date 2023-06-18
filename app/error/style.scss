@@ -1,0 +1,40 @@
+@import "../global.scss";
+
+.error__component{
+    background: $black;
+
+    .next-error-h1 {
+        border-right: 1px solid rgba(0, 0, 0, 0.3);
+    }
+    
+    .error-container {
+        height: 100vh;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .error-content {
+        line-height: 48px;
+    }
+    
+    .error-h1 {
+        display: inline-block;
+        padding-right: 23px;
+        font-family: $font-logo;
+        font-size: $font-forty;
+        font-weight: 500;
+        vertical-align: top;
+        color: $white;
+    }
+    
+    .error-h2 {
+        font-size: $font-twentyFour;
+        font-weight: 400;
+        line-height: 28px;
+        color: $white;
+    }
+}
+

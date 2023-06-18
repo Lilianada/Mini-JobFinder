@@ -9,29 +9,35 @@ export default function TalentFeatures() {
       <div className="features__container">
         <div className="features__header">
           <h2 className="features__title">Talent Features</h2>
-          <h3 className="features__subtitle">Explore what you can do</h3>
+          <h3 className="features__subtitle">Explore what you can do as a new talent in the rising.</h3>
         </div>
         <div className="features__cards">
+            <div className="card">
           <div className="features__card">
-            <IoCreate className="card__icon" />
-            <h4 className="card__title">Create Account</h4>
-            <p className="card__text">
-              Sign up and create your talent account.
-            </p>
+              <IoCreate className="card__icon" />
+              <h4 className="card__title">Create Account</h4>
+              <p className="card__description">
+                Sign up and create your talent account.
+              </p>
+            </div>
           </div>
+            <div className="card">
           <div className="features__card">
-            <BsCloudUpload className="card__icon" />
-            <h4 className="card__title">Upload Resume</h4>
-            <p className="card__text">
-              Upload your resume to showcase your skills and experience.
-            </p>
+              <BsCloudUpload className="card__icon" />
+              <h4 className="card__title">Upload Resume</h4>
+              <p className="card__description">
+                Upload your resume to showcase your skills and experience.
+              </p>
+            </div>
           </div>
+            <div className="card">
           <div className="features__card">
-            <BsBriefcaseFill className="card__icon" />
-            <h4 className="card__title">Find Job</h4>
-            <p className="card__description">
-              Browse through job listings and find your dream job.
-            </p>
+              <BsBriefcaseFill className="card__icon" />
+              <h4 className="card__title">Find Job</h4>
+              <p className="card__description">
+                Browse through job listings and find your dream job.
+              </p>
+            </div>
           </div>
         </div>
       </div>

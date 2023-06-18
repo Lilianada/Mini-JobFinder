@@ -15,9 +15,9 @@ export default function CallToAction() {
 
         <div className="cta__description">
           <h3 className="description">
-            Lorem ipsum dolor sit amet consectetur 
+            Recruiting online that helps you
             <br />
-            adipisicing ipsum dolor sit
+            find the right talent.
           </h3>
 
           <button className="cta__button">Find talents now</button>

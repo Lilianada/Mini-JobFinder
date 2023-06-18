@@ -116,8 +116,8 @@ export default function BrowseJobs() {
     <section className="browse__jobs">
       <div className="jobs__container">
         <div className="jobs__header">
-          <h2 className="jobs__title">Latest Job Vacancies</h2>
-          <p className="jobs__subtitle">Search and find your next job faster</p>
+          <h2 className="jobs__title">Browse Jobs</h2>
+          <p className="jobs__subtitle">Search and find the most exciting remote friendly jobs.</p>
         </div>
         <div className="jobs__categories">
           <ul className="categories__list">
@@ -156,7 +156,7 @@ export default function BrowseJobs() {
                     <div className="company__info">
                       <h5 className="company__name">{job.company.name}</h5>
                       <p className="company__location">
-                        <AiOutlineEnvironment />
+                        {/* <AiOutlineEnvironment /> */}
                         {job.company.location}
                       </p>
                     </div>
