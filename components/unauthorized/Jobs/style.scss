@@ -2,7 +2,8 @@
 
 .browse__jobs {
   .jobs__container {
-    max-width: 1140px;
+    display: grid;
+    place-items: center;
     padding: 2rem;
     margin: 0 auto;
 
@@ -14,22 +15,30 @@
       margin-bottom: 2rem;
 
       .jobs__title {
-        font-size: $font-thirtySix;
+        font-size: $font-twentyFour;
         font-weight: $font-weight-600;
         color: $black;
+        text-align: center;
+
+        @media screen and (min-width: $breakpoint-3) {
+          font-size: $font-thirtySix;
+        }
       }
 
       .jobs__subtitle {
         font-size: $font-twenty;
         font-weight: $font-weight-500;
         color: $gray;
+        text-align: center;
       }
     }
 
     .jobs__categories {
       .categories__list {
         display: flex;
+        flex-wrap: wrap;
         align-items: center;
+        justify-content: center;
         gap: 1rem;
 
         .list__tab {
@@ -45,6 +54,7 @@
           &:hover {
             border: 1px solid $primary;
             color: $primary;
+            background-color: $accent;
           }
         }
       }
@@ -52,12 +62,29 @@
 
     .jobs__listings {
       display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
       margin-top: 2rem;
 
+      @media screen and (min-width: 768px) {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @media screen and (min-width: 1024px) {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      @media screen and (min-width: 1200px) {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+      }
+
       .jobs__card {
-        width: 25%;
+        width: 100%;
         border: 1px solid #e0e6f7;
         overflow: hidden;
         margin-bottom: 24px;
@@ -68,6 +95,16 @@
         flex-direction: column;
         gap: 0.85rem;
         padding: 1rem;
+        min-width: 290px;
+        max-width: 300px;
+
+        @media screen and (min-width: 768px) {
+          width: 43%;
+        }
+
+        @media screen and (min-width: 1024px) {
+          width: 23%;
+        }
 
         .card__info {
           .card__title {
@@ -80,58 +117,97 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            margin-top: 0.25rem;
 
             .card__location,
             .card__time {
-              font-size: $font-fourteen;
+              font-size: $font-twelve;
               color: $lightGray;
+              display: flex;
+              align-items: center;
+              gap: 3px;
             }
           }
 
           .card__tags {
             display: flex;
-            gap: .5rem;
+            gap: 0.5rem;
             margin-top: 1rem;
 
             li {
               width: fit-content;
-              padding: .35rem .5rem;
-              background: $secondary;
+              padding: 0.15rem 0.5rem;
+              background: $accent;
               color: $black;
-              font-size: $font-fourteen;
+              font-size: $font-twelve;
               text-align: center;
-              border-radius: 10px;
+              border-radius: 5px;
             }
           }
         }
 
         .card__company {
-          /* Your card company styles here */
+          display: flex;
+          align-items: start;
+          gap: 0.5rem;
+          border-top: 1px solid $secondary;
+          padding-top: 0.75rem;
 
-          .card__logo img {
-            width: 2.5rem;
-            height: 2.5rem;
-            border-radius: 50%;
-            background-color: $secondary;
+          .card__logo {
+            display: flex;
+            gap: 0.5rem;
+            align-items: start;
+
+            img {
+              width: 2rem;
+              height: 2rem;
+              border-radius: 50%;
+              background-color: $secondary;
+            }
+
+            .company__info {
+              display: block;
+
+              .company__name {
+                font-size: $font-fourteen;
+                font-weight: $font-weight-600;
+                color: $black;
+              }
+
+              .company__location {
+                font-size: $font-twelve;
+                color: $lightGray;
+                display: flex;
+                align-items: center;
+                gap: 3px;
+              }
+            }
           }
 
-          .company__info {
-            /* Your company info styles here */
-
-            .company__name {
-              /* Your company name styles here */
-            }
-
-            .company__location {
-              /* Your company location styles here */
-            }
-
-            .company__pay {
-              /* Your company pay styles here */
-            }
+          .company__pay {
+            color: $primary;
+            font-size: $font-fourteen;
+            font-weight: $font-weight-600;
+            line-height: 1.2;
           }
         }
       }
+    }
+
+    .browse__btn {
+      background-color: transparent;
+      color: $black;
+      font-size: 20px;
+      font-weight: 500;
+      display: block;
+      height: 4rem;
+      width: 14rem;
+      margin-top: 1rem;
+      border: 1px solid $black;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      transition: all 300ms ease-in-out;
+      box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 10px;
     }
   }
 }

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { GrClose } from "react-icons/gr";
+import { CgClose } from "react-icons/cg";
 import { FiMenu } from "react-icons/fi";
 import { BsChevronDown } from "react-icons/bs";
 import Link from "next/link";
@@ -30,7 +30,7 @@ export default function UnauthorizedHeader() {
   };
 
   return (
-    <header className= {`unauthorized__header ${showMenu ? "blue__header" : "unauthorized__header"}`}>
+    <header className="unauthorized__header">
       {/* Desktop Header */}
       <div className="desktop__header">
         <div className="header__logo">
@@ -92,9 +92,12 @@ export default function UnauthorizedHeader() {
         </button>
 
         <nav className={`nav__bar ${showMenu ? "show__navbar" : "nav__bar"}`}>
-          {/* <button type="button" className="close__menu" onClick={closeMenu}>
-            <GrClose />
-          </button> */}
+          <div className="nav__header">
+              <h2 className="logo__name">MinuJobs</h2>
+          <button type="button" className="close__menu" onClick={closeMenu}>
+            <CgClose size={24} />
+          </button>
+          </div>
 
           {/* Navigation List */}
           <ul className="dropdown__list">

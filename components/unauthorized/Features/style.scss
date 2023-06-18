@@ -1,0 +1,70 @@
+@import "../../../app/global.scss";
+
+.talent__features {
+    background-color: $accent;
+    padding: 2rem;
+    border-radius: 16px;
+
+    .features__container {
+        display: grid;
+        place-items: center;
+        .features__header {
+            display: grid;
+            place-items: center;
+            text-align: center;
+
+            .features__title {
+                font-size: $font-thirtySix;
+                color: $black;
+                font-weight: 600;
+                margin-bottom: 1rem;
+            }
+
+            .features__subtitle {
+                font-size: $font-twentyFour;
+                color: $lightGray;
+                font-weight: 400;
+                margin-bottom: 1rem;
+            }
+        }
+
+        .features__cards {
+            display: grid;
+            grid-template-columns: repeat(3, 300px);
+            gap: 2rem;
+            width: 90%;
+            margin: 5rem auto;
+
+            @media screen and (max-width: $breakpoint-3) {
+                grid-template-columns: 1fr;
+            }
+            .features__card {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding: 2rem;
+                text-align: center;
+
+                .card__icon {
+                    width: 100px;
+                    height: 100px;
+                    margin-bottom: 1rem;
+                    color: $primary;
+                }
+
+                .card__title {
+                    font-size: $font-twentyFour;
+                    font-weight: 600;
+                    margin-bottom: 1rem;
+                }
+
+                .card__description {
+                    font-size: 1rem;
+                    font-weight: 400;
+                    margin-bottom: 1rem;
+                }
+            }
+        }
+    }
+}

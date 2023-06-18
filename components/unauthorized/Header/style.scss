@@ -1,10 +1,5 @@
 @import "../../../app/global.scss";
 
-.blue__header{
-    position: fixed;
-    z-index: 50;
-}
-
 .unauthorized__header {
     background-color: transparent;
     width: 100%;
@@ -18,7 +13,7 @@
         display: flex;
         justify-content: space-between;
         width: 100%;
-        background: $white;
+        // background: $white;
         margin: 0 auto;
 
         .header__logo {
@@ -51,41 +46,55 @@
 
         .nav__bar {
             display: grid;
-            height: 79vh;
-            grid-template-rows: repeat(5, 1fr);
+            height: 90vh;
+            grid-template-rows: repeat(4, 1fr);
             gap: 3rem;
             width: 100vw;
             position: fixed;
             overflow: scroll;
             z-index: 2;
-            left: 0;
-            top: -120%;
+            left: -120%;
+            top: 0;
             background: $white;
             border-bottom: 3px solid $primary;
             text-align: left;
             padding: 1.5rem 1rem 1rem;
-            transition: top .5s ease-out;
+            transition: left 0.5s ease-out;
 
             @media screen and (min-width: 414px) {
                 display: flex;
                 flex-direction: column;
             }
 
-            .close__menu {
-                height: 40px;
-                width: 40px;
+            .nav__header {
                 display: flex;
-                justify-content: center;
                 align-items: center;
-                background: $primary;
-                border-radius: 5px;
-                margin-left: auto;
-                margin-right: 0;
-                border: none;
-                outline: none;
+                justify-content: space-between;
 
-                &:hover {
+                .logo__name {
+                    color: $primary;
+                    font-family: $font-logo;
+                    font-size: $font-twentySix;
+                    font-weight: $font-weight-700;
+                    line-height: 0;
+                }
+                .close__menu {
+                    height: 40px;
+                    width: 40px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
                     background: $primary;
+                    color: $white;
+                    border-radius: 5px;
+                    margin-left: auto;
+                    margin-right: 0;
+                    border: none;
+                    outline: none;
+
+                    &:hover {
+                        background: $primary;
+                    }
                 }
             }
 
@@ -165,9 +174,9 @@
         }
 
         .show__navbar {
-            top: 5rem;
-            transition: top 0.5s ease-in-out;
-            z-index: -2;
+            top: 0;
+            transition: left 0.5s ease-in-out;
+            left: 0%;
         }
     }
 
