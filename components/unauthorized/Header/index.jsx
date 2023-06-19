@@ -90,9 +90,6 @@ export default function UnauthorizedHeader() {
         </div>
         <button type="button" className="menu__button" onClick={toggleMenu}>
           <FiMenu size={32} stroke="#2563eb" fill="#2563eb" />
-          {/* {
-            showMenu ? <GrClose size={32} stroke="#2563eb" fill="#2563eb" /> : <FiMenu size={32} stroke="#2563eb" fill="#2563eb" />
-          } */}
         </button>
 
         <nav className={`nav__bar ${showMenu ? "show__navbar" : "nav__bar"}`}>

@@ -12,9 +12,9 @@ import TestimonialsSection from "@components/unauthorized/Testimonials";
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-export default function HomePage() {
+export default function LandingPage() {
   return (
-    <section className="main">
+    <div className="main">
       <div className="hero__main">
         <UnauthorizedHeader />
         <Hero />
@@ -24,6 +24,6 @@ export default function HomePage() {
       <TestimonialsSection/>
       <CallToAction />
       <Footer />
-    </section>
+    </div>
   );
 }
