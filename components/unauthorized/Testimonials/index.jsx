@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Slider from 'react-slick';
 import './style.scss';
 
@@ -49,15 +49,15 @@ const testimonialsData = [
 ];
 
 export default function TestimonialsSection() {
+    const [activeSlide, setActiveSlide] = useState(0);
+  
     const settings = {
       dots: true,
-      arrows: true,
       infinite: true,
       speed: 500,
       slidesToShow: 1,
       slidesToScroll: 1,
-      prevArrow: <button className="testimonials__prev">Previous</button>,
-      nextArrow: <button className="testimonials__next">Next</button>,
+      afterChange: (current) => setActiveSlide(current),
     };
   
     return (
@@ -74,6 +74,14 @@ export default function TestimonialsSection() {
             </div>
           ))}
         </Slider>
+        <div className="testimonials__navigation">
+          <button className="testimonials__prev" onClick={() => setActiveSlide(activeSlide - 1)}>
+            Previous
+          </button>
+          <button className="testimonials__next" onClick={() => setActiveSlide(activeSlide + 1)}>
+            Next
+          </button>
+        </div>
       </section>
     );
   }

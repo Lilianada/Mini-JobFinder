@@ -1,108 +1,109 @@
-@import '../../../app/global.scss';
+@import "../../../app/global.scss";
 
 .hero__component {
     width: 100%;
     height: calc(80vh - 5rem);
     background: transparent;
-}
 
-.hero__component .hero__content {
-    width: 90%;
-    margin: 0 auto;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
+    .hero__content {
+        width: 90%;
+        margin: 0 auto;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
 
-@media screen and (min-width: 900px) {
-    .hero__component .hero__content {
-        width: 80%;
+        @media screen and (min-width: 900px) {
+            width: 80%;
+        }
+
+        .hero__text {
+            width: 90%;
+            margin: 0 auto;
+
+            .hero__title {
+                font-family: $font-logo;
+                font-size: 56px;
+                font-weight: 700;
+                color: $black;
+                text-align: center;
+                margin-bottom: 1rem;
+                line-height: 1;
+            }
+
+            .hero__description {
+                font-size: 20px;
+                font-weight: 400;
+                color: $gray;
+                text-align: center;
+                margin-bottom: 1rem;
+
+                @media screen and (min-width: 900px) {
+                    font-size: 24px;
+                }
+            }
+        }
+
+        .hero__searchBar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem auto;
+            width: 80%;
+            background: $white;
+            box-shadow: $box-shadow-1;
+            border-radius: 0.5rem;
+            padding: .75rem 0;
+
+            .search__bar {
+                width: 75%;
+                height: 3.5rem;
+                padding: 0.5rem 1rem;
+                display: flex;
+                font-size: $font-twenty;
+                border: none;
+                background: none;
+
+                &::placeholder {
+                    color: $lightGray;
+                }
+            }
+
+            .hero__button {
+                background-color: $primary;
+                color: $white;
+                font-size: 20px;
+                font-weight: 500;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                height: 3.5rem;
+                width: 20%;
+                padding: 0.35rem 1rem;
+                border-radius: 0.5rem;
+                cursor: pointer;
+                transition: all 300ms ease-in-out;
+                box-shadow: $box-shadow-1;
+            }
+
+            .hero__button_border {
+                background-color: transparent;
+                color: $black;
+                font-size: 20px;
+                font-weight: 500;
+                display: block;
+                height: 4rem;
+                width: 14rem;
+                margin-top: 1rem;
+                border: 1px solid $black;
+                border-radius: 0.5rem;
+                cursor: pointer;
+                transition: all 300ms ease-in-out;
+                box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 10px;
+            }
+        }
     }
 }
-
-.hero__component .hero__content .hero__text {
-    width: 90%;
-    margin: 0 auto;
-}
-
-.hero__component .hero__content .hero__text .hero__title {
-    font-family: $font-logo;
-    font-size: 56px;
-    font-weight: 700;
-    color: $black;
-    text-align: center;
-    margin-bottom: 1rem;
-    line-height: 1;
-}
-
-.hero__component .hero__content .hero__text .hero__description {
-    /* font-family: $font-text; */
-    font-size: 20px;
-    font-weight: 400;
-    color: $gray;
-    text-align: center;
-    margin-bottom: 1rem;
-}
-
-@media screen and (min-width: 900px) {
-    .hero__component .hero__content .hero__text .hero__description {
-        font-size: 24px;
-    }
-}
-
-.hero__component .hero__content .hero__buttons {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    margin: 0 auto;
-}
-
-@media screen and (min-width: 768px) {
-    .hero__component .hero__content .hero__buttons {
-        gap: 1.5rem;
-    }
-}
-
-@media screen and (min-width: 900px) {
-    .hero__component .hero__content .hero__buttons {
-        justify-content: space-between;
-        width: 30rem;
-    }
-}
-
-.hero__component .hero__content .hero__buttons .hero__button {
-    background-color: $black;
-    color: $white;
-    font-size: 20px;
-    font-weight: 500;
-    display: block;
-    height: 4rem;
-    width: 14rem;
-    margin-top: 1rem;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    transition: all 300ms ease-in-out;
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 10px;
-}
-
-
-.hero__component .hero__content .hero__buttons .hero__button_border {
-    background-color: transparent;
-    color: $black;
-    font-size: 20px;
-    font-weight: 500;
-    display: block;
-    height: 4rem;
-    width: 14rem;
-    margin-top: 1rem;
-    border: 1px solid $black;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    transition: all 300ms ease-in-out;
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 10px;
-}
-
