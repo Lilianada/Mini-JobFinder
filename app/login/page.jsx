@@ -64,7 +64,7 @@ export default function Login() {
           {/* <img src={logo} alt="Logo" /> */}
           <h1 className="title">Hello Friend!</h1>
           <p className="subtitle">
-            Discover new writers, become a writer, and connect with the
+            Discover new talents, become a talent, and connect with the
             community.
           </p>
         </div>

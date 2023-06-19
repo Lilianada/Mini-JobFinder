@@ -16,9 +16,10 @@ export default function Register() {
     <section className="registeration__form">
       <div className="registeration__form_container">
         <div className="registeration__signin">
-          <h1 className="title">Welcome To Chatter!</h1>
+          <h1 className="title">Welcome To MinuJobs!</h1>
           <p className="subtitle">
-            Become our member by joining over 500,000 readers and writers on the app.
+            Become our member and get access to over  {activeTab === "talents" ? "a 100 companies" : "3,000 talents"}
+            {" "} in Malta.
           </p>
           <Link href={"/signin"} className="signin__btn">
             Sign In
@@ -43,7 +44,8 @@ export default function Register() {
           <div className="signup__form">
             <div className="header">
               <h1 className="title">
-                {activeTab === "talents" ? "Talent Sign Up" : "Company Sign Up"}
+                Sign Up
+                {/* {activeTab === "talents" ? "Talent Sign Up" : "Company Sign Up"} */}
               </h1>
               <p className="subtitle">
                 To join us as{" "}
@@ -104,7 +106,7 @@ export default function Register() {
               <button className="signup__btn">Sign Up</button>
             <div className="signin__info">
               <p className="text">Already have an account?</p>{" "}
-              <Link href={"/signin"} className="signin__text">
+              <Link href={"/login"} className="signin__text">
                 Sign In
               </Link>
             </div>

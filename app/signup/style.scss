@@ -11,20 +11,21 @@
     .registeration__form_container {
         width: 90%;
         height: 700px;
+        overflow: scroll;
         background-color: $white;
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 
         @media screen and (min-width: 600px) {
             width: 500px;
-            margin: auto;
+            margin: 1rem auto;
         }
 
         @media screen and (min-width: $breakpoint-4) {
             display: grid;
             grid-template-columns: 45% 55%;
             width: 90%;
-            margin: auto;
+            margin: 1rem auto;
         }
 
         @media screen and (min-width: $breakpoint-5) {
@@ -42,11 +43,14 @@
                 padding: 2rem;
                 border-radius: 10px 0 0 10px;
                 background-color: $primary;
-                //   background-image: url("../../../assets/imgs/HeroBg.svg");
+                background-image: $blue-bg;
+                background-position: left;
+                background-repeat: no-repeat;
+                background-size: cover;
             }
 
             .title {
-                font-size: $font-forty;
+                font-size: $font-thirtySix;
                 font-family: $font-logo;
                 font-weight: $font-weight-500;
                 color: $white;
@@ -94,7 +98,6 @@
             border-radius: 10px;
 
             @media screen and (min-width: $breakpoint-6) {
-                padding: 2rem 4rem;
                 border-radius: 0 10px 10px 0;
             }
 
