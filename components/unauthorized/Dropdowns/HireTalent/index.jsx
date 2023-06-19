@@ -13,18 +13,18 @@ export default function HireTalent() {
     <div className="hireTalent__menu">
       <ul className="dropdown__list">
         <li className="dropdown__link">
-          <Link href="/settings" className="link">
+          <Link href="/post-job" className="link">
             Post Jobs
           </Link>
         </li>
         <li className="dropdown__link">
-          <Link href="/support" className="link">
-            Testimonials
+          <Link href="/browse-candidates" className="link">
+            Find Candidates
           </Link>
         </li>
         <li className="dropdown__link">
-          <Link href="/become-member" className="link">
-            Partnership
+          <Link href="/testimonials" className="link">
+          Testimonials
           </Link>
         </li>
 

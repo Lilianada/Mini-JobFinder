@@ -8,7 +8,7 @@ export default function TalentFeatures() {
     <section className="talent__features">
       <div className="features__container">
         <div className="features__header">
-          <h2 className="features__title">Talent Features</h2>
+          <h2 className="features__title">Becoming a Minu Talent</h2>
           <h3 className="features__subtitle">Explore what you can do as a new talent in the rising.</h3>
         </div>
         <div className="features__cards">

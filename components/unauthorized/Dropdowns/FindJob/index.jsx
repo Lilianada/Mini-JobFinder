@@ -23,7 +23,12 @@ export default function FindJob() {
       <ul className="dropdown__list">
         <li className="dropdown__link">
           <Link href="/minu" className="link">
-            How Minu works
+            Browse Jobs
+          </Link>
+        </li>
+        <li className="dropdown__link">
+          <Link href="/become-talent" className="link">
+            Find Companies
           </Link>
         </li>
         <li className="dropdown__link">
@@ -31,12 +36,6 @@ export default function FindJob() {
             Testimonials
           </Link>
         </li>
-        <li className="dropdown__link">
-          <Link href="/become-talent" className="link">
-            Become a Talent
-          </Link>
-        </li>
-
         <li className="dropdown__link">
           <Link href="/terms" className="link">
             Terms

@@ -36,7 +36,7 @@ export default function Login() {
                   Remember Me
                 </label>
               </div>
-              <Link href="/" className="forgot__password">
+              <Link href="/forgot-password" className="forgot__password">
                 Forgot your password?
               </Link>
             </div>
@@ -61,7 +61,6 @@ export default function Login() {
             </div>
         </div>
         <div className="login__signup">
-          {/* <img src={logo} alt="Logo" /> */}
           <h1 className="title">Hello Friend!</h1>
           <p className="subtitle">
             Discover new talents, become a talent, and connect with the
