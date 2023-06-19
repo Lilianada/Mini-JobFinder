@@ -7,6 +7,10 @@ import Footer from "@components/unauthorized/Footer";
 import CallToAction from "@components/unauthorized/CallToAction";
 import BrowseJobs from "@components/unauthorized/Jobs";
 import TalentFeatures from "@components/unauthorized/Features";
+import TestimonialsSection from "@components/unauthorized/Testimonials";
+
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 export default function HomePage() {
   return (
@@ -17,6 +21,7 @@ export default function HomePage() {
       </div>
       <TalentFeatures/>
       <BrowseJobs />
+      <TestimonialsSection/>
       <CallToAction />
       <Footer />
     </section>

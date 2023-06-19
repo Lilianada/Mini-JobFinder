@@ -1,0 +1,73 @@
+@import "../../../app/global.scss";
+
+.testimonials {
+    text-align: center;
+  
+    &__title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+  
+    &__slider {
+      position: relative;
+      max-width: 600px;
+      margin: 0 auto;
+  
+      &__slide {
+        display: none;
+  
+        &.active {
+          display: block;
+        }
+      }
+  
+      &__content {
+        padding: 20px;
+        background-color: #f5f5f5;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      }
+  
+      &__testimonial {
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+  
+      &__name {
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+  
+      &__company {
+        font-size: 14px;
+        color: #777;
+      }
+  
+      &__prev,
+      &__next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        padding: 10px;
+        border: none;
+        background-color: transparent;
+        font-weight: bold;
+        cursor: pointer;
+        transition: opacity 0.3s;
+  
+        &:hover {
+          opacity: 0.7;
+        }
+  
+        &.testimonials__prev {
+          left: -50px;
+        }
+  
+        &.testimonials__next {
+          right: -50px;
+        }
+      }
+    }
+  }
+  
