@@ -2,10 +2,13 @@ import React, { useState } from "react";
 import { CgClose } from "react-icons/cg";
 import { FiMenu } from "react-icons/fi";
 import { BsChevronDown } from "react-icons/bs";
+import { RxDividerVertical } from "react-icons/rx";
 import Link from "next/link";
 import "./style.scss";
 import HireTalent from "../Dropdowns/HireTalent/";
 import FindJob from "../Dropdowns/FindJob";
+
+
 export default function UnauthorizedHeader() {
   const [showMenu, setShowMenu] = useState(false);
   const [jobDropdown, setJobDropdown] = useState(false);
@@ -65,6 +68,7 @@ export default function UnauthorizedHeader() {
                 Blog
               </Link>
             </li>
+            <RxDividerVertical size={24}/>
             <li className="nav__item">
               <Link href="/login" className="nav__link">
                 Sign In
