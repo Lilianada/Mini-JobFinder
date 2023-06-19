@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.scss";
 import Link from "next/link";
-import { BsSearch } from "react-icons/bs";
+import { HiOutlineArrowNarrowRight } from "react-icons/hi";
 
 export default function Hero() {
   return (
@@ -22,19 +22,16 @@ export default function Hero() {
           </h6>
         </div>
         <div className="hero__searchBar">
-          {/* <Link href="/signup">
-         <button className="hero__button">Find jobs</button> 
-          </Link> */}
           <input
             type="search"
             name="search-bar"
             className="search__bar"
             placeholder="Job Title, Skill or Company"
           />
-          <button className="hero__button">
-            <BsSearch className="search__icon" />
-            Find Jobs
-          </button>
+          <Link href="/search" className="hero__button">
+            <HiOutlineArrowNarrowRight className="search__icon" />
+            <p>Find Jobs</p>
+          </Link>
         </div>
       </div>
     </section>

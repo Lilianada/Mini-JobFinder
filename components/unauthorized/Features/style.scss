@@ -15,17 +15,25 @@
             text-align: center;
 
             .features__title {
-                font-size: $font-thirtySix;
+                font-size: $font-twentyEight;
                 color: $black;
                 font-weight: 600;
                 margin-bottom: 1rem;
+
+                @media screen and (min-width: $breakpoint-3) {
+                    font-size: $font-thirtySix;
+                }
             }
 
             .features__subtitle {
-                font-size: $font-twentyFour;
+                font-size: $font-twenty;
                 color: $lightGray;
                 font-weight: 400;
                 margin-bottom: 1rem;
+
+                @media screen and (min-width: $breakpoint-3) {
+                    font-size: $font-twentyFour;
+                }
             }
         }
 
@@ -42,13 +50,11 @@
                 grid-template-columns: repeat(3, 1fr);
             }
 
-
-
             .card {
                 background-color: #fafafa;
                 box-shadow: $box-shadow-1;
                 padding: 1rem;
-                height: 250px;
+                height: 270px;
                 border-radius: 16px;
                 display: grid;
                 place-items: center;
@@ -80,7 +86,7 @@
                     }
                     
                     .card__description {
-                        font-size: 1rem;
+                        font-size: $font-eighteen;
                         font-weight: 400;
                         margin-bottom: 1rem;
                     }

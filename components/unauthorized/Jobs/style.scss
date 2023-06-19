@@ -13,11 +13,12 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      text-align: center;
       justify-content: center;
       margin-bottom: 2rem;
 
       .jobs__title {
-        font-size: $font-twentyFour;
+        font-size: $font-twentyEight;
         font-weight: $font-weight-600;
         color: $black;
         text-align: center;
@@ -28,10 +29,14 @@
       }
 
       .jobs__subtitle {
-        font-size: $font-twentyFour;
+        font-size: $font-twenty;
         color: $lightGray;
         font-weight: 400;
         margin-bottom: 1rem;
+
+        @media screen and (min-width: $breakpoint-3) {
+          font-size: $font-twentyFour;
+        }
       }
     }
 
