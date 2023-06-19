@@ -5,11 +5,11 @@ import { IoCreate } from "react-icons/io5";
 
 export default function TalentFeatures() {
   return (
-    <section className="talent__features">
+    <section className="talentFeatures__section">
       <div className="features__container">
-        <div className="features__header">
-          <h2 className="features__title">Becoming a Minu Talent</h2>
-          <h3 className="features__subtitle">Explore what you can do as a new talent in the rising.</h3>
+        <div className="section__header">
+          <h2 className="section__title">Becoming a Minu Talent</h2>
+          <h3 className="section__subtitle">Explore what you can do as a new talent in the rising.</h3>
         </div>
         <div className="features__cards">
             <div className="card">

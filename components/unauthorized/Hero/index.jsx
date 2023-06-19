@@ -5,7 +5,7 @@ import { HiOutlineArrowNarrowRight } from "react-icons/hi";
 
 export default function Hero() {
   return (
-    <section className="hero__component">
+    <section className="hero__section">
       <div className="hero__content">
         <div className="hero__text">
           <h1 className="hero__title">

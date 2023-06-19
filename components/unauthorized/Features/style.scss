@@ -1,6 +1,6 @@
 @import "../../../app/global.scss";
 
-.talent__features {
+.talentFeatures__section {
     padding: 2rem;
     margin: 3rem 0;
     border-radius: 16px;
@@ -8,34 +8,6 @@
     .features__container {
         display: grid;
         place-items: center;
-
-        .features__header {
-            display: grid;
-            place-items: center;
-            text-align: center;
-
-            .features__title {
-                font-size: $font-twentyEight;
-                color: $black;
-                font-weight: 600;
-                margin-bottom: 1rem;
-
-                @media screen and (min-width: $breakpoint-3) {
-                    font-size: $font-thirtySix;
-                }
-            }
-
-            .features__subtitle {
-                font-size: $font-twenty;
-                color: $lightGray;
-                font-weight: 400;
-                margin-bottom: 1rem;
-
-                @media screen and (min-width: $breakpoint-3) {
-                    font-size: $font-twentyFour;
-                }
-            }
-        }
 
         .features__cards {
             display: flex;

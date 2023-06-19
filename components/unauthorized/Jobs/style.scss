@@ -1,6 +1,6 @@
 @import "../../../app/global.scss";
 
-.browse__jobs {
+.browseJobs__section {
 
   .jobs__container {
     display: grid;
@@ -15,7 +15,7 @@
       align-items: center;
       text-align: center;
       justify-content: center;
-      margin-bottom: 2rem;
+      margin-bottom: 3rem;
 
       .jobs__title {
         font-size: $font-twentyEight;
@@ -32,10 +32,9 @@
         font-size: $font-twenty;
         color: $lightGray;
         font-weight: 400;
-        margin-bottom: 1rem;
 
         @media screen and (min-width: $breakpoint-3) {
-          font-size: $font-twentyFour;
+          font-size: $font-twentyTwo;
         }
       }
     }

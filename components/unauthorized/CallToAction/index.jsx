@@ -1,11 +1,9 @@
 import React from "react";
 import "./style.scss";
-import Image from "next/image";
-import backdrop from "../../../public/assets/images/cta-bg.svg";
 
 export default function CallToAction() {
   return (
-    <section className="cta__component">
+    <section className="cta__section">
       <div className="cta__container" style={{
         backgroundImage: `url('./assets/images/cta-bg.svg')`,
         backgroundRepeat: "no-repeat",

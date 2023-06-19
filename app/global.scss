@@ -1,14 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
 
-
 /* Define CSS variables with the minutheme colors */
 
 @font-face {
     font-family: "Megan";
     src: url("/assets/font/megan-font/Megan.woff2") format("woff2"),
-    url("/assets/font/megan-font/Megan.woff") format("woff");
+        url("/assets/font/megan-font/Megan.woff") format("woff");
 }
-
 
 $hero-bg: url("/assets/images/hero-bg.png");
 $blue-bg: url("/assets/images/cta-bg.svg");
@@ -149,11 +147,11 @@ button {
     border: none;
     outline: none;
     cursor: pointer;
-    transition: .5s ease-in-out;
+    transition: 0.5s ease-in-out;
     font-family: $font-text;
 
-    &:hover{
-        transform: scale(.9, 1);
+    &:hover {
+        transform: scale(0.9, 1);
     }
 }
 
@@ -223,3 +221,41 @@ input {
     font-family: $font-logo;
     color: $black;
 }
+
+.section__header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 3rem;
+    text-align: center;
+    
+    .section__title {
+        font-size: $font-twentyEight;
+        color: $black;
+        font-weight: 600;
+    
+        @media screen and (min-width: $breakpoint-3) {
+            font-size: $font-thirtyTwo;
+        }
+
+        @media screen and (min-width: $breakpoint-4) {
+            font-size: $font-thirtySix;
+        }
+    }
+    
+    .section__subtitle {
+        font-size: $font-twenty;
+        color: $lightGray;
+        font-weight: 400;
+    
+        @media screen and (min-width: $breakpoint-3) {
+            font-size: $font-twenty;
+        }
+        
+        @media screen and (min-width: $breakpoint-4) {
+            font-size: $font-twentyTwo;
+        }
+    }
+}
+
