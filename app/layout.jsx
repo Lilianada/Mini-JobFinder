@@ -13,9 +13,9 @@ export default function RootLayout ({
   return (
     <html lang='en'>
         <body>
-            <main className="app">
                 {children}
-            </main>
+            {/* <main className="app">
+            </main> */}
         </body>
     </html>
   )
