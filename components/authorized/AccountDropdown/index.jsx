@@ -2,19 +2,19 @@ import React from "react";
 import Link from "next/link";
 import "./style.scss";
 
-export default function FindJob() {
+export default function AccountDropdown() {
  
   return (
-    <div className="findJob__menu">
+    <div className="account__menu">
       <ul className="dropdown__list">
         <li className="dropdown__link">
-          <Link href="/minu" className="link">
-            Browse Jobs
+          <Link href="/candidate/profile" className="link">
+            Profile
           </Link>
         </li>
         <li className="dropdown__link">
           <Link href="/become-talent" className="link">
-            Find Companies
+            Account
           </Link>
         </li>
         <li className="dropdown__link">

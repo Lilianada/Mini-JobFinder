@@ -1,6 +1,5 @@
 import React from "react";
-// import './global.scss';
-import AuthorizedHeader from "@components/authorized/Header";
+import CandidateHeader from "@components/authorized/CandidateHeader";
 
 export const metadata = {
   title: "MinuJobs",
@@ -12,7 +11,7 @@ export default function CandidateLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <AuthorizedHeader />
+        <CandidateHeader />
         <main className="app">{children}</main>
       </body>
     </html>

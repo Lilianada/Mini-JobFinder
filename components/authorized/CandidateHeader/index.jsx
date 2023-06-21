@@ -6,10 +6,11 @@ import { BsChevronDown } from "react-icons/bs";
 import { RxDividerVertical } from "react-icons/rx";
 import Link from "next/link";
 import "./style.scss";
+import AccountDropdown from "../AccountDropdown";
 // import HireTalent from "../Dropdowns/HireTalent/";
 // import FindJob from "../Dropdowns/FindJob";
 
-export default function AuthorizedHeader() {
+export default function CandidateHeader() {
   const [showMenu, setShowMenu] = useState(false);
   const [jobDropdown, setJobDropdown] = useState(false);
   const [accountDropdown, setAccountDropdown] = useState(false);
@@ -42,12 +43,12 @@ export default function AuthorizedHeader() {
         <nav className="nav__bar">
           <ul className="nav__list">
             <li className="nav__link">
-              <Link href="/home" className="nav__link">
+              <Link href="/candidate/home" className="nav__link">
                 Home
               </Link>
             </li>
             <li className="nav__item">
-              <Link href="/jobs" className="nav__link">
+              <Link href="/candidate/jobs" className="nav__link">
                 Jobs
               </Link>
             </li>
@@ -60,7 +61,7 @@ export default function AuthorizedHeader() {
               <div
                 className={`${accountDropdown ? "account__modal" : "no__show"}`}
               >
-                {/* <Account /> */}
+                <AccountDropdown />
               </div>
             </li>
             <li className="nav__item">
@@ -95,12 +96,12 @@ export default function AuthorizedHeader() {
           {/* Navigation List */}
           <ul className="nav__list">
             <li className="nav__item pd_btm">
-              <Link href="/home" className="nav__link">
+              <Link href="/candidate/home" className="nav__link">
                 Home
               </Link>
             </li>
             <li className="nav__item">
-              <Link href="/jobs" className="nav__link">
+              <Link href="/candidate/jobs" className="nav__link">
                 Jobs
               </Link>
             </li>
@@ -111,8 +112,8 @@ export default function AuthorizedHeader() {
               <BsChevronDown fill="#827f7f" size={10} />
             </h4>
             <li className="dropdown__link">
-              <Link href="/profile-settings" className="link">
-                Profile Settings
+              <Link href="/testimonials" className="link">
+                Testimonials
               </Link>
             </li>
             <li className="dropdown__link">
