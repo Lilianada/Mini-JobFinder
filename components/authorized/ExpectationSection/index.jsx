@@ -37,6 +37,9 @@ export default function ExpectationSection() {
           </p>
         </li>
       </ul>
+      <button className="learn__more">
+        Learn More
+      </button>
     </section>
   );
 }
