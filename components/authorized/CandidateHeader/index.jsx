@@ -1,32 +1,27 @@
-'use client'
+"use client";
 import React, { useState } from "react";
 import { CgClose } from "react-icons/cg";
 import { FiMenu } from "react-icons/fi";
 import { BsChevronDown } from "react-icons/bs";
-import { RxDividerVertical } from "react-icons/rx";
+import AccountDropdown from "../AccountDropdown";
 import Link from "next/link";
 import "./style.scss";
-import AccountDropdown from "../AccountDropdown";
-// import HireTalent from "../Dropdowns/HireTalent/";
-// import FindJob from "../Dropdowns/FindJob";
 
 export default function CandidateHeader() {
   const [showMenu, setShowMenu] = useState(false);
-  const [jobDropdown, setJobDropdown] = useState(false);
   const [accountDropdown, setAccountDropdown] = useState(false);
+  const [active, setActive] = useState(null);
+
+  const handleMenuClick = (key) => {
+    setActive(key);
+  };
 
   const toggleMenu = () => {
     setShowMenu(!showMenu);
   };
 
-  const toggleJobDropdown = () => {
-    setJobDropdown(!jobDropdown);
-    setHireDropdown(false); // Close the hireDropdown
-  };
-
   const toggleAccountDropdown = () => {
     setAccountDropdown(!accountDropdown);
-    setJobDropdown(false); // Close the jobDropdown
   };
 
   const closeMenu = () => {
@@ -42,13 +37,21 @@ export default function CandidateHeader() {
         </div>
         <nav className="nav__bar">
           <ul className="nav__list">
-            <li className="nav__link">
-              <Link href="/candidate/home" className="nav__link">
+            <li className="nav__item">
+              <Link
+                href="/candidate/home"
+                onClick={() => handleMenuClick("home")}
+                className={`nav__link ${active === "home" ? "active__link" : ""}`}
+              >
                 Home
               </Link>
             </li>
             <li className="nav__item">
-              <Link href="/candidate/jobs" className="nav__link">
+              <Link
+                href="/candidate/jobs"
+                onClick={() => handleMenuClick("jobs")}
+                className={`nav__link ${active === "jobs" ? "active__link" : ""}`}
+              >
                 Jobs
               </Link>
             </li>
@@ -58,14 +61,16 @@ export default function CandidateHeader() {
             >
               Account
               <BsChevronDown fill="#827f7f" size={10} />
-              <div
-                className={`${accountDropdown ? "account__modal" : "no__show"}`}
-              >
+              <div className={`${accountDropdown ? "account__modal" : "no__show"}`}>
                 <AccountDropdown />
               </div>
             </li>
             <li className="nav__item">
-              <Link href="/blog" className="nav__link">
+              <Link
+                href="/blog"
+                onClick={() => handleMenuClick("blog")}
+                className={`nav__link ${active === "blog" ? "active__link" : ""}`}
+              >
                 Blog
               </Link>
             </li>
@@ -96,35 +101,52 @@ export default function CandidateHeader() {
           {/* Navigation List */}
           <ul className="nav__list">
             <li className="nav__item pd_btm">
-              <Link href="/candidate/home" className="nav__link">
+              <Link
+                href="/candidate/home"
+                onClick={() => handleMenuClick("home")}
+                className={`nav__link ${active === "home" ? "active__link" : ""}`}
+              >
                 Home
               </Link>
             </li>
             <li className="nav__item">
-              <Link href="/candidate/jobs" className="nav__link">
+              <Link
+                href="/candidate/jobs"
+                onClick={() => handleMenuClick("jobs")}
+                className={`nav__link ${active === "jobs" ? "active__link" : ""}`}
+              >
                 Jobs
               </Link>
             </li>
           </ul>
           <ul className="dropdown__list">
             <h4 className="nav__head">
-              Profile
+              Account
               <BsChevronDown fill="#827f7f" size={10} />
             </h4>
+            <li className="dropdown__link">
+              <Link href="/account" className="link">
+                Profile
+              </Link>
+            </li>
+            <li className="dropdown__link">
+              <Link href="/account" className="link">
+                Settings
+              </Link>
+            </li>
             <li className="dropdown__link">
               <Link href="/testimonials" className="link">
                 Testimonials
               </Link>
             </li>
-            <li className="dropdown__link">
-              <Link href="/account" className="link">
-                Account
-              </Link>
-            </li>
           </ul>
           <ul className="nav__list">
             <li className="nav__item pd_btm">
-              <Link href="/blog" className="nav__link">
+              <Link
+                href="/blog"
+                onClick={() => handleMenuClick("blog")}
+                className={`nav__link ${active === "blog" ? "active__link" : ""}`}
+              >
                 Blog
               </Link>
             </li>

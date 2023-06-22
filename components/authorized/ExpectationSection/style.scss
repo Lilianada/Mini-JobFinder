@@ -1,7 +1,7 @@
 @import "../../../app/global.scss";
 
 .expect__section{
-    background-color: $offWhite;
+    background-color: $white;
     padding: 3rem;
     margin: 3rem auto;
     width: 90%;
@@ -73,12 +73,8 @@
             .step__head{
                 font-size: $font-twenty;
                 color: $black;
-                font-weight: 400;
+                font-weight: 600;
                 margin-bottom: 1rem;
-            
-                @media screen and (min-width: $breakpoint-3) {
-                    font-size: $font-twenty;
-                }
                 
                 @media screen and (min-width: $breakpoint-4) {
                     font-size: $font-twentyTwo;
@@ -87,7 +83,7 @@
 
             .step__text{
                 font-size: $font-eighteen;
-                color: $gray;
+                color: $black;
                 font-weight: 400;
             
                 @media screen and (min-width: $breakpoint-3) {
@@ -106,7 +102,7 @@
         font-weight: 500;
         color: $white;
         background: $primary;
-        padding: .5rem 1rem;
+        padding: .75rem 1rem;
         border-radius: 10px;
         margin-top: 2rem;
     

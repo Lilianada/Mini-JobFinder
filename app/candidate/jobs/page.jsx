@@ -20,16 +20,7 @@ export default function JobListingsPage() {
 
   return (
     <div>
-      <h1>Job Listings</h1>
-      {jobs.map((job) => (
-        <div key={job.id}>
-          <h3>{job.title}</h3>
-          <p>{job.company}</p>
-          <p>{job.location}</p>
-          <p>{job.salary}</p>
-          <p>{job.description}</p>
-        </div>
-      ))}
+     
     </div>
   );
 }

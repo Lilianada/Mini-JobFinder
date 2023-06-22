@@ -1,5 +1,6 @@
 import React from "react";
 import CandidateHeader from "@components/authorized/CandidateHeader";
+import Footer from "@components/authorized/Footer";
 
 export const metadata = {
   title: "MinuJobs",
@@ -13,6 +14,7 @@ export default function CandidateLayout({ children }) {
       <body>
         <CandidateHeader />
         <main className="app">{children}</main>
+        <Footer />
       </body>
     </html>
   );
