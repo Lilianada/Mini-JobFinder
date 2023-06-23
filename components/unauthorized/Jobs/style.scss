@@ -146,7 +146,7 @@
 
         .card__company {
           display: flex;
-          align-items: start;
+          align-items: flex-start;
           gap: 0.5rem;
           border-top: 1px solid $secondary;
           padding-top: 0.75rem;
@@ -154,7 +154,7 @@
           .card__logo {
             display: flex;
             gap: 0.5rem;
-            align-items: start;
+            align-items: flex-start;
 
             img {
               width: 2rem;
