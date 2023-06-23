@@ -1,17 +1,18 @@
 @import "../../../app/global.scss";
 
 .job__grid {
-    // padding: 2rem;
     width: 90%;
     margin: 2rem auto;
 
     .grid__header {
         display: flex;
+        flex-wrap: wrap;
         align-items: center;
         justify-content: space-between;
         padding-bottom: 0.5rem;
         border-bottom: 1px solid $border;
         margin-bottom: 1rem;
+        gap: 1rem;
 
         .header__left {
             .total__jobs {
