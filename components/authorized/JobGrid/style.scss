@@ -1,0 +1,146 @@
+@import "../../../app/global.scss";
+
+.job__grid {
+    // padding: 2rem;
+    width: 90%;
+    margin: 2rem auto;
+
+    .grid__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid $border;
+        margin-bottom: 1rem;
+
+        .header__left {
+            .total__jobs {
+                font-size: $font-fourteen;
+
+                .job__number {
+                    font-weight: $font-weight-600;
+                }
+            }
+        }
+
+        .header__right {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            position: relative;
+
+            .sort__item {
+
+                .sort__button{
+
+                }
+
+                .show__sort{
+                    position: absolute;
+                    opacity: 1;
+                    visibility: visible;
+                    top: 3rem;
+                    right: 0;
+                    width: 200px;
+                    height: fit-content;
+                    transition: opacity 0.3s ease-in-out;
+
+                    background-color: $backdrop;
+                    box-shadow: $box-shadow-1;
+                    padding: 1.5rem;
+                    border-radius: 10px;
+
+                    display: flex;
+                    flex-direction: column;
+                    gap: .5rem;
+
+                    .item{
+                        display: flex;
+                        align-items: center;
+                        gap: .5rem;
+                    }
+                }
+
+                .sort__group{
+                    position: absolute;
+                    opacity: 0;
+                    visibility: hidden;
+                    top: 3rem;
+                    right: 0;
+                    width: 200px;
+                    height: fit-content;
+                    transition: opacity 0.3s ease-in-out;
+
+                    
+                }
+            }
+
+            .filter {
+                
+
+                .filter__button {
+                    display: grid;
+                    align-content: center;
+                    border: 1px solid $primary;
+                    border-radius: 10px;
+                    padding: 0.5rem;
+                    width: 7.5rem;
+                    height: 2rem;
+                    font-size: $font-fourteen;
+                    font-weight: $font-weight-500;
+                    color: $black;
+                    background-color: transparent;
+                }
+
+                .filter__group {
+                    position: absolute;
+                    opacity: 0;
+                    visibility: hidden;
+                    top: 3rem;
+                    right: 0;
+                    width: 530px;
+                    height: fit-content;
+                    transition: opacity 0.3s ease-in-out;
+                }
+
+                .show__filter {
+                    position: absolute;
+                    opacity: 1;
+                    visibility: visible;
+                    top: 3rem;
+                    right: 0;
+                    transition: opacity 0.3s ease-in-out;
+
+                    background-color: $backdrop;
+                    box-shadow: $box-shadow-1;
+                    width: 530px;
+                    height: fit-content;
+                    padding: 1.5rem;
+                    border-radius: 10px;
+
+                    display: flex;
+                    gap: 2rem;
+
+                    .filter__item{
+                        label{
+                            font-size: $font-fourteen;
+                            font-weight: $font-weight-600;
+                            margin-bottom: .5rem;
+                        }
+
+                        .items{
+                            display: flex;
+                            flex-direction: column;
+
+                            .check__item{
+                                display: flex;
+                                align-items: center;
+                                gap: .5rem;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -75,24 +75,12 @@
                 color: $black;
                 font-weight: 600;
                 margin-bottom: 1rem;
-                
-                @media screen and (min-width: $breakpoint-4) {
-                    font-size: $font-twentyTwo;
-                }
             }
 
             .step__text{
-                font-size: $font-eighteen;
+                font-size: $font-sixteen;
                 color: $black;
                 font-weight: 400;
-            
-                @media screen and (min-width: $breakpoint-3) {
-                    font-size: $font-twenty;
-                }
-                
-                @media screen and (min-width: $breakpoint-4) {
-                    font-size: $font-twentyTwo;
-                }
             }
         }
     }

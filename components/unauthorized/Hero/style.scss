@@ -84,7 +84,7 @@
                     font-size: $font-sixteen;
 
                     @media screen and (min-width: $breakpoint-4) {
-                        font-size: $font-twenty;
+                        font-size: $font-eighteen;
                     }
                 }
             }
@@ -92,7 +92,6 @@
             .hero__button {
                 background-color: $primary;
                 color: $white;
-
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -117,7 +116,7 @@
                     @media screen and (min-width: $breakpoint-4) {
                         display: block;
                         font-weight: 500;
-                        font-size: $font-twenty;
+                        font-size: $font-eighteen;
                     }
                 }
 
