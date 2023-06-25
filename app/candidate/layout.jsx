@@ -12,9 +12,11 @@ export default function CandidateLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <CandidateHeader />
-        <main className="app">{children}</main>
-        <Footer />
+        <div className="app">
+          <CandidateHeader />
+          <main className="main">{children}</main>
+          <Footer />
+        </div>
       </body>
     </html>
   );

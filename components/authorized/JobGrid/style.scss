@@ -30,18 +30,21 @@
             align-items: center;
             position: relative;
 
-            .sort__item {
-
-                .sort__button{
-
+            .sort {
+                .sort__button {
+                    background-color: transparent;
+                    font-weight: 500;
+                    border: none;
+                    outline: none;
                 }
 
-                .show__sort{
+                .show__sort {
                     position: absolute;
                     opacity: 1;
                     visibility: visible;
                     top: 3rem;
                     right: 0;
+                    z-index: 8;
                     width: 200px;
                     height: fit-content;
                     transition: opacity 0.3s ease-in-out;
@@ -53,16 +56,16 @@
 
                     display: flex;
                     flex-direction: column;
-                    gap: .5rem;
+                    gap: 0.5rem;
 
-                    .item{
+                    .sort__item {
                         display: flex;
                         align-items: center;
-                        gap: .5rem;
+                        gap: 0.5rem;
                     }
                 }
 
-                .sort__group{
+                .sort__group {
                     position: absolute;
                     opacity: 0;
                     visibility: hidden;
@@ -71,14 +74,10 @@
                     width: 200px;
                     height: fit-content;
                     transition: opacity 0.3s ease-in-out;
-
-                    
                 }
             }
 
             .filter {
-                
-
                 .filter__button {
                     display: grid;
                     align-content: center;
@@ -99,7 +98,8 @@
                     visibility: hidden;
                     top: 3rem;
                     right: 0;
-                    width: 530px;
+                    // width: 530px;
+                    
                     height: fit-content;
                     transition: opacity 0.3s ease-in-out;
                 }
@@ -109,12 +109,13 @@
                     opacity: 1;
                     visibility: visible;
                     top: 3rem;
+                    z-index: 9;
                     right: 0;
                     transition: opacity 0.3s ease-in-out;
 
                     background-color: $backdrop;
                     box-shadow: $box-shadow-1;
-                    width: 530px;
+                    // width: 720px;
                     height: fit-content;
                     padding: 1.5rem;
                     border-radius: 10px;
@@ -122,21 +123,22 @@
                     display: flex;
                     gap: 2rem;
 
-                    .filter__item{
-                        label{
+                    .filter__item {
+                        width: max-content;
+                        label {
                             font-size: $font-fourteen;
                             font-weight: $font-weight-600;
-                            margin-bottom: .5rem;
+                            margin-bottom: 0.5rem;
                         }
 
-                        .items{
+                        .items {
                             display: flex;
                             flex-direction: column;
 
-                            .check__item{
+                            .check__item {
                                 display: flex;
                                 align-items: center;
-                                gap: .5rem;
+                                gap: 0.5rem;
                             }
                         }
                     }
@@ -145,29 +147,29 @@
         }
     }
 
-    .grid__body{
+    .grid__body {
         display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-      margin-top: 2rem;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 2rem;
 
-      @media screen and (min-width: 768px) {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-      }
+        @media screen and (min-width: 768px) {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+        }
 
-      @media screen and (min-width: 1024px) {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-      }
+        @media screen and (min-width: 1024px) {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+        }
 
-      @media screen and (min-width: 1200px) {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-      }
-      
+        @media screen and (min-width: 1200px) {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+
         .jobs__card {
             width: 100%;
             border: 1px solid #e0e6f7;
@@ -182,92 +184,131 @@
             padding: 1rem;
             // min-width: 290px;
             max-width: 300px;
-    
+
             .card__info {
-              .card__title {
-                font-size: $font-eighteen;
-                font-weight: $font-weight-600;
-                color: $black;
-              }
-    
-              .card__flex {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                margin-top: 0.25rem;
-    
-                .card__location,
-                .card__time {
-                  font-size: $font-twelve;
-                  color: $lightGray;
-                  display: flex;
-                  align-items: center;
-                  gap: 3px;
-                }
-              }
-    
-              .card__tags {
-                display: flex;
-                gap: 0.5rem;
-                margin-top: 1rem;
-    
-                li {
-                  width: fit-content;
-                  padding: 0.15rem 0.5rem;
-                  background: $accent;
-                  color: $black;
-                  font-size: $font-twelve;
-                  text-align: center;
-                  border-radius: 5px;
-                }
-              }
-            }
-    
-            .card__company {
-              display: flex;
-              align-items: flex-start;
-              gap: 0.5rem;
-              border-top: 1px solid $secondary;
-              padding-top: 0.75rem;
-    
-              .card__logo {
-                display: flex;
-                gap: 0.5rem;
-                align-items: flex-start;
-    
-                img {
-                  width: 2rem;
-                  height: 2rem;
-                  border-radius: 50%;
-                  background-color: $secondary;
-                }
-    
-                .company__info {
-                  display: block;
-    
-                  .company__name {
-                    font-size: $font-fourteen;
+                .card__title {
+                    font-size: $font-eighteen;
                     font-weight: $font-weight-600;
                     color: $black;
-                  }
-    
-                  .company__location {
-                    font-size: $font-twelve;
-                    color: $lightGray;
+                }
+
+                .card__flex {
                     display: flex;
                     align-items: center;
-                    gap: 3px;
-                  }
+                    justify-content: space-between;
+                    margin-top: 0.25rem;
+
+                    .card__location,
+                    .card__time {
+                        font-size: $font-twelve;
+                        color: $lightGray;
+                        display: flex;
+                        align-items: center;
+                        gap: 3px;
+                    }
                 }
-              }
-    
-              .company__pay {
-                color: $primary;
-                font-size: $font-fourteen;
-                font-weight: $font-weight-600;
-                line-height: 1.2;
-              }
+
+                .card__tags {
+                    display: flex;
+                    gap: 0.5rem;
+                    margin-top: 1rem;
+
+                    li {
+                        width: fit-content;
+                        padding: 0.15rem 0.5rem;
+                        background: $accent;
+                        color: $black;
+                        font-size: $font-twelve;
+                        text-align: center;
+                        border-radius: 5px;
+                    }
+                }
             }
-          }
+
+            .card__company {
+                display: flex;
+                align-items: flex-start;
+                gap: 0.5rem;
+                border-top: 1px solid $secondary;
+                padding-top: 0.75rem;
+
+                .card__logo {
+                    display: flex;
+                    gap: 0.5rem;
+                    align-items: flex-start;
+
+                    img {
+                        width: 2rem;
+                        height: 2rem;
+                        border-radius: 50%;
+                        background-color: $secondary;
+                    }
+
+                    .company__info {
+                        display: block;
+
+                        .company__name {
+                            font-size: $font-fourteen;
+                            font-weight: $font-weight-600;
+                            color: $black;
+                        }
+
+                        .company__location {
+                            font-size: $font-twelve;
+                            color: $lightGray;
+                            display: flex;
+                            align-items: center;
+                            gap: 3px;
+                        }
+                    }
+                }
+
+                .company__pay {
+                    color: $primary;
+                    font-size: $font-fourteen;
+                    font-weight: $font-weight-600;
+                    line-height: 1.2;
+                }
+            }
+        }
+    }
+
+    .pagination{
+        border: 1px solid $primary;
+        border-radius: 10px;
+        padding: .75rem;
+        width: fit-content; 
+        margin: 0 auto;
+        margin-top: 2rem;
+        display: flex;
+        gap: 0.5rem;
+
+        .pagination__button{
+            border: none;
+            background-color: transparent;
+            font-size: $font-fourteen;
+            font-weight: $font-weight-600;
+            color: $black;
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s ease-in-out;
+
+            &:hover{
+                background-color: $primary;
+                color: $white;
+            }
+
+            &:disabled{
+                background-color: $primary;
+                color: $white;
+                cursor: not-allowed;
+            }
+        }
+
+        .pagination__active{
+            background-color: $primary;
+            color: $white;
+        }
     }
 }

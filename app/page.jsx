@@ -7,7 +7,7 @@ export default function Home() {
 
 
   return (
-    <div className="main">
+    <div className="app">
        <HomePage/>
     </div>
   );

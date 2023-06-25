@@ -5,235 +5,266 @@ import { AiOutlineClockCircle } from "react-icons/ai";
 import { CgBriefcase } from "react-icons/cg";
 
 const jobPostings = [
-    {
-      id: 1,
-      title: "Software Engineer",
+  {
+    id: 1,
+    title: "Software Engineer",
+    location: "San Francisco",
+    timePosted: "2 hours ago",
+    tags: ["Full-Time", "JavaScript", "React"],
+    company: {
+      name: "Paypal",
       location: "San Francisco",
-      timePosted: "2 hours ago",
-      tags: ["Full-Time", "JavaScript", "React"],
-      company: {
-        name: "Paypal",
-        location: "San Francisco",
-        pay: "$120,000/year",
-        logo: "https://plus.unsplash.com/premium_photo-1666533177885-64832208c5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60", // Replace with actual logo URL
-      },
+      pay: "$120,000/year",
+      logo: "https://plus.unsplash.com/premium_photo-1666533177885-64832208c5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60", // Replace with actual logo URL
     },
-    {
-      id: 2,
-      title: "Marketing Specialist",
+  },
+  {
+    id: 2,
+    title: "Marketing Specialist",
+    location: "New York City",
+    timePosted: "1 day ago",
+    tags: ["Part-Time", "Digital Marketing"],
+    company: {
+      name: "LinkedIn",
       location: "New York City",
-      timePosted: "1 day ago",
-      tags: ["Part-Time", "Digital Marketing"],
-      company: {
-        name: "LinkedIn",
-        location: "New York City",
-        pay: "$50/hour",
-        logo: "https://plus.unsplash.com/premium_photo-1666533177885-64832208c5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60", // Replace with actual logo URL
-      },
+      pay: "$50/hour",
+      logo: "https://plus.unsplash.com/premium_photo-1666533177885-64832208c5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60", // Replace with actual logo URL
     },
-    {
-      id: 3,
-      title: "Marketing Specialist",
+  },
+  {
+    id: 3,
+    title: "Marketing Specialist",
+    location: "New York City",
+    timePosted: "1 day ago",
+    tags: ["Part-Time", "Digital Marketing"],
+    company: {
+      name: "LinkedIn",
       location: "New York City",
-      timePosted: "1 day ago",
-      tags: ["Part-Time", "Digital Marketing"],
-      company: {
-        name: "LinkedIn",
-        location: "New York City",
-        pay: "$50/hour",
-        logo: "https://plus.unsplash.com/premium_photo-1666533177885-64832208c5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60", // Replace with actual logo URL
-      },
+      pay: "$50/hour",
+      logo: "https://plus.unsplash.com/premium_photo-1666533177885-64832208c5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60", // Replace with actual logo URL
     },
-    {
-      id: 4,
-      title: "Marketing Specialist",
+  },
+  {
+    id: 4,
+    title: "Marketing Specialist",
+    location: "New York City",
+    timePosted: "1 day ago",
+    tags: ["Part-Time", "Digital Marketing"],
+    company: {
+      name: "LinkedIn",
       location: "New York City",
-      timePosted: "1 day ago",
-      tags: ["Part-Time", "Digital Marketing"],
-      company: {
-        name: "LinkedIn",
-        location: "New York City",
-        pay: "$50/hour",
-        logo: "https://plus.unsplash.com/premium_photo-1666533177885-64832208c5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60", // Replace with actual logo URL
-      },
+      pay: "$50/hour",
+      logo: "https://plus.unsplash.com/premium_photo-1666533177885-64832208c5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60", // Replace with actual logo URL
     },
-    {
-      id: 5,
-      title: "Marketing Specialist",
+  },
+  {
+    id: 5,
+    title: "Marketing Specialist",
+    location: "New York City",
+    timePosted: "1 day ago",
+    tags: ["Part-Time", "Digital Marketing"],
+    company: {
+      name: "LinkedIn",
       location: "New York City",
-      timePosted: "1 day ago",
-      tags: ["Part-Time", "Digital Marketing"],
-      company: {
-        name: "LinkedIn",
-        location: "New York City",
-        pay: "$50/hour",
-        logo: "https://plus.unsplash.com/premium_photo-1666533177885-64832208c5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60", // Replace with actual logo URL
-      },
+      pay: "$50/hour",
+      logo: "https://plus.unsplash.com/premium_photo-1666533177885-64832208c5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60", // Replace with actual logo URL
     },
-    {
-      id: 6,
-      title: "Software Engineer",
+  },
+  {
+    id: 6,
+    title: "Software Engineer",
+    location: "San Francisco",
+    timePosted: "2 hours ago",
+    tags: ["Full-Time", "JavaScript", "React"],
+    company: {
+      name: "Paypal",
       location: "San Francisco",
-      timePosted: "2 hours ago",
-      tags: ["Full-Time", "JavaScript", "React"],
-      company: {
-        name: "Paypal",
-        location: "San Francisco",
-        pay: "$120,000/year",
-        logo: "https://plus.unsplash.com/premium_photo-1666533177885-64832208c5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60", // Replace with actual logo URL
-      },
+      pay: "$120,000/year",
+      logo: "https://plus.unsplash.com/premium_photo-1666533177885-64832208c5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60", // Replace with actual logo URL
     },
-    {
-      id: 7,
-      title: "Software Engineer",
+  },
+  {
+    id: 7,
+    title: "Software Engineer",
+    location: "San Francisco",
+    timePosted: "2 hours ago",
+    tags: ["Full-Time", "JavaScript", "React"],
+    company: {
+      name: "Teamway",
       location: "San Francisco",
-      timePosted: "2 hours ago",
-      tags: ["Full-Time", "JavaScript", "React"],
-      company: {
-        name: "Teamway",
-        location: "San Francisco",
-        pay: "$120,000/year",
-        logo: "https://plus.unsplash.com/premium_photo-1666533177885-64832208c5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60", // Replace with actual logo URL
-      },
+      pay: "$120,000/year",
+      logo: "https://plus.unsplash.com/premium_photo-1666533177885-64832208c5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60", // Replace with actual logo URL
     },
-    {
-      id: 8,
-      title: "Software Engineer",
+  },
+  {
+    id: 8,
+    title: "Software Engineer",
+    location: "San Francisco",
+    timePosted: "2 hours ago",
+    tags: ["Full-Time", "JavaScript", "React"],
+    company: {
+      name: "Twitter",
       location: "San Francisco",
-      timePosted: "2 hours ago",
-      tags: ["Full-Time", "JavaScript", "React"],
-      company: {
-        name: "Twitter",
-        location: "San Francisco",
-        pay: "$120,000/year",
-        logo: "https://plus.unsplash.com/premium_photo-1666533177885-64832208c5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60", // Replace with actual logo URL
-      },
+      pay: "$120,000/year",
+      logo: "https://plus.unsplash.com/premium_photo-1666533177885-64832208c5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60", // Replace with actual logo URL
     },
-    {
-        id: 9,
-        title: "Software Engineer",
-        location: "San Francisco",
-        timePosted: "2 hours ago",
-        tags: ["Full-Time", "JavaScript", "React"],
-        company: {
-          name: "Paypal",
-          location: "San Francisco",
-          pay: "$120,000/year",
-          logo: "https://plus.unsplash.com/premium_photo-1666533177885-64832208c5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60", // Replace with actual logo URL
-        },
-      },
-      {
-        id: 10,
-        title: "Marketing Specialist",
-        location: "New York City",
-        timePosted: "1 day ago",
-        tags: ["Part-Time", "Digital Marketing"],
-        company: {
-          name: "LinkedIn",
-          location: "New York City",
-          pay: "$50/hour",
-          logo: "https://plus.unsplash.com/premium_photo-1666533177885-64832208c5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60", // Replace with actual logo URL
-        },
-      },
-      {
-        id: 11,
-        title: "Marketing Specialist",
-        location: "New York City",
-        timePosted: "1 day ago",
-        tags: ["Part-Time", "Digital Marketing"],
-        company: {
-          name: "LinkedIn",
-          location: "New York City",
-          pay: "$50/hour",
-          logo: "https://plus.unsplash.com/premium_photo-1666533177885-64832208c5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60", // Replace with actual logo URL
-        },
-      },
-      {
-        id: 12,
-        title: "Marketing Specialist",
-        location: "New York City",
-        timePosted: "1 day ago",
-        tags: ["Part-Time", "Digital Marketing"],
-        company: {
-          name: "LinkedIn",
-          location: "New York City",
-          pay: "$50/hour",
-          logo: "https://plus.unsplash.com/premium_photo-1666533177885-64832208c5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60", // Replace with actual logo URL
-        },
-      },
-      {
-        id: 13,
-        title: "Marketing Specialist",
-        location: "New York City",
-        timePosted: "1 day ago",
-        tags: ["Part-Time", "Digital Marketing"],
-        company: {
-          name: "LinkedIn",
-          location: "New York City",
-          pay: "$50/hour",
-          logo: "https://plus.unsplash.com/premium_photo-1666533177885-64832208c5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60", // Replace with actual logo URL
-        },
-      },
-  ];
-  
+  },
+  {
+    id: 9,
+    title: "Software Engineer",
+    location: "San Francisco",
+    timePosted: "2 hours ago",
+    tags: ["Full-Time", "JavaScript", "React"],
+    company: {
+      name: "Paypal",
+      location: "San Francisco",
+      pay: "$120,000/year",
+      logo: "https://plus.unsplash.com/premium_photo-1666533177885-64832208c5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60", // Replace with actual logo URL
+    },
+  },
+  {
+    id: 10,
+    title: "Marketing Specialist",
+    location: "New York City",
+    timePosted: "1 day ago",
+    tags: ["Part-Time", "Digital Marketing"],
+    company: {
+      name: "LinkedIn",
+      location: "New York City",
+      pay: "$50/hour",
+      logo: "https://plus.unsplash.com/premium_photo-1666533177885-64832208c5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60", // Replace with actual logo URL
+    },
+  },
+  {
+    id: 11,
+    title: "Marketing Specialist",
+    location: "New York City",
+    timePosted: "1 day ago",
+    tags: ["Part-Time", "Digital Marketing"],
+    company: {
+      name: "LinkedIn",
+      location: "New York City",
+      pay: "$50/hour",
+      logo: "https://plus.unsplash.com/premium_photo-1666533177885-64832208c5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60", // Replace with actual logo URL
+    },
+  },
+  {
+    id: 12,
+    title: "Marketing Specialist",
+    location: "New York City",
+    timePosted: "1 day ago",
+    tags: ["Part-Time", "Digital Marketing"],
+    company: {
+      name: "LinkedIn",
+      location: "New York City",
+      pay: "$50/hour",
+      logo: "https://plus.unsplash.com/premium_photo-1666533177885-64832208c5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60", // Replace with actual logo URL
+    },
+  },
+  {
+    id: 13,
+    title: "Marketing Specialist",
+    location: "New York City",
+    timePosted: "1 day ago",
+    tags: ["Part-Time", "Digital Marketing"],
+    company: {
+      name: "LinkedIn",
+      location: "New York City",
+      pay: "$50/hour",
+      logo: "https://plus.unsplash.com/premium_photo-1666533177885-64832208c5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60", // Replace with actual logo URL
+    },
+  },
+];
 
 const JobGrid = () => {
-  const [jobs, setJobs] = useState([]);
   const [toggleFilter, setToggleFilter] = useState(false);
   const [toggleSort, setToggleSort] = useState(false);
 
   const isFilterToggled = () => {
     setToggleFilter(!toggleFilter);
+    setToggleSort(false);
   };
 
   const isSortToggled = () => {
     setToggleSort(!toggleSort);
+    setToggleFilter(false);
   };
 
-//   useEffect(() => {
-//     const fetchJobs = async () => {
-//       try {
-//         const response = await axios.get(
-//           "https://jobsearch4.p.rapidapi.com/api/v1/Jobs/Search",
-//           {
-//             params: {
-//               SearchQuery: "java",
-//             },
-//             headers: {
-//               "X-RapidAPI-Key":
-//                 "0e0b03802dmsh0ff85f33cd9c03cp167843jsne657c6b58de7",
-//               "X-RapidAPI-Host": "jobsearch4.p.rapidapi.com",
-//             },
-//           }
-//         );
-//         setJobs(response.data);
-//       } catch (error) {
-//         console.error(error);
-//       }
-//     };
+  const [currentPage, setCurrentPage] = useState(1);
+  const jobsPerPage = 8;
 
-//     fetchJobs();
-//   }, []);
+  const indexOfLastJob = currentPage * jobsPerPage;
+  const indexOfFirstJob = indexOfLastJob - jobsPerPage;
+  const currentJobs = jobPostings.slice(indexOfFirstJob, indexOfLastJob);
+
+  const pageNumbers = Math.ceil(jobPostings.length / jobsPerPage);
+
+  const handleClick = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const handleNextClick = () => {
+    if (currentPage < pageNumbers) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const handlePreviousClick = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
 
   return (
     <section className="job__grid">
       <div className="grid__header">
         <div className="header__left">
           <h5 className="total__jobs">
-            Showing
-            <span className="job__number"> 1 - 23</span> of available jobs
+            Showing{" "}
+            <span className="job__number">
+              {indexOfFirstJob + 1} -{" "}
+              {indexOfLastJob > jobPostings.length
+                ? jobPostings.length
+                : indexOfLastJob}
+            </span>{" "}
+            of available jobs
           </h5>
         </div>
 
         <div className="header__right">
-          <div className="sort__item">
+          <div className="sort">
             {/* <label htmlFor="sortBy" className="sort__label">
                
             </label>{" "} */}
             <button className="sort__button" onClick={isSortToggled}>
               Sort by:
             </button>
-            <div className={toggleSort ? "show__sort" : "sort__group"}></div>
+            <div className={toggleSort ? "show__sort" : "sort__group"}>
+                <div className="sort__item">
+                    <input type="checkbox" className="sort__check" value="select Option" />
+                    <p>Select an option</p>
+                </div>   
+                <div className="sort__item">
+                    <input type="checkbox" className="sort__check" value="last Hour" />
+                    <p>Last hour</p>
+                </div>
+                <div className="sort__item">
+                    <input type="checkbox" className="sort__check" value="last 24 hours" />
+                    <p>Last 24 hours</p>
+                </div>
+                <div className="sort__item">
+                    <input type="checkbox" className="sort__check" value="last 7 days" />
+                    <p>Last 7 days</p>
+                </div>
+                <div className="sort__item">
+                    <input type="checkbox" className="sort__check" value="last 30 days" />
+                    <p>Last 30 days</p>
+                </div>
+                <div className="sort__item">
+                    <input type="checkbox" className="sort__check" value="all time" />
+                    <p>All time</p>
+                </div>
+            </div>
           </div>
 
           <div className="filter">
@@ -444,7 +475,7 @@ const JobGrid = () => {
       {/* Job listings */}
       <div className="grid__body">
         {jobPostings.length > 0 ? (
-          jobPostings.map((job) => {
+          currentJobs.map((job) => {
             return (
               <div className="jobs__card" key={job.id}>
                 <div className="card__info">
@@ -484,6 +515,39 @@ const JobGrid = () => {
         ) : (
           <p>No jobs found.</p>
         )}
+      </div>
+
+      {/* Pagination */}
+      <div className="pagination">
+        <button
+          className="pagination__button"
+          onClick={handlePreviousClick}
+          disabled={currentPage === 1}
+        >
+          Previous
+        </button>
+
+        {Array.from({ length: pageNumbers }, (_, index) => index + 1).map(
+          (pageNumber) => (
+            <button
+              className={`pagination__button ${
+                currentPage === pageNumber ? "pagination__active" : ""
+              }`}
+              key={pageNumber}
+              onClick={() => handleClick(pageNumber)}
+            >
+              {pageNumber}
+            </button>
+          )
+        )}
+
+        <button
+          className="pagination__button"
+          onClick={handleNextClick}
+          disabled={currentPage === pageNumbers}
+        >
+          Next
+        </button>
       </div>
     </section>
   );
