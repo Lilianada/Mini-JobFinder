@@ -8,7 +8,6 @@
         border-radius: 1rem;
         width: 90%;
         margin: 0 auto;
-        // max-width: 1140px;
 
         .content__header{
             display: flex;
@@ -49,6 +48,9 @@
                 display: grid;
                 grid-template-columns: repeat(3, 1fr);
                 align-items: center;
+            }
+
+            @media screen and (min-width: $breakpoint-4) {
                 gap: 2rem;
             }
 

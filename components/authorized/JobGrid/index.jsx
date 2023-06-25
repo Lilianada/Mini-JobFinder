@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./style.scss";
 import axios from "axios";
-import { AiOutlineClockCircle } from "react-icons/ai";
+import { AiOutlineClockCircle, AiOutlineEnvironment } from "react-icons/ai";
 import { CgBriefcase } from "react-icons/cg";
 
 const jobPostings = [
@@ -240,30 +240,54 @@ const JobGrid = () => {
               Sort by:
             </button>
             <div className={toggleSort ? "show__sort" : "sort__group"}>
-                <div className="sort__item">
-                    <input type="checkbox" className="sort__check" value="select Option" />
-                    <p>Select an option</p>
-                </div>   
-                <div className="sort__item">
-                    <input type="checkbox" className="sort__check" value="last Hour" />
-                    <p>Last hour</p>
-                </div>
-                <div className="sort__item">
-                    <input type="checkbox" className="sort__check" value="last 24 hours" />
-                    <p>Last 24 hours</p>
-                </div>
-                <div className="sort__item">
-                    <input type="checkbox" className="sort__check" value="last 7 days" />
-                    <p>Last 7 days</p>
-                </div>
-                <div className="sort__item">
-                    <input type="checkbox" className="sort__check" value="last 30 days" />
-                    <p>Last 30 days</p>
-                </div>
-                <div className="sort__item">
-                    <input type="checkbox" className="sort__check" value="all time" />
-                    <p>All time</p>
-                </div>
+              <div className="sort__item">
+                <input
+                  type="checkbox"
+                  className="sort__check"
+                  value="select Option"
+                />
+                <p>Select an option</p>
+              </div>
+              <div className="sort__item">
+                <input
+                  type="checkbox"
+                  className="sort__check"
+                  value="last Hour"
+                />
+                <p>Last hour</p>
+              </div>
+              <div className="sort__item">
+                <input
+                  type="checkbox"
+                  className="sort__check"
+                  value="last 24 hours"
+                />
+                <p>Last 24 hours</p>
+              </div>
+              <div className="sort__item">
+                <input
+                  type="checkbox"
+                  className="sort__check"
+                  value="last 7 days"
+                />
+                <p>Last 7 days</p>
+              </div>
+              <div className="sort__item">
+                <input
+                  type="checkbox"
+                  className="sort__check"
+                  value="last 30 days"
+                />
+                <p>Last 30 days</p>
+              </div>
+              <div className="sort__item">
+                <input
+                  type="checkbox"
+                  className="sort__check"
+                  value="all time"
+                />
+                <p>All time</p>
+              </div>
             </div>
           </div>
 
@@ -472,6 +496,7 @@ const JobGrid = () => {
           </div>
         </div>
       </div>
+
       {/* Job listings */}
       <div className="grid__body">
         {jobPostings.length > 0 ? (
@@ -479,35 +504,41 @@ const JobGrid = () => {
             return (
               <div className="jobs__card" key={job.id}>
                 <div className="card__info">
+                  <div className="card__company">
+                    <div className="card__logo">
+                      <img src={job.company.logo} alt={job.company.name} />
+                      <div className="company__info">
+                        <h5 className="company__name">{job.company.name}</h5>
+                        <p className="company__location">
+                          <AiOutlineEnvironment />
+                          {job.company.location}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
                   <h4 className="card__title">{job.title}</h4>
                   <div className="card__flex">
                     <p className="card__location">
                       <CgBriefcase />
-                      {job.location}
+                      Full-time
                     </p>
                     <p className="card__time">
                       <AiOutlineClockCircle />
                       {job.timePosted}
                     </p>
                   </div>
+                    <p className="card__description">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur.
+                    </p>
                   <ul className="card__tags">
                     {job.tags.map((tag) => (
                       <li key={tag}>{tag}</li>
                     ))}
                   </ul>
                 </div>
-                <div className="card__company">
-                  <div className="card__logo">
-                    <img src={job.company.logo} alt={job.company.name} />
-                    <div className="company__info">
-                      <h5 className="company__name">{job.company.name}</h5>
-                      <p className="company__location">
-                        {/* <AiOutlineEnvironment /> */}
-                        {job.company.location}
-                      </p>
-                    </div>
-                  </div>
+                <div className="card__flex">
                   <p className="company__pay">{job.company.pay}</p>
+                  <button className="apply__button">Apply Now</button>
                 </div>
               </div>
             );
