@@ -140,17 +140,22 @@ export default function CandidateHeader() {
               <BsChevronDown fill="#827f7f" size={10} />
             </h4>
             <li className="dropdown__link">
-              <Link href="/account" className="link">
+              <Link href="/candidate/profile" className="link" onClick={closeMenu}>
                 Profile
               </Link>
             </li>
             <li className="dropdown__link">
-              <Link href="/account" className="link">
+              <Link href="/settings" className="link" onClick={closeMenu}>
                 Settings
               </Link>
             </li>
             <li className="dropdown__link">
-              <Link href="/testimonials" className="link">
+              <Link href="/candidate/resume" className="link" onClick={closeMenu}>
+                My Resume
+              </Link>
+            </li>
+            <li className="dropdown__link">
+              <Link href="/candidate/testimonials" className="link" onClick={closeMenu}>
                 Testimonials
               </Link>
             </li>

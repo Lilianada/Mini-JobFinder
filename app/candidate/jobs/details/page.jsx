@@ -1,14 +1,19 @@
-import React from "react";
+'use client'
+
+import React, { useState } from "react";
 import { AiOutlineClockCircle, AiOutlineEnvironment } from "react-icons/ai";
 import { BiBadgeCheck } from "react-icons/bi";
 import "./style.scss";
-import JobOverview from "@components/authorized/JobOverview";
-import CompanyDescription from "@components/authorized/CompanyDescription";
-import RequiredSkills from "@components/authorized/RequiredSkills";
 import { HiOutlineBuildingOffice2 } from "react-icons/hi2";
 import { BsCheck2Circle, BsHeart } from "react-icons/bs";
 
 export default function JobDetails() {
+  const [isSaved, setIsSaved] = useState(false);
+
+  const handleSaveJob = () => {
+    setIsSaved(!isSaved);
+  };
+
   return (
     <div className="jobDetails__section">
       <div className="details__header">
@@ -22,9 +27,13 @@ export default function JobDetails() {
             <AiOutlineClockCircle fill="#9d9d9d" />3 days ago
           </p>
         </div>
-        <button className="save__button">
-            <BsHeart fill="#e0e6f7"/>
-            Save Job
+        <button className="save__button" onClick={handleSaveJob}>
+          {isSaved ? (
+            <BsHeartFill fill="#ff0000" />
+          ) : (
+            <BsHeart fill="#e0e6f7" />
+          )}
+          Save Job
         </button>
       </div>
 

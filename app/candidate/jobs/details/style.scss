@@ -6,6 +6,7 @@
 
     .details__header {
         display: block;
+        margin-bottom: 3rem;
 
         .details__title {
             @include title;

@@ -69,7 +69,7 @@
 
         .nav__bar {
             display: grid;
-            height: 72vh;
+            height: 78vh;
             grid-template-rows: repeat(4, 1fr);
             gap: 3rem;
             width: 100vw;
@@ -142,7 +142,7 @@
                         display: flex;
                         align-items: center;
                         font-weight: $font-weight-400;
-                        font-size: $font-fourteen;
+                        font-size: $font-sixteen;
                         color: $black;
 
                         &:hover {
