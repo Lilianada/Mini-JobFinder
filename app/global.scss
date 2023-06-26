@@ -15,7 +15,7 @@ $hero-img: url("/assets/images/hero-img.png");
 $primary: #2563eb;
 $secondary: rgb(238 242 255);
 $accent: rgb(55 205 190 / 24%);
-$neutral: #3d4451;
+$neutral: #e0e6f7;
 $white: #ffffff;
 $offWhite: #fcfdff;
 $black: #181a21;
@@ -92,6 +92,36 @@ $breakpoint-6: 1200px;
 $breakpoint-7: 1440px;
 $breakpoint-8: 1600px;
 $breakpoint-9: 1920px;
+
+
+@mixin title {
+    font-size: $font-twentyEight;
+    color: $black;
+    font-weight: 600;
+  
+    @media screen and (min-width: $breakpoint-3) {
+      font-size: $font-thirtyTwo;
+    }
+
+    @media screen and (min-width: $breakpoint-4) {
+      font-size: $font-thirtySix;
+    }   
+}
+
+@mixin subtitle {
+    font-size: $font-twenty;
+    color: $black;
+    font-weight: 600;
+  
+    @media screen and (min-width: $breakpoint-3) {
+      font-size: $font-twentyTwo;
+    }
+
+    @media screen and (min-width: $breakpoint-4) {
+      font-size: $font-twentySix;
+    }   
+}
+  
 
 *,
 *::before,
@@ -192,7 +222,7 @@ input {
 }
 
 .main{
-    
+
 }
 
 .wrapper {

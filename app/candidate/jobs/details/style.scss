@@ -1,0 +1,112 @@
+@import "../../../global.scss";
+
+.jobDetails__section {
+    margin: 1rem auto;
+    width: 90%;
+
+    .details__header {
+        display: block;
+
+        .details__title {
+            @include title;
+        }
+
+        .details__flex {
+            display: flex;
+            gap: 1rem;
+
+            .details__type,
+            .details__posted {
+                font-size: $font-fourteen;
+                color: $lightGray;
+                display: flex;
+                align-items: center;
+                gap: 3px;
+            }
+        }
+    }
+
+    // Job Overview
+    .employmentInfo__section {
+        margin-top: 2rem;
+        padding: 1rem 1.5rem;
+        border: 1px solid $neutral;
+        border-radius: 10px;
+    
+        .info__header {
+            display: block;
+    
+            .info__title {
+                font-size: $font-twentyFour;
+                font-weight: $font-weight-600;
+                color: $black;
+                border-bottom: 1px solid $neutral;
+                padding-bottom: .5rem;
+            }
+        }
+    
+        .info__content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            margin-top: 1.5rem;
+            gap: 1rem;
+            
+            .info__item {
+                display: grid;
+                grid-template-columns: 32% 65%;
+                align-content: center;
+                gap: 1rem;
+        
+                .info__left {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+        
+                    .info__icon {
+                        line-height: 0;
+                        font-weight: $font-weight-600;
+                        color: #66789c;
+                    }
+        
+                    .info__title {
+                        font-size: $font-fourteen;
+                        font-weight: $font-weight-500;
+                        color: #66789c;
+                    }
+                }
+        
+                .info__right {
+                    
+                    .info__text{
+                        font-size: $font-fourteen;
+                        font-weight: $font-weight-500;
+                        color: $black;
+    
+                    }
+                }
+            }
+        }
+    }
+
+    // Company Description
+    .companyDescription__section{
+        margin-top: 2rem;
+    
+        .description__header{
+            display: block;
+    
+            .description__title{
+                font-size: $font-twentyFour;
+                font-weight: $font-weight-600;
+                color: $black;
+                margin-bottom: 1rem;
+            }
+        }
+    
+        .description__text{
+            font-size: $font-sixteen;
+            font-weight: $font-weight-500;
+            color: $gray;
+        }
+    }
+}
