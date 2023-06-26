@@ -182,7 +182,7 @@ button {
     font-family: $font-text;
 
     &:hover {
-        transform: scale(0.9, 1);
+        transform: scale(0.97, 1);
     }
 }
 
@@ -222,7 +222,7 @@ input {
 }
 
 .main{
-
+    background: $backdrop;
 }
 
 .wrapper {
