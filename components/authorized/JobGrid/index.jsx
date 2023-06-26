@@ -3,6 +3,7 @@ import "./style.scss";
 import axios from "axios";
 import { AiOutlineClockCircle, AiOutlineEnvironment } from "react-icons/ai";
 import { CgBriefcase } from "react-icons/cg";
+import Link from "next/link";
 
 const jobPostings = [
   {
@@ -538,7 +539,12 @@ const JobGrid = () => {
                 </div>
                 <div className="card__flex">
                   <p className="company__pay">{job.company.pay}</p>
-                  <button className="apply__button">Apply Now</button>
+                    <Link href='/candidate/jobs/details'>
+                  <button className="apply__button">
+                    {/* <Link to={`/job/${job.id}`}>Apply Now</Link> */}
+                      Apply Now
+                  </button>
+                      </Link>
                 </div>
               </div>
             );

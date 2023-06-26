@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { CgClose } from "react-icons/cg";
 import { FiMenu } from "react-icons/fi";
 import { BsChevronDown } from "react-icons/bs";
@@ -28,8 +28,23 @@ export default function CandidateHeader() {
     setShowMenu(false);
   };
 
+  const [isSticky, setIsSticky] = useState(false);
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const shouldBeSticky = scrollTop > 150;
+
+      setIsSticky(shouldBeSticky);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <header className="authorized__header">
+    <header className={`authorized__header ${isSticky ? "sticky__menu" : ""}`}>
       {/* Desktop Header */}
       <div className="desktop__header">
         <div className="header__logo">

@@ -1,9 +1,33 @@
 @import "../../../app/global.scss";
 
-.authorized__header {
-    background-color: transparent;
-    width: 100%;
 
+@keyframes fadeInDown {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .sticky__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid #e0e6f6;
+    animation: fadeInDown 0.7s ease-in-out 0s 1 normal none running;
+    transition: all 0.7s ease 0s;
+  }
+  
+  .authorized__header {
+    background-color: $white;
+    width: 100%;
+    
     .desktop__header {
         display: none;
     }
