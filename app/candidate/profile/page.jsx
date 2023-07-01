@@ -1,11 +1,16 @@
-'use client'
-import { useState } from "react";
+"use client";
+import React, { useState } from "react";
+import { MdEdit } from "react-icons/md";
+import "./style.scss";
 
 export default function CandidateProfile() {
   const [isEditMode, setIsEditMode] = useState(false);
   const [name, setName] = useState("John Doe");
   const [email, setEmail] = useState("john.doe@example.com");
-  const [bio, setBio] = useState("I am a passionate candidate seeking job opportunities.");
+  const [bio, setBio] = useState(
+    "I am a passionate candidate seeking job opportunities."
+  );
+  const [profileImage, setProfileImage] = useState(null);
 
   const handleEditClick = () => {
     setIsEditMode(true);
@@ -30,12 +35,40 @@ export default function CandidateProfile() {
     }
   };
 
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+
+    reader.onloadend = () => {
+      setProfileImage(reader.result);
+    };
+
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+  };
+
   return (
     <div className="profile__page">
-      <h1>Profile</h1>
-
       {isEditMode ? (
-        <div>
+        <div className="profile__form">
+          {/* <label htmlFor="profileImage">Profile Picture:</label> */}
+
+          <div className="profile__image">
+            <div className="edit__image">
+              <MdEdit size={20} fill="#2563eb" />
+              <input
+                type="file"
+                accept="image/*"
+                name="profileImage"
+                onChange={handleImageUpload}
+              />
+            </div>
+            {profileImage && (
+              <img src={profileImage} alt="Profile" className="image" />
+            )}
+          </div>
+
           <label htmlFor="name">Name:</label>
           <input
             type="text"
@@ -58,18 +91,25 @@ export default function CandidateProfile() {
           <button onClick={handleSaveClick}>Save</button>
         </div>
       ) : (
-        <div>
-          <p>
+        <div className="profile__form">
+          {profileImage && (
+            <img src={profileImage} alt="Profile" className="profile__image" />
+          )}
+
+          <p className="profile__text">
             <strong>Name:</strong> {name}
           </p>
-          <p>
+          <p className="profile__text">
             <strong>Email:</strong> {email}
           </p>
-          <p>
+          <p className="profile__text">
             <strong>Bio:</strong> {bio}
           </p>
+          <p className="profile__text">
+            <strong>DOB:</strong> {bio}
+          </p>
 
-          <button onClick={handleEditClick}>Edit</button>
+          <button onClick={handleEditClick} className="edit__button">Edit</button>
         </div>
       )}
     </div>
