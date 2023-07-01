@@ -62,6 +62,7 @@ export default function CandidateProfile() {
                 accept="image/*"
                 name="profileImage"
                 onChange={handleImageUpload}
+                className="edit__input"
               />
             </div>
             {profileImage && (
@@ -75,6 +76,7 @@ export default function CandidateProfile() {
             name="name"
             value={name}
             onChange={handleInputChange}
+            className="edit__input"
           />
 
           <label htmlFor="email">Email:</label>
@@ -83,12 +85,13 @@ export default function CandidateProfile() {
             name="email"
             value={email}
             onChange={handleInputChange}
+            className="edit__input"
           />
 
           <label htmlFor="bio">Bio:</label>
-          <textarea name="bio" value={bio} onChange={handleInputChange} />
+          <textarea name="bio" value={bio} onChange={handleInputChange} className="edit__bio"/>
 
-          <button onClick={handleSaveClick}>Save</button>
+          <button onClick={handleSaveClick} className="edit__button">Save</button>
         </div>
       ) : (
         <div className="profile__form">
@@ -109,7 +112,9 @@ export default function CandidateProfile() {
             <strong>DOB:</strong> {bio}
           </p>
 
-          <button onClick={handleEditClick} className="edit__button">Edit</button>
+          <button onClick={handleEditClick} className="edit__button">
+            Edit
+          </button>
         </div>
       )}
     </div>
