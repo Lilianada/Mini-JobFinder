@@ -316,6 +316,8 @@
                         visibility: visible;
                         top: 5rem;
                         transition: 0.3s ease-in-out;
+                        transition: 0.3s ease-in-out;
+                        z-index: 20;
                     }
 
                     .no__show {
@@ -324,6 +326,7 @@
                         visibility: hidden;
                         top: 5rem;
                         transition: 0.3s ease-in-out;
+                        z-index: 20;
                     }
                 }
             }
