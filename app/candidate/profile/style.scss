@@ -1,7 +1,7 @@
 @import "../../global.scss";
 
 .profile__page {
-    margin: 0 auto;
+    margin: 2rem auto;
     width: 90%;
 
     .profile__form {
@@ -79,9 +79,21 @@
                 height: 3rem;
             }
 
+            .form__select {
+                font-size: 16px;
+                font-weight: 500;
+                font-family: inherit;
+                border: none;
+                outline: none;
+                border-radius: 10px;
+                padding: 0 1rem;
+                background: rgb(238, 242, 255);
+                height: 3rem;
+            }
+
             .form__text {
                 font-size: $font-sixteen;
-                font-weight: $font-weight-500;
+                font-weight: $font-weight-400;
                 font-family: inherit;
                 border: none;
                 outline: none;
@@ -166,18 +178,24 @@
 
             .profile__column {
                 display: flex;
-                flex-direction: row;
-                align-items: center;
-                gap: 1rem;
+                flex-direction: column;
+                align-items: flex-start;
+                // gap: 1rem;
 
                 .profile__row {
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+                    margin-top: 1rem;
+                    // margin-bottom: 0.5rem;
+
                     .user__name {
-                        font-size: $font-twentyFour;
+                        font-size: $font-twenty;
                         font-weight: $font-weight-500;
                         color: $black;
                     }
                     .user__address {
-                        font-size: $font-sixteen;
+                        font-size: $font-fourteen;
                         font-weight: $font-weight-500;
                         color: $lightGray;
                         display: flex;
@@ -185,25 +203,30 @@
                         gap: 0.35rem;
                     }
                 }
+
+                .user__title {
+                    font-size: $font-twenty;
+                    font-weight: $font-weight-500;
+                    color: $lightGray;
+                }
             }
         }
 
-        .profile__bottom{
-            
-            .profile__box{
+        .profile__bottom {
+            .profile__box {
                 background-color: $secondary;
                 padding: 1rem;
                 margin-bottom: 2rem;
                 border-radius: 10px;
 
-                .title{
+                .title {
                     font-size: $font-twenty;
                     font-weight: $font-weight-500;
                     color: $black;
-                    margin-bottom: .75rem;
+                    margin-bottom: 0.75rem;
                 }
 
-                .text{
+                .text {
                     font-size: $font-sixteen;
                     font-weight: $font-weight-500;
                     color: $lightGray;

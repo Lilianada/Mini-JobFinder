@@ -18,7 +18,8 @@ export default function CandidateProfile() {
     pronouns: "She/Her",
     jobTitle: "Frontend Developer",
     desiredSalary: "80,000",
-    socialLinks: "https://www.linkedin.com/in/john-doe/",
+    linkedInLink: "https://www.linkedin.com/in/john-doe/",
+    portfolioLink: "https://www.johndoe.com/",
     address: " Lorem Street, Ipsum, State, Country",
     phone: " 1234567890",
     mobile: " 1234567890",
@@ -63,7 +64,9 @@ export default function CandidateProfile() {
     pronouns,
     jobTitle,
     desiredSalary,
-    socialLinks,
+    githubLink,
+    linkedInLink,
+    portfolioLink,
     address,
     phone,
     mobile,
@@ -166,10 +169,10 @@ export default function CandidateProfile() {
 
           <div className="form__group">
             <label htmlFor="pronouns">Pronouns:</label>
-            <select name="pronouns" id="">
-                <option value="she/her">She/Her</option>
-                <option value="he/him">He/Him</option>
-                <option value="they/them">They/Them</option>
+            <select name="pronouns" className="form__select">
+              <option value="she/her">She/Her</option>
+              <option value="he/him">He/Him</option>
+              <option value="they/them">They/Them</option>
             </select>
           </div>
 
@@ -196,11 +199,22 @@ export default function CandidateProfile() {
           </div>
 
           <div className="form__group">
-            <label htmlFor="socialLinks">Social Links:</label>
+            <label htmlFor="socialLinks">LinkedIn Link:</label>
             <input
               type="text"
-              name="socialLinks"
-              value={socialLinks}
+              name="linkedInLink"
+              value={linkedInLink}
+              onChange={handleInputChange}
+              className="form__input"
+            />
+          </div>
+
+          <div className="form__group">
+            <label htmlFor="socialLinks">Portfolio Link:</label>
+            <input
+              type="text"
+              name="portfolioLink"
+              value={portfolioLink}
               onChange={handleInputChange}
               className="form__input"
             />
@@ -281,22 +295,28 @@ export default function CandidateProfile() {
               )}
 
               <div className="profile__row">
-                <p className="user__address">{jobTitle}</p>
-                <p className="user__name">{name}</p>
-
-                <p className="user__address">
-                  <AiOutlineEnvironment />
-                  {address}
-                </p>
+                  <h4 className="user__name">{name}</h4>
+                  <p className="user__address">
+                    <AiOutlineEnvironment />
+                    {address}
+                  </p>
               </div>
+                <p className="user__title">{jobTitle}</p>
             </div>
           </div>
 
           <div className="profile__bottom">
             <div className="profile__box">
               <h4 className="title">Personal Details</h4>
-              <p className="text">{gender}</p>
-              <p className="text">{dob}</p>
+              <p className="text">
+                <strong>Pronouns:</strong> {pronouns}
+              </p>
+              <p className="text">
+                <strong>Gender:</strong> {gender}
+              </p>
+              <p className="text">
+                <strong>DOB:</strong> {dob}
+              </p>
             </div>
             <div className="profile__box">
               <h4 className="title">About</h4>
@@ -318,17 +338,11 @@ export default function CandidateProfile() {
             <div className="profile__box">
               <h4 className="title">Social Links</h4>
               <p className="text">
-                <strong>Github:</strong> {" "}
-                {socialLinks}</p>
+                <strong>LinkedIn:</strong> {linkedInLink}
+              </p>
               <p className="text">
-                <strong>LinkedIn:</strong> {" "}
-                {socialLinks}</p>
-              <p className="text">
-                <strong>Twitter:</strong> {" "}
-                {socialLinks}</p>
-              <p className="text">
-                <strong>Portfolio:</strong> {" "}
-                {socialLinks}</p>
+                <strong>Portfolio:</strong> {portfolioLink}
+              </p>
             </div>
 
             <div className="profile__box">
@@ -348,11 +362,11 @@ export default function CandidateProfile() {
             </div>
 
             <div className="profile__box">
-                <h4 className="title">Additional Information</h4>
-                <p className="text">
-                    <strong>Desired Salary:</strong> {" "}
-                    {desiredSalary}</p>
-                <p className="text">{}</p>
+              <h4 className="title">Additional Information</h4>
+              <p className="text">
+                <strong>Desired Salary:</strong> {desiredSalary}
+              </p>
+              <p className="text">{}</p>
             </div>
           </div>
 
