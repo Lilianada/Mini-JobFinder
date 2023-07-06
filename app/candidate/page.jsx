@@ -1,5 +1,5 @@
 'use client'
-import ExpectationSection from '@components/authorized/ExpectationSection';
+import ExpectationSection from '@components/authorized/company/StepsToHire';
 import Hero from '@components/authorized/Hero';
 import React from 'react';
 
