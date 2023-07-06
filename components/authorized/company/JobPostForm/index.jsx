@@ -1,60 +1,127 @@
-import React from "react";
 import "./style.scss" ;
-export default function JobPostForm() {
-  return (
-    <section class="job-postings__section">
-      <h2 class="section__title">Create Job Posting</h2>
-      <form class="job-posting__form">
-        <label for="job-title">Job Title:</label>
-        <input type="text" id="job-title" name="job-title" required />
+import React, { useState } from "react";
 
-        <label for="job-description">Job Description:</label>
+const JobPostForm = () => {
+  const [isEditMode, setIsEditMode] = useState(true);
+  const initialFormData = {
+    jobTitle: "",
+    jobDescription: "",
+    location: "",
+    requirements: "",
+    benefits: "",
+    salary: "",
+    employmentType: "",
+  };
+  const [formData, setFormData] = useState(initialFormData);
+
+  const handleEditClick = () => {
+    setIsEditMode(true);
+  };
+
+  const handleSaveClick = (e) => {
+    e.preventDefault();
+    // Add logic to save the job posting to the database
+    setIsEditMode(false);
+    setFormData(initialFormData); // Clear the form fields
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
+  };
+
+  return (
+    <section className="job-postings__section">
+      <h2 className="section__title">Create Job Posting</h2>
+      <form className="job-posting__form" onSubmit={handleSaveClick}>
+        <label htmlFor="job-title">Job Title:</label>
+        <input
+          type="text"
+          id="job-title"
+          name="jobTitle"
+          value={formData.jobTitle}
+          onChange={handleChange}
+          required
+        />
+
+        <label htmlFor="job-description">Job Description:</label>
         <textarea
           id="job-description"
-          name="job-description"
+          name="jobDescription"
+          value={formData.jobDescription}
+          onChange={handleChange}
           required
         ></textarea>
 
-        <label for="location">Location:</label>
-        <input type="text" id="location" name="location" required />
+        <label htmlFor="location">Location:</label>
+        <input
+          type="text"
+          id="location"
+          name="location"
+          value={formData.location}
+          onChange={handleChange}
+          required
+        />
 
-        <button type="submit" class="submit__button">
-          Create Job Posting
-        </button>
+        <label htmlFor="requirements">Requirements:</label>
+        <textarea
+          id="requirements"
+          name="requirements"
+          value={formData.requirements}
+          onChange={handleChange}
+          required
+        ></textarea>
+
+        <label htmlFor="benefits">Benefits:</label>
+        <textarea
+          id="benefits"
+          name="benefits"
+          value={formData.benefits}
+          onChange={handleChange}
+          required
+        ></textarea>
+
+        <label htmlFor="salary">Salary:</label>
+        <input
+          type="text"
+          id="salary"
+          name="salary"
+          value={formData.salary}
+          onChange={handleChange}
+          required
+        />
+
+        <label htmlFor="employment-type">Employment Type:</label>
+        <select
+          id="employment-type"
+          name="employmentType"
+          value={formData.employmentType}
+          onChange={handleChange}
+          required
+        >
+          <option value="">Select Employment Type</option>
+          <option value="full-time">Full Time</option>
+          <option value="part-time">Part Time</option>
+          <option value="contract">Contract</option>
+        </select>
+
+        {/* Add more necessary fields for a job posting */}
+        
+        {isEditMode ? (
+          <button type="submit" className="submit__button">
+            Create Job Posting
+          </button>
+        ) : (
+          <button type="button" className="edit__button" onClick={handleEditClick}>
+            Edit
+          </button>
+        )}
       </form>
-
-      <div class="job-postings__container">
-        <h3 class="job-postings__title">Active Postings</h3>
-        <ul class="active-postings__list">
-          <li class="job-posting">
-            <h4 class="job-posting__title">Frontend Developer</h4>
-            <p class="job-posting__location">Location: New York, NY</p>
-            <p class="job-posting__description">
-              We are looking for a skilled Frontend Developer to join our team.
-              The ideal candidate has experience with HTML, CSS, and JavaScript.
-            </p>
-            <div class="job-posting__actions">
-              <button class="edit__button">Edit</button>
-            </div>
-          </li>
-        </ul>
-
-        <h3 class="job-postings__title">Inactive Postings</h3>
-        <ul class="inactive-postings__list">
-          <li class="job-posting">
-            <h4 class="job-posting__title">UI/UX Designer</h4>
-            <p class="job-posting__location">Location: San Francisco, CA</p>
-            <p class="job-posting__description">
-              We are seeking a talented UI/UX Designer to design and enhance the
-              user experience of our applications.
-            </p>
-            <div class="job-posting__actions">
-              <button class="activate__button">Activate</button>
-              <button class="edit__button">Edit</button>
-            </div>
-          </li>
-        </ul>
-      </div>
     </section>
   );
-}
+};
+
+export default JobPostForm;
