@@ -1,6 +1,6 @@
 import React from "react";
-import CandidateHeader from "@components/authorized/AuthorizedHeader/CandidateHeader";
 import Footer from "@components/authorized/Footer";
+import CandidateHeader from "@components/authorized/candidate/CandidateHeader";
 
 export const metadata = {
   title: "MinuJobs",

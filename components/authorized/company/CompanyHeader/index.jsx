@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { CgClose } from "react-icons/cg";
 import { FiMenu } from "react-icons/fi";
 import { BsChevronDown } from "react-icons/bs";
-import AccountDropdown from "../AccountDropdown";
+import CompanyDropdown from "../AccountDropdown";
 import Link from "next/link";
 import "./style.scss";
 
@@ -77,7 +77,7 @@ export default function CompanyHeader() {
               Account
               <BsChevronDown fill="#827f7f" size={10} />
               <div className={`${accountDropdown ? "account__modal" : "no__show"}`}>
-                <AccountDropdown />
+                <CompanyDropdown />
               </div>
             </li>
             <li className="nav__item">

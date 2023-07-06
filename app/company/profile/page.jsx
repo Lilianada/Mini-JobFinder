@@ -1,24 +1,21 @@
 "use client";
 import React, { useState } from "react";
-import { MdEdit } from "react-icons/md";
+import { MdEdit, MdPeopleOutline } from "react-icons/md";
 import "./style.scss";
 import { profile } from "../../../public/assets/images/logo.jpeg";
-import { AiOutlineEnvironment } from "react-icons/ai";
+import { AiOutlineEnvironment, AiOutlineMail } from "react-icons/ai";
 
 export default function CompanyProfile() {
   const [isEditMode, setIsEditMode] = useState(false);
   const [formData, setFormData] = useState({
-    name: "AliStudio",
-    email: "career@aliStudio.com",
-    bio: "The AliStudio Design team has a vision to establish a trusted platform that enables productive and healthy enterprises in a world of digital and remote everything, constantly changing work patterns and norms, and the need for organizational resiliency. The ideal candidate will have strong creative skills and a portfolio of work which demonstrates their passion for illustrative design and typography. This candidate will have experiences in working with numerous different design platforms such as digital and print forms.",
-    profileImage:
-      "https://ouch-cdn2.icons8.com/-JZptPGuKRXkyuzdLeFBi71mdKqKYQHlVYx_4AQFhdQ/rs:fit:256:256/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvNTIx/LzYyOTBlMmU4LWQ2/NmMtNDgzMS1hOWFl/LTUwNDQ3M2ZkMWZj/NS5wbmc.png",
-    teamSize: "50-100",
-    linkedInLink: "https://www.linkedin.com/in/john-doe/",
-    companySite: "https://www.johndoe.com/",
-    address: " Lorem Street, Ipsum, State, Country",
-    phone: " 1234567890",
-    mobile: " 1234567890",
+    name: "Lovehoney Group",
+    email: "career@lovehoneygroup.com",
+    bio: "The Lovehoney Group is the world’s leading sexual wellbeing company. We offer exciting brands with innovative, high-quality sex toys, lingerie, and accessories in a smooth online shopping experience.\n\nLovehoney employs over 900 awesome, diverse & driven people throughout our 9 offices across the globe, celebrating a broad spectrum of talents in engineering, industrial design, sales, and marketing.\n\nWe are proud to be a company that thrives by doing things differently, challenging expectations and stereotypes while making a positive impact on our customers’ lives.",
+    profileImage: "https://ouch-cdn2.icons8.com/-JZptPGuKRXkyuzdLeFBi71mdKqKYQHlVYx_4AQFhdQ/rs:fit:256:256/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvNTIx/LzYyOTBlMmU4LWQ2/NmMtNDgzMS1hOWFl/LTUwNDQ3M2ZkMWZj/NS5wbmc.png",
+    teamSize: "500-1000",
+    linkedInLink: "https://www.linkedin.com/company/lovehoney-group/",
+    companySite: "https://www.lovehoneygroup.com/",
+    address: "Berlin, Germany (hybrid)",
   });
 
   const handleEditClick = () => {
@@ -115,78 +112,17 @@ export default function CompanyProfile() {
             />
           </div>
 
+          
           <div className="form__group">
-            <label htmlFor="dob">Team Size</label>
-            <input
-              type="text"
-              name="dob"
-              value={dob}
-              onChange={handleInputChange}
-              className="form__input"
-            />
+            <label htmlFor="pronouns">Team Size:</label>
+            <select name="pronouns" className="form__select">
+              <option value="1-10">1 - 10</option>
+              <option value="10-50">10 - 50</option>
+              <option value="50-100">50 - 100</option>
+              <option value="100-500">100 - 500</option>
+              <option value="500-1000">500 - 1000</option>
+            </select>
           </div>
-
-          <div className="form__group">
-            <label htmlFor="teamSize">Team Size:</label>
-            <div className="teamSize__wrap">
-              <label className="teamSize__label">
-                <input
-                  type="radio"
-                  name="teamSize"
-                  value="teamSize"
-                  checked={teamSize === "1-10"}
-                  onChange={handleInputChange}
-                  className="teamSize__input"
-                />{" "}
-                1-10
-              </label>
-              <label className="teamSize__label">
-                <input
-                  type="radio"
-                  name="teamSize"
-                  value="10-50"
-                  checked={teamSize === "10-50"}
-                  onChange={handleInputChange}
-                  className="teamSize__input"
-                />{" "}
-                10-50
-              </label>
-              <label className="teamSize__label">
-                <input
-                  type="radio"
-                  name="teamSize"
-                  value="50-100"
-                  checked={teamSize === "50-100"}
-                  onChange={handleInputChange}
-                  className="teamSize__input"
-                />{" "}
-                10-50
-              </label>
-            </div>
-          </div>
-
-          <div className="form__group">
-            <label htmlFor="jobTitle">Job Title:</label>
-            <input
-              type="text"
-              name="jobTitle"
-              value={jobTitle}
-              onChange={handleInputChange}
-              className="form__input"
-            />
-          </div>
-
-          <div className="form__group">
-            <label htmlFor="desiredSalary">Desired Salary:</label>
-            <input
-              type="text"
-              name="desiredSalary"
-              value={desiredSalary}
-              onChange={handleInputChange}
-              className="form__input"
-            />
-          </div>
-
           <div className="form__group">
             <label htmlFor="socialLinks">LinkedIn Link:</label>
             <input
@@ -202,8 +138,8 @@ export default function CompanyProfile() {
             <label htmlFor="socialLinks">Company Link:</label>
             <input
               type="text"
-              name="portfolioLink"
-              value={portfolioLink}
+              name="companySite"
+              value={companySite}
               onChange={handleInputChange}
               className="form__input"
             />
@@ -241,7 +177,7 @@ export default function CompanyProfile() {
               className="form__input"
             />
           </div>
-          
+
           <button onClick={handleSaveClick} className="save__button">
             Save
           </button>
@@ -261,44 +197,47 @@ export default function CompanyProfile() {
                   className="profile__image"
                 />
               )}
+              <h4 className="user__name">Welcome to {name}</h4>
 
               <div className="profile__row">
-                  <h4 className="user__name">Welcome to {name}</h4>
-                  <p className="user__address">
-                    <AiOutlineEnvironment />
-                    {address}
+                <p className="user__address">
+                  <AiOutlineEnvironment />
+                  {address}
+                </p>
+                <p className="user__address">
+                  <AiOutlineMail />
+                  {email}
+                </p>
+                <p className="user__address">
+                    <MdPeopleOutline />
+                    {teamSize} employees
                   </p>
               </div>
             </div>
           </div>
 
           <div className="profile__bottom">
-            {/* <div className="profile__box">
-              <h4 className="title">Welcom to {name}</h4>
-              <p className="text">
-                <strong>Team Size:</strong> {teamSize}
-              </p>
-            </div> */}
-
             <div className="profile__box">
               <h4 className="title">About Us</h4>
               <p className="text">{bio}</p>
             </div>
 
             <div className="profile__box">
-              <h4 className="title">Contact</h4>
-              <p className="text">{email}</p>
-              <p className="text">{phone}</p>
-              <div className="profile__row"></div>
+              <h4 className="title">Open Positions</h4>
+              <p className="text">Nil </p>
+              <p className="text"> </p>
             </div>
 
             <div className="profile__box">
               <h4 className="title">Social Links</h4>
               <p className="text">
-                <strong>LinkedIn:</strong> {linkedInLink}
+                <strong>LinkedIn:</strong> {" "}
+                <a href={linkedInLink} className="text">{linkedInLink}</a>
+                
               </p>
               <p className="text">
-                <strong>Portfolio:</strong> {companySite}
+                <strong>Portfolio:</strong> {" "}
+                <a href={companySite} className="text">{companySite}</a>
               </p>
             </div>
           </div>
