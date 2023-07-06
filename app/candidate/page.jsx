@@ -1,6 +1,7 @@
 'use client'
-import ExpectationSection from '@components/authorized/company/StepsToHire';
+// import ExpectationSection from '@components/authorized/ExpectationSection';
 import Hero from '@components/authorized/Hero';
+import ExpectationSection from '@components/authorized/candidate/ExpectationSection';
 import React from 'react';
 
 export default function HomePage() {
