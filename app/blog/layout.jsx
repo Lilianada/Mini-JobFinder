@@ -4,7 +4,7 @@ import React from 'react'
 import '../global.scss';
 // import UnauthorizedHeader from '@components/unauthorized/Header';
 import Footer from '@components/unauthorized/Footer';
-import CandidateHeader from '@components/authorized/CandidateHeader';
+import CandidateHeader from '@components/authorized/AuthorizedHeader/CandidateHeader';
 
 // export const metadata = {
 //     title: "MinuJobs",

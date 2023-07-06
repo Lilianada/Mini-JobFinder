@@ -191,6 +191,14 @@
                         }
                     }
 
+                    .error{
+                        @include errorMsg;
+                    }
+                    
+                    .success{
+                        @include successMsg;
+                    }
+
                     .signup__btn {
                         background-color: $primary;
                         color: $white;
@@ -208,6 +216,27 @@
 
                         &:hover {
                             transform: scale(0.95, 1);
+                        }
+                    }
+
+                    .show__password{
+                        width: 100%;
+                        display: flex;
+                        gap: .5rem;
+                        align-items: flex-start;
+                        justify-content: flex-start;
+                        margin: 0 0 1rem;
+
+                        input{
+                            margin-top: 2px;
+                        }
+
+                        label{
+                            font-size: $font-fourteen;
+                            font-weight: $font-weight-400;
+                            color: $gray;
+                            text-align: left;
+                            line-height: 1.2;
                         }
                     }
 

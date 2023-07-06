@@ -8,7 +8,7 @@ export default function AccountDropdown({ closeMenu }) {
       <ul className="dropdown__list">
         <li className="dropdown__link">
           <Link href="/candidate/profile" className="link" onClick={closeMenu}>
-            Profile
+            Dashboard
           </Link>
         </li>
         <li className="dropdown__link">
@@ -16,11 +16,11 @@ export default function AccountDropdown({ closeMenu }) {
             Settings
           </Link>
         </li>
-        <li className="dropdown__link">
+        {/* <li className="dropdown__link">
           <Link href="/candidate/resume" className="link" onClick={closeMenu}>
             My Resume
           </Link>
-        </li>
+        </li> */}
         <li className="dropdown__link">
           <Link href="/candidate/testimonials" className="link" onClick={closeMenu}>
             Testimonials

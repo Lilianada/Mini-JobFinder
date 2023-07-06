@@ -24,6 +24,9 @@ $lightGray: #9d9d9d;
 $border: #a4a4a499;
 $backdrop: #fafafa;
 $placeholder: #acaeb7;
+$error: #ff0000;
+$success: #00ff00;
+$warning: #ffff00;
 
 $font-logo: "Megan", sans-serif;
 $font-text: "DM Sans", sans-serif;
@@ -69,8 +72,8 @@ $spacing-2: 2px;
 $spacing-4: 4px;
 
 //Border Radius
-$border-radius-1: 1px;
-$border-radius-2: 2px;
+$border-radius-1: 10px;
+$border-radius-2: 16px;
 
 //Box Shadows
 $box-shadow-1: 0 0 8px 0 rgba(0, 0, 0, 0.2);
@@ -120,6 +123,28 @@ $breakpoint-9: 1920px;
     @media screen and (min-width: $breakpoint-4) {
       font-size: $font-twentySix;
     }   
+}
+
+@mixin errorMsg {
+    width: 100%;
+    font-size: $font-twelve;
+    color: $error;
+    font-weight: 500;
+    background-color: rgba(250 128 75 / 33%);
+    border: 1px solid $error;
+    border-radius: $border-radius-1;
+    padding: .15rem;
+}
+
+@mixin successMsg {
+    width: 100%;
+    font-size: $font-twelve;
+    color: $success;
+    font-weight: 500;
+    background-color: #00ff0070;
+    border: 1px solid $success;
+    border-radius: $border-radius-1;
+    padding: .15rem;
 }
   
 
