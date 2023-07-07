@@ -40,14 +40,14 @@ const DashboardLayout = () => {
           >
             Post Job
           </li>
-          <li
+          {/* <li
             className={`sidebar__item ${
               activeTab === "candidates" ? "active" : ""
             }`}
             onClick={() => handleTabClick("candidates")}
           >
             Candidates
-          </li>
+          </li> */}
           <li
             className={`sidebar__item ${
               activeTab === "analytics" ? "active" : ""
@@ -79,7 +79,7 @@ const DashboardLayout = () => {
         {activeTab === "activeJobs" && <ActiveJobsTab />}
         {activeTab === "inactiveJobs" && <InactiveJobsTab />}
         {activeTab === "postJob" && <PostJobTab />}
-        {activeTab === "candidates" && <CandidatesTab />}
+        {/* {activeTab === "candidates" && <CandidatesTab />} */}
         {activeTab === "analytics" && <AnalyticsTab />}
         {activeTab === "notifications" && <NotificationsTab />}
         {activeTab === "accountSettings" && <AccountSettingsTab />}
@@ -102,9 +102,9 @@ const PostJobTab = () => {
   return <JobPostForm/>;
 };
 
-const CandidatesTab = () => {
-  return <div>Candidates Tab Content</div>;
-};
+// const CandidatesTab = () => {
+//   return <div>Candidates Tab Content</div>;
+// };
 
 const AnalyticsTab = () => {
   return <div>Analytics Tab Content</div>;
