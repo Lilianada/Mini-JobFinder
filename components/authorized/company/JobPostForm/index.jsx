@@ -34,7 +34,7 @@ const JobPostForm = () => {
   };
 
   return (
-    <section className="job-postings__section">
+    <section className="jobPostings__section">
       <h2 className="section__title">Create Job Posting</h2>
       <form className="job-posting__form" onSubmit={handleSaveClick}>
         <label htmlFor="job-title">Job Title:</label>

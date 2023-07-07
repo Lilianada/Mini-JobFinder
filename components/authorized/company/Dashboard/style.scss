@@ -1,0 +1,49 @@
+@import "../../../../app//global.scss";
+
+.dashboard__layout {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 1rem auto;
+    width: 90%;
+
+    @media screen and (min-width: $breakpoint-4) {
+        display: grid;
+        grid-template-columns: 200px 1fr;
+        gap: 1.5rem;
+    }
+
+    .sidebar {
+        display: block;
+
+        .sidebar__menu {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+
+            .sidebar__item {
+                font-size: $font-sixteen;
+                font-weight: $font-weight-500;
+                color: $black;
+                padding: 0.5rem;
+            }
+
+            .active {
+                color: $primary;
+                background-color: rgb(128 138 255 / 36%);
+                border-radius: 5px;
+            }
+
+            .inactiveJobs {
+                color: $black;
+            }
+        }
+    }
+
+    .content__area {
+        background: $white;
+        height: 95vh;
+        overflow: scroll;
+        padding: 1rem 2rem;
+    }
+}

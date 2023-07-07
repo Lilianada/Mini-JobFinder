@@ -1,10 +1,13 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import Link from "next/link";
+import "./style.scss";
 
 export default function ActiveJobs() {
-  // Function to handle viewing candidates
-  const handleViewCandidates = (jobId) => {
-    // No changes needed for Next.js Link usage
+  const [showDetails, setShowDetails] = useState(false);
+
+  const handleViewMore = () => {
+    setShowDetails(!showDetails);
   };
 
   // Mock data for the total number of candidates
@@ -17,33 +20,86 @@ export default function ActiveJobs() {
           <h2 className="section__title">Active Jobs</h2>
         </div>
         <div className="section__body">
-          <ul className="active-postings__list">
-            <li className="job-posting">
-              <h4 className="job-posting__title">Frontend Developer</h4>
-              <p className="job-posting__location">Location: New York, NY</p>
-              <p className="job-posting__salary">Salary: $80,000 - $100,000 per year</p>
-              <p className="job-posting__employment-type">Employment Type: Full-Time</p>
-              <h5 className="job-posting__subtitle">Requirements:</h5>
-              <ul className="job-posting__requirements">
-                <li>Experience with HTML, CSS, and JavaScript</li>
-                <li>Strong problem-solving skills</li>
-                <li>Excellent communication and collaboration abilities</li>
-              </ul>
-              <h5 className="job-posting__subtitle">Benefits:</h5>
-              <ul className="job-posting__benefits">
-                <li>Healthcare coverage</li>
-                <li>Flexible work hours</li>
-                <li>401(k) retirement plan</li>
-              </ul>
-              <div className="job-posting__actions">
-                <div className="candidate-info">
-                  <p className="total-candidates">{totalCandidates} candidates</p>
-                  {/* <Link href={`/candidates/${jobId}`}> */}
-                  <Link href={`/`}className="view-candidates__button">
-                    View Candidates
-                  </Link>
-                </div>
+          <ul className="activePostings__list">
+            <li className="jobPosting">
+              <div className="jobPosting__header">
+                <h4 className="jobPosting__title">Frontend Developer</h4>
                 <button className="edit__button">Edit</button>
+              </div>
+                <div className="job__description">
+                  <h5 className="job__subtitle">Description:</h5>
+                  <p className="job__text">
+                    We are looking for a qualified Front-end developer to join
+                    our IT team. You will be responsible for building the
+                    ‘client-side’ of our web applications. You should be able to
+                    translate our company and customer needs into functional and
+                    appealing interactive applications. If you’re interested in
+                    creating a user-friendly environment by writing code and
+                    moving forward in your career, then this job is for you. We
+                    expect you to be a tech-savvy professional, who is curious
+                    about new digital technologies and aspires to combine
+                    usability with visual design. Ultimately, you should be able
+                    to create a functional and attractive digital environment
+                    for our company, ensuring great user experience.
+                  </p>
+                </div>
+              <div className="post__column">
+                <div className="post__container">
+                  <h5 className="jobPosting__subtitle">Employment Type:</h5>
+                  <ul className="jobPosting__listItem">
+                    <li>Full-time</li>
+                  </ul>
+                </div>
+                <div className="post__container">
+                  <h5 className="jobPosting__subtitle">Location:</h5>
+                  <ul className="jobPosting__listItem">
+                    <li>San Francisco, CA</li>
+                  </ul>
+                </div>
+                <div className="post__container">
+                  <h5 className="jobPosting__subtitle">Salary:</h5>
+                  <ul className="jobPosting__listItem">
+                    <li>$90,000 - $120,000 per year</li>
+                  </ul>
+                </div>
+                <div className="post__container">
+                  <h5 className="jobPosting__subtitle">Experience:</h5>
+                  <ul className="jobPosting__listItem">
+                    <li>Mid-level</li>
+                  </ul>
+                </div>
+              </div>
+              {showDetails && (
+                <div className="post__row">
+                  <div className="post__container">
+                    <h5 className="jobPosting__subtitle">Requirements:</h5>
+                    <ul className="jobPosting__listItem">
+                      <li>Experience with HTML, CSS, and JavaScript</li>
+                      <li>Strong problem-solving skills</li>
+                      <li>
+                        Excellent communication and collaboration abilities
+                      </li>
+                    </ul>
+                  </div>
+                  <div className="post__container">
+                    <h5 className="jobPosting__subtitle">Benefits:</h5>
+                    <ul className="jobPosting__listItem">
+                      <li>Healthcare coverage</li>
+                      <li>Flexible work hours</li>
+                      <li>401(k) retirement plan</li>
+                    </ul>
+                  </div>
+                </div>
+              )}
+              <div className="jobPosting__actions">
+                <div className="candidate__info">
+                  <p className="total__candidates">
+                    {totalCandidates} candidates applied
+                  </p>
+                  <button className="view__button" onClick={handleViewMore}>
+                    {showDetails ? "View Less" : "View More"}
+                  </button>
+                </div>
               </div>
             </li>
           </ul>
