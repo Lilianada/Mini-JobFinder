@@ -1,9 +1,11 @@
 'use client'
-import ActiveJobs from "@components/authorized/company/ActiveJobs";
 import InactiveJobs from "@components/authorized/company/InactiveJobs";
 import JobPostForm from "@components/authorized/company/JobPostForm";
 import React, { useState } from "react";
 import "./style.scss";
+import SavedJobs from "../SavedJobs";
+import MyResume from "../MyResume";
+import AppliedJobs from "../AppliedJobs";
 
 const CandidateDashLayout = () => {
   const [activeTab, setActiveTab] = useState("activeJobs");
@@ -22,31 +24,23 @@ const CandidateDashLayout = () => {
             }`}
             onClick={() => handleTabClick("savedJobs")}
           >
-            Active Jobs
+            Saved Jobs
           </li>
           <li
             className={`sidebar__item ${
-              activeTab === "inactiveJobs" ? "active" : ""
+              activeTab === "appliedJobs" ? "active" : ""
             }`}
-            onClick={() => handleTabClick("inactiveJobs")}
+            onClick={() => handleTabClick("appliedJobs")}
           >
             Applied Jobs
           </li>
           <li
             className={`sidebar__item ${
-              activeTab === "postJob" ? "active" : ""
+              activeTab === "myResume" ? "active" : ""
             }`}
-            onClick={() => handleTabClick("postJob")}
+            onClick={() => handleTabClick("myResume")}
           >
-            Post Job
-          </li>
-          <li
-            className={`sidebar__item ${
-              activeTab === "analytics" ? "active" : ""
-            }`}
-            onClick={() => handleTabClick("analytics")}
-          >
-            Analytics
+            My Resume
           </li>
           <li
             className={`sidebar__item ${
@@ -56,24 +50,14 @@ const CandidateDashLayout = () => {
           >
             Notifications
           </li>
-          <li
-            className={`sidebar__item ${
-              activeTab === "accountSettings" ? "active" : ""
-            }`}
-            onClick={() => handleTabClick("accountSettings")}
-          >
-            Account Settings
-          </li>
         </ul>
       </div>
 
       <div className="content__area">
         {activeTab === "savedJobs" && <SavedJobsTab />}
-        {activeTab === "inactiveJobs" && <InactiveJobsTab />}
-        {activeTab === "postJob" && <PostJobTab />}
-        {activeTab === "analytics" && <AnalyticsTab />}
+        {activeTab === "appliedJobs" && <AppliedJobsTab />}
+        {activeTab === "postJob" && <MyResumeTab />}
         {activeTab === "notifications" && <NotificationsTab />}
-        {activeTab === "accountSettings" && <AccountSettingsTab />}
       </div>
     </div>
   );
@@ -82,27 +66,19 @@ const CandidateDashLayout = () => {
 // Individual Tab Components
 
 const SavedJobsTab = () => {
-  return <ActiveJobs/>;
+  return <SavedJobs/>;
 };
 
-const InactiveJobsTab = () => {
-  return <InactiveJobs/>;
+const AppliedJobsTab = () => {
+  return <AppliedJobs/>;
 };
 
-const PostJobTab = () => {
-  return <JobPostForm/>;
-};
-
-const AnalyticsTab = () => {
-  return <div>Analytics Tab Content</div>;
+const MyResumeTab = () => {
+  return <MyResume/>;
 };
 
 const NotificationsTab = () => {
   return <div>Notifications Tab Content</div>;
-};
-
-const AccountSettingsTab = () => {
-  return <div>Account Settings Tab Content</div>;
 };
 
 export default CandidateDashLayout;
