@@ -6,6 +6,7 @@ import { BiBadgeCheck } from "react-icons/bi";
 import "./style.scss";
 import { HiOutlineBuildingOffice2 } from "react-icons/hi2";
 import { BsCheck2Circle, BsHeart } from "react-icons/bs";
+import Link from "next/link";
 
 export default function JobDetails() {
   const [isSaved, setIsSaved] = useState(false);
@@ -162,6 +163,20 @@ export default function JobDetails() {
         </p>
       </section>
 
+      {/* <JobDescription/> */}
+      <section className="companyDescription__section">
+        <div className="description__header">
+          <h2 className="description__title">Job Description</h2>
+        </div>
+        <p className="description__text">
+          One of the main areas that I work on with my clients is shedding these
+          non-supportive beliefs and replacing them with beliefs that will help
+          them to accomplish their desires. It is truly amazing the damage that
+          we, as parents, can inflict on our children. So why do we do it? For
+          the most part, we don’t do it intentionally or with malice.
+        </p>
+      </section>
+
       {/* <RequiredSkills/> */}
       <section className="requiredSkills__section">
         <div className="skills__header">
@@ -275,10 +290,13 @@ export default function JobDetails() {
       </section>
 
       {/* Application Button */}
+      {/* <Link href={`/apply/${job.id}`}> */}
+      <Link href='/application'>
       <button className="apply__button">
         <BiBadgeCheck fill="#fff" />
         Apply Now
         </button>
+      </Link>
     </div>
   );
 }
