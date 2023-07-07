@@ -13,13 +13,13 @@ export default function AccountDropdown() {
           </Link>
         </li>
         <li className="dropdown__link">
-          <Link href="/settings" className="link">
-            Setting
+          <Link href="/candidate/dashboard" className="link">
+            Dashboard
           </Link>
         </li>
         <li className="dropdown__link">
-          <Link href="/candidate/resume" className="link">
-            My Resume
+          <Link href="/settings" className="link">
+            Setting
           </Link>
         </li>
         <li className="dropdown__link">

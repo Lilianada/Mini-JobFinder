@@ -1,8 +1,9 @@
+"use client";
 import React, { useState } from "react";
 import Link from "next/link";
 import "./style.scss";
 
-export default function InactiveJobs() {
+export default function ActiveJobs() {
   const [showDetails, setShowDetails] = useState(false);
 
   const handleViewMore = () => {
@@ -15,69 +16,95 @@ export default function InactiveJobs() {
   };
 
   // Mock data for the total number of candidates
-  const totalCandidates = 3;
+  const totalCandidates = 5;
 
   return (
-    <section className="inactiveJobs__section">
-      <div className="inactiveJobs__container">
+    <section className="activeJobs__section">
+      <div className="activeJobs__container">
         <div className="section__header">
           <h2 className="section__title">Inactive Jobs</h2>
         </div>
-        <div className="inactiveJobs__body">
-          <ul className="inactive-postings__list">
-            <li className="job-posting">
-              <div className="job-posting__header">
-                <h4 className="job-posting__title">UI/UX Designer</h4>
-                <button className="edit__button">Edit</button>
-              </div>
-              <div className="post__column">
-                <div className="post__container">
-                  <h5 className="job-posting__subtitle">Location:</h5>
-                  <p className="job-posting__location">San Francisco, CA</p>
-                </div>
-                <div className="post__container">
-                  <h5 className="job-posting__subtitle">Salary:</h5>
-                  <p className="job-posting__salary">$90,000 - $120,000 per year</p>
-                </div>
-                <div className="post__container">
-                  <h5 className="job-posting__subtitle">Employment Type:</h5>
-                  <p className="job-posting__employment-type">Remote</p>
-                </div>
-              </div>
-              {showDetails && (
-                <div className="post__row">
-                  <div className="post__container">
-                    <h5 className="job-posting__subtitle">Requirements:</h5>
-                    <ul className="job-posting__requirements">
-                      <li>Proficiency in user interface design tools</li>
-                      <li>Experience with user research and usability testing</li>
-                      <li>Strong portfolio demonstrating UI/UX design skills</li>
-                    </ul>
-                  </div>
-                  <div className="post__container">
-                    <h5 className="job-posting__subtitle">Benefits:</h5>
-                    <ul className="job-posting__benefits">
-                      <li>Work-from-home flexibility</li>
-                      <li>Generous vacation policy</li>
-                      <li>Professional development opportunities</li>
-                    </ul>
-                  </div>
-                </div>
-              )}
-              <div className="job-posting__actions">
-                <div className="candidate-info">
-                  <p className="total-candidates">{totalCandidates} candidates</p>
-                  {/* <Link href={`/candidates/${jobId}`}> */}
-                  <Link href={`/`} className="view-candidates__button">
-                    View Candidates
-                  </Link>
-                </div>
+        <div className="section__body">
+          <ul className="activePostings__list">
+            <li className="jobPosting">
+              <div className="jobPosting__header">
+                <h4 className="jobPosting__title">Frontend Developer</h4>
                 <button
                   className="activate__button"
                   onClick={() => handleActivateJob(jobId)}
                 >
                   Activate
                 </button>
+              </div>
+              <div className="job__description">
+                <h5 className="job__subtitle">Description:</h5>
+                <p className="job__text">
+                  We are looking for a qualified Front-end developer to join our
+                  IT team. You will be responsible for building the
+                  ‘client-side’ of our web applications. You should be able to
+                  translate our company and customer needs into functional and
+                  appealing interactive applications. Ultimately, you should be able
+                  to create a functional and attractive digital environment for
+                  our company, ensuring great user experience.
+                </p>
+              </div>
+              <div className="post__column">
+                <div className="post__container">
+                  <h5 className="jobPosting__subtitle">Employment Type:</h5>
+                  <ul className="jobPosting__listItem">
+                    <li>Full-time</li>
+                  </ul>
+                </div>
+                <div className="post__container">
+                  <h5 className="jobPosting__subtitle">Location:</h5>
+                  <ul className="jobPosting__listItem">
+                    <li>San Francisco, CA</li>
+                  </ul>
+                </div>
+                <div className="post__container">
+                  <h5 className="jobPosting__subtitle">Salary:</h5>
+                  <ul className="jobPosting__listItem">
+                    <li>$90,000 - $120,000 per year</li>
+                  </ul>
+                </div>
+                <div className="post__container">
+                  <h5 className="jobPosting__subtitle">Experience:</h5>
+                  <ul className="jobPosting__listItem">
+                    <li>Mid-level</li>
+                  </ul>
+                </div>
+              </div>
+              {showDetails && (
+                <div className="post__row">
+                  <div className="post__container">
+                    <h5 className="jobPosting__subtitle">Requirements:</h5>
+                    <ul className="jobPosting__listItem">
+                      <li>Experience with HTML, CSS, and JavaScript</li>
+                      <li>Strong problem-solving skills</li>
+                      <li>
+                        Excellent communication and collaboration abilities
+                      </li>
+                    </ul>
+                  </div>
+                  <div className="post__container">
+                    <h5 className="jobPosting__subtitle">Benefits:</h5>
+                    <ul className="jobPosting__listItem">
+                      <li>Healthcare coverage</li>
+                      <li>Flexible work hours</li>
+                      <li>401(k) retirement plan</li>
+                    </ul>
+                  </div>
+                </div>
+              )}
+              <div className="jobPosting__actions">
+                <div className="candidate__info">
+                  <p className="total-candidates">
+                    {totalCandidates} candidates applied
+                  </p>
+                  <button className="view__button" onClick={handleViewMore}>
+                    {showDetails ? "View Less" : "View More"}
+                  </button>
+                </div>
               </div>
             </li>
           </ul>

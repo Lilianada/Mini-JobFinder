@@ -54,7 +54,7 @@ export default function CandidateHeader() {
           <ul className="nav__list">
             <li className="nav__item">
               <Link
-                href="/candidate/home"
+                href="/candidate/"
                 onClick={() => handleMenuClick("home")}
                 className={`nav__link ${active === "home" ? "active__link" : ""}`}
               >
@@ -117,7 +117,7 @@ export default function CandidateHeader() {
           <ul className="nav__list">
             <li className="nav__item pd_btm">
               <Link
-                href="/candidate/home"
+                href="/candidate/"
                 onClick={() => handleMenuClick("home")}
                 className={`nav__link ${active === "home" ? "active__link" : ""}`}
               >
@@ -145,13 +145,13 @@ export default function CandidateHeader() {
               </Link>
             </li>
             <li className="dropdown__link">
-              <Link href="/settings" className="link" onClick={closeMenu}>
-                Settings
+              <Link href="/candidate/dashboard" className="link" onClick={closeMenu}>
+                dashboard
               </Link>
             </li>
             <li className="dropdown__link">
-              <Link href="/candidate/resume" className="link" onClick={closeMenu}>
-                My Resume
+              <Link href="/settings" className="link" onClick={closeMenu}>
+                Settings
               </Link>
             </li>
             <li className="dropdown__link">

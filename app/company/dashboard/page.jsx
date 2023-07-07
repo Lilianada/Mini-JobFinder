@@ -1,5 +1,5 @@
 'use client'
-import DashboardLayout from "@components/authorized/company/Dashboard";
+import DashboardLayout from "@components/authorized/company/CompanyDashboard";
 
 export default function CompanyDashboard () {
   return(

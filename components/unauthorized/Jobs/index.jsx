@@ -1,123 +1,33 @@
-import React from "react";
-import "./style.scss";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { CgBriefcase } from "react-icons/cg";
-import { AiOutlineClockCircle, AiOutlineEnvironment } from "react-icons/ai";
+import { AiOutlineClockCircle } from "react-icons/ai";
 
-const jobPostings = [
-  {
-    id: 1,
-    title: "Software Engineer",
-    location: "San Francisco",
-    timePosted: "2 hours ago",
-    tags: ["Full-Time", "JavaScript", "React"],
-    company: {
-      name: "Paypal",
-      location: "San Francisco",
-      pay: "$120,000/year",
-      logo: "https://plus.unsplash.com/premium_photo-1666533177885-64832208c5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60", // Replace with actual logo URL
-    },
-  },
-  {
-    id: 2,
-    title: "Marketing Specialist",
-    location: "New York City",
-    timePosted: "1 day ago",
-    tags: ["Part-Time", "Digital Marketing"],
-    company: {
-      name: "LinkedIn",
-      location: "New York City",
-      pay: "$50/hour",
-      logo: "https://plus.unsplash.com/premium_photo-1666533177885-64832208c5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60", // Replace with actual logo URL
-    },
-  },
-  {
-    id: 3,
-    title: "Marketing Specialist",
-    location: "New York City",
-    timePosted: "1 day ago",
-    tags: ["Part-Time", "Digital Marketing"],
-    company: {
-      name: "LinkedIn",
-      location: "New York City",
-      pay: "$50/hour",
-      logo: "https://plus.unsplash.com/premium_photo-1666533177885-64832208c5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60", // Replace with actual logo URL
-    },
-  },
-  {
-    id: 4,
-    title: "Marketing Specialist",
-    location: "New York City",
-    timePosted: "1 day ago",
-    tags: ["Part-Time", "Digital Marketing"],
-    company: {
-      name: "LinkedIn",
-      location: "New York City",
-      pay: "$50/hour",
-      logo: "https://plus.unsplash.com/premium_photo-1666533177885-64832208c5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60", // Replace with actual logo URL
-    },
-  },
-  {
-    id: 5,
-    title: "Marketing Specialist",
-    location: "New York City",
-    timePosted: "1 day ago",
-    tags: ["Part-Time", "Digital Marketing"],
-    company: {
-      name: "LinkedIn",
-      location: "New York City",
-      pay: "$50/hour",
-      logo: "https://plus.unsplash.com/premium_photo-1666533177885-64832208c5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60", // Replace with actual logo URL
-    },
-  },
-  {
-    id: 6,
-    title: "Software Engineer",
-    location: "San Francisco",
-    timePosted: "2 hours ago",
-    tags: ["Full-Time", "JavaScript", "React"],
-    company: {
-      name: "Paypal",
-      location: "San Francisco",
-      pay: "$120,000/year",
-      logo: "https://plus.unsplash.com/premium_photo-1666533177885-64832208c5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60", // Replace with actual logo URL
-    },
-  },
-  {
-    id: 7,
-    title: "Software Engineer",
-    location: "San Francisco",
-    timePosted: "2 hours ago",
-    tags: ["Full-Time", "JavaScript", "React"],
-    company: {
-      name: "Teamway",
-      location: "San Francisco",
-      pay: "$120,000/year",
-      logo: "https://plus.unsplash.com/premium_photo-1666533177885-64832208c5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60", // Replace with actual logo URL
-    },
-  },
-  {
-    id: 8,
-    title: "Software Engineer",
-    location: "San Francisco",
-    timePosted: "2 hours ago",
-    tags: ["Full-Time", "JavaScript", "React"],
-    company: {
-      name: "Twitter",
-      location: "San Francisco",
-      pay: "$120,000/year",
-      logo: "https://plus.unsplash.com/premium_photo-1666533177885-64832208c5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60", // Replace with actual logo URL
-    },
-  },
-  // Add more job postings as needed
-];
+const jobUrl = "https://minujob.com/job-listings/";
 
 export default function BrowseJobs() {
+  const [jobPostings, setJobPostings] = useState([]);
+
+  useEffect(() => {
+    fetchJobPostings();
+  }, []);
+
+  const fetchJobPostings = async () => {
+    try {
+      const response = await axios.get(jobUrl);
+      const jobListings = response.data.data;
+      setJobPostings(jobListings);
+    } catch (error) {
+      console.error("Failed to fetch job listings:", error);
+    }
+  };
+
   return (
     <section className="browseJobs__section">
       <div className="jobs__container">
         <div className="section__header">
           <h2 className="section__title">Browse Jobs</h2>
-          <p className="section__subtitle">Search and find the most exciting remote friendly jobs.</p>
+          <p className="section__subtitle">Search and find the most exciting remote-friendly jobs.</p>
         </div>
         <div className="jobs__categories">
           <ul className="categories__list">
@@ -130,38 +40,52 @@ export default function BrowseJobs() {
         </div>
         <div className="jobs__listings">
           {jobPostings.map((job) => {
+            const {
+              id,
+              attributes: {
+                title,
+                location,
+                datePosted,
+                company: {
+                  data: {
+                    attributes: {
+                      name: companyName,
+                      logo: {
+                        data: {
+                          attributes: { url: logoUrl },
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            } = job;
+
             return (
-              <div className="jobs__card" key={job.id}>
+              <div className="jobs__card" key={id}>
                 <div className="card__info">
-                  <h4 className="card__title">{job.title}</h4>
+                  <h4 className="card__title">{title}</h4>
                   <div className="card__flex">
                     <p className="card__location">
                       <CgBriefcase />
-                      {job.location}
+                      {location}
                     </p>
                     <p className="card__time">
                       <AiOutlineClockCircle />
-                      {job.timePosted}
+                      {datePosted}
                     </p>
                   </div>
-                  <ul className="card__tags">
-                    {job.tags.map((tag) => (
-                      <li key={tag}>{tag}</li>
-                    ))}
-                  </ul>
+                  {/* Tags */}
                 </div>
                 <div className="card__company">
                   <div className="card__logo">
-                    <img src={job.company.logo} alt={job.company.name} />
+                    <img src={logoUrl} alt={companyName} />
                     <div className="company__info">
-                      <h5 className="company__name">{job.company.name}</h5>
-                      <p className="company__location">
-                        {/* <AiOutlineEnvironment /> */}
-                        {job.company.location}
-                      </p>
+                      <h5 className="company__name">{companyName}</h5>
+                      {/* Company location */}
                     </div>
                   </div>
-                  <p className="company__pay">{job.company.pay}</p>
+                  {/* Company pay */}
                 </div>
               </div>
             );
