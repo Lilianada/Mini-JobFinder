@@ -1,5 +1,6 @@
-import "./style.scss";
 import React, { useState } from "react";
+import "./style.scss";
+import axios from 'axios';
 import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
@@ -26,12 +27,18 @@ const JobPostForm = () => {
     setIsEditMode(true);
   };
 
-  const handleSaveClick = (e) => {
+  const handleSaveClick = async (e) => {
     e.preventDefault();
-    // Add logic to save the job posting to the database
-    setIsEditMode(false);
-    setFormData(initialFormData); // Clear the form fields
+    try {
+      const response = await axios.post('https://minujob.com/api/job-listings', formData);
+      console.log(response.data); // Handle the response
+      setIsEditMode(false);
+      setFormData(initialFormData);
+    } catch (error) {
+      console.error(error); // Handle the error
+    }
   };
+  
 
   const handleChange = (e) => {
     const { name, value } = e.target;

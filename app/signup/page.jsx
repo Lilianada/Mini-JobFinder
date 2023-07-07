@@ -9,19 +9,15 @@ import { BsFacebook } from "react-icons/bs";
 export default function Register() {
   const [activeTab, setActiveTab] = useState("talents");
   const [talentFormData, setTalentFormData] = useState({
-    name: "",
+    username: "",
     email: "",
     password: "",
-    confirmPassword: "",
-    marketingEmails: false,
   });
-  
+
   const [companyFormData, setCompanyFormData] = useState({
     companyName: "",
     companyEmail: "",
     password: "",
-    confirmPassword: "",
-    marketingEmails: false,
   });
 
   const [passwordMatch, setPasswordMatch] = useState(true);
@@ -34,7 +30,7 @@ export default function Register() {
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     const fieldValue = type === "checkbox" ? checked : value;
-  
+
     if (activeTab === "talents") {
       setTalentFormData((prevTalentFormData) => ({
         ...prevTalentFormData,
@@ -47,10 +43,10 @@ export default function Register() {
       }));
     }
   };
-  
+
   const handlePasswordChange = (e) => {
     const { name, value } = e.target;
-  
+
     if (activeTab === "talents") {
       setTalentFormData((prevTalentFormData) => ({
         ...prevTalentFormData,
@@ -65,10 +61,10 @@ export default function Register() {
       setPasswordMatch(validatePassword(value));
     }
   };
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
-  
+
     if (activeTab === "talents") {
       handleTalentSub(talentFormData);
     } else if (activeTab === "companies") {
@@ -77,44 +73,59 @@ export default function Register() {
   };
 
   const handleTalentSub = async (talentFormData) => {
-  if (passwordMatch) {
-    try {
-      const response = await axios.post(
-        "https://minujob.com/api/users",
-        talentFormData
-      );
-      console.log(response.data); // Do something with the response
-    } catch (error) {
-      console.log(error); // Handle the error
+    if (passwordMatch) {
+      try {
+        const response = await axios.post(
+          "http://minujob.com/api/auth/local/register",
+          talentFormData
+        );
+        console.log(response.data);
+        // Send email confirmation
+        await sendEmailConfirmation(companyFormData.companyEmail);
+      } catch (error) {
+        console.log(error); // Handle the error
+      }
     }
-  }
-};
+  };
 
-const handleCompanySub = async (companyFormData) => {
-  if (passwordMatch) {
-    try {
-      const response = await axios.post(
-        "https://minujob.com/companies",
-        companyFormData
-      );
-      console.log(response.data); // Do something with the response
-    } catch (error) {
-      console.log(error); // Handle the error
+  const handleCompanySub = async (companyFormData) => {
+    if (passwordMatch) {
+      try {
+        const response = await axios.post(
+          "https://minujob.com/companies",
+          companyFormData
+        );
+        console.log(response.data); // Do something with the response
+      } catch (error) {
+        console.log(error); // Handle the error
+      }
     }
-  }
-};
+  };
 
+  //validate password
+  const validatePassword = (password) => {
+    const hasUppercase = /[A-Z]/.test(password);
+    const hasNumber = /\d/.test(password);
+    const isLengthValid = password.length >= 6;
 
-const validatePassword = (password) => {
-  const hasUppercase = /[A-Z]/.test(password);
-  const hasNumber = /\d/.test(password);
-  const isLengthValid = password.length >= 6;
-
-  return hasUppercase && hasNumber && isLengthValid;
-};
+    return hasUppercase && hasNumber && isLengthValid;
+  };
 
   const handleTogglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
+  };
+
+  // handle email confirmation
+  const sendEmailConfirmation = async (email) => {
+    try {
+      const response = await axios.post(
+        "http://minujob.com/api/auth/send-email-confirmation",
+        { email }
+      );
+      console.log("Email confirmation sent successfully:", response.data);
+    } catch (error) {
+      console.error("Failed to send email confirmation:", error);
+    }
   };
 
   return (
@@ -212,24 +223,11 @@ const validatePassword = (password) => {
                     {!/\d/.test(talentFormData.password) &&
                       "Password must contain a number. "}
                     {talentFormData.confirmPassword &&
-                      talentFormData.password !== talentFormData.confirmPassword &&
+                      talentFormData.password !==
+                        talentFormData.confirmPassword &&
                       "Password does not match. "}
                   </p>
                 )}
-
-                {/* <div className="checkbox__field">
-                  <input
-                    type="checkbox"
-                    id="marketingEmails"
-                    name="marketingEmails"
-                    checked={talentFormData.marketingEmails}
-                    onChange={handleChange}
-                  />
-                  <label htmlFor="marketingEmails">
-                    I've read and agree to the Privacy Policy and Terms &
-                    Conditions for Talents.
-                  </label>
-                </div> */}
                 <button
                   className="signup__btn"
                   type="submit"
@@ -237,6 +235,12 @@ const validatePassword = (password) => {
                 >
                   Sign Up as Talent
                 </button>
+                <div className="signin__info">
+                  <p className="text">Already have an account?</p>{" "}
+                  <Link href={"/signin"} className="signin__text">
+                    Sign In
+                  </Link>
+                </div>
               </form>
             )}
             {activeTab === "companies" && (
@@ -292,24 +296,11 @@ const validatePassword = (password) => {
                     {!/\d/.test(companyFormData.password) &&
                       "Password must contain a number. "}
                     {companyFormData.confirmPassword &&
-                      companyFormData.password !== companyFormData.confirmPassword &&
+                      companyFormData.password !==
+                        companyFormData.confirmPassword &&
                       "Password does not match. "}
                   </p>
                 )}
-
-                {/* <div className="checkbox__field">
-                  <input
-                    type="checkbox"
-                    id="marketingEmails"
-                    name="marketingEmails"
-                    checked={companyFormData.marketingEmails}
-                    onChange={handleChange}
-                  />
-                  <label htmlFor="marketingEmails">
-                    I've read and agree to the Privacy Policy and Terms &
-                    Conditions for Companies.
-                  </label>
-                </div> */}
                 <button
                   className="signup__btn"
                   type="submit"
@@ -317,16 +308,14 @@ const validatePassword = (password) => {
                 >
                   Sign Up as Company
                 </button>
+                <div className="signin__info">
+                  <p className="text">Already have an account?</p>{" "}
+                  <Link href={"/signin"} className="signin__text">
+                    Sign In
+                  </Link>
+                </div>
               </form>
             )}
-            <div className="socials__signin">
-              <button className="google__signin_btn">
-                <AiFillGoogleCircle size={28} fill="#c8ccda" />
-              </button>
-              <button className="facebook__signin_btn">
-                <BsFacebook size={24} fill="#c8ccda" />
-              </button>
-            </div>
           </div>
         </div>
       </div>

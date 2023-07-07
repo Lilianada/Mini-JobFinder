@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
+import "./style.scss";
 
 export default function InactiveJobs() {
-  // Function to handle activating a job posting
+  const [showDetails, setShowDetails] = useState(false);
+
+  const handleViewMore = () => {
+    setShowDetails(!showDetails);
+  };
+
   const handleActivateJob = (jobId) => {
     // Implement the logic to activate the job posting with the given jobId
+    console.log(`Activating job ${jobId}`);
   };
 
   // Mock data for the total number of candidates
@@ -19,34 +26,58 @@ export default function InactiveJobs() {
         <div className="inactiveJobs__body">
           <ul className="inactive-postings__list">
             <li className="job-posting">
-              <h4 className="job-posting__title">UI/UX Designer</h4>
-              <p className="job-posting__location">Location: San Francisco, CA</p>
-              <p className="job-posting__salary">Salary: $90,000 - $120,000 per year</p>
-              <p className="job-posting__employment-type">Employment Type: Remote</p>
-              <h5 className="job-posting__subtitle">Requirements:</h5>
-              <ul className="job-posting__requirements">
-                <li>Proficiency in user interface design tools</li>
-                <li>Experience with user research and usability testing</li>
-                <li>Strong portfolio demonstrating UI/UX design skills</li>
-              </ul>
-              <h5 className="job-posting__subtitle">Benefits:</h5>
-              <ul className="job-posting__benefits">
-                <li>Work-from-home flexibility</li>
-                <li>Generous vacation policy</li>
-                <li>Professional development opportunities</li>
-              </ul>
+              <div className="job-posting__header">
+                <h4 className="job-posting__title">UI/UX Designer</h4>
+                <button className="edit__button">Edit</button>
+              </div>
+              <div className="post__column">
+                <div className="post__container">
+                  <h5 className="job-posting__subtitle">Location:</h5>
+                  <p className="job-posting__location">San Francisco, CA</p>
+                </div>
+                <div className="post__container">
+                  <h5 className="job-posting__subtitle">Salary:</h5>
+                  <p className="job-posting__salary">$90,000 - $120,000 per year</p>
+                </div>
+                <div className="post__container">
+                  <h5 className="job-posting__subtitle">Employment Type:</h5>
+                  <p className="job-posting__employment-type">Remote</p>
+                </div>
+              </div>
+              {showDetails && (
+                <div className="post__row">
+                  <div className="post__container">
+                    <h5 className="job-posting__subtitle">Requirements:</h5>
+                    <ul className="job-posting__requirements">
+                      <li>Proficiency in user interface design tools</li>
+                      <li>Experience with user research and usability testing</li>
+                      <li>Strong portfolio demonstrating UI/UX design skills</li>
+                    </ul>
+                  </div>
+                  <div className="post__container">
+                    <h5 className="job-posting__subtitle">Benefits:</h5>
+                    <ul className="job-posting__benefits">
+                      <li>Work-from-home flexibility</li>
+                      <li>Generous vacation policy</li>
+                      <li>Professional development opportunities</li>
+                    </ul>
+                  </div>
+                </div>
+              )}
               <div className="job-posting__actions">
                 <div className="candidate-info">
                   <p className="total-candidates">{totalCandidates} candidates</p>
                   {/* <Link href={`/candidates/${jobId}`}> */}
-                  <Link href={`/`}className="view-candidates__button">
+                  <Link href={`/`} className="view-candidates__button">
                     View Candidates
                   </Link>
                 </div>
-                <button className="activate__button" onClick={() => handleActivateJob(jobId)}>
+                <button
+                  className="activate__button"
+                  onClick={() => handleActivateJob(jobId)}
+                >
                   Activate
                 </button>
-                <button className="edit__button">Edit</button>
               </div>
             </li>
           </ul>
