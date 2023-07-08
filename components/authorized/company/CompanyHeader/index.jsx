@@ -54,7 +54,7 @@ export default function CompanyHeader() {
           <ul className="nav__list">
             <li className="nav__item">
               <Link
-                href="/candidate/home"
+                href="/company/"
                 onClick={() => handleMenuClick("home")}
                 className={`nav__link ${active === "home" ? "active__link" : ""}`}
               >
@@ -63,7 +63,7 @@ export default function CompanyHeader() {
             </li>
             <li className="nav__item">
               <Link
-                href="/candidate/jobs"
+                href="/company/jobs"
                 onClick={() => handleMenuClick("jobs")}
                 className={`nav__link ${active === "jobs" ? "active__link" : ""}`}
               >
@@ -117,7 +117,7 @@ export default function CompanyHeader() {
           <ul className="nav__list">
             <li className="nav__item pd_btm">
               <Link
-                href="/candidate/home"
+                href="/company/"
                 onClick={() => handleMenuClick("home")}
                 className={`nav__link ${active === "home" ? "active__link" : ""}`}
               >
@@ -126,7 +126,7 @@ export default function CompanyHeader() {
             </li>
             <li className="nav__item">
               <Link
-                href="/candidate/jobs"
+                href="/company/jobs"
                 onClick={() => handleMenuClick("jobs")}
                 className={`nav__link ${active === "jobs" ? "active__link" : ""}`}
               >
@@ -140,22 +140,18 @@ export default function CompanyHeader() {
               <BsChevronDown fill="#827f7f" size={10} />
             </h4>
             <li className="dropdown__link">
-              <Link href="/candidate/profile" className="link" onClick={closeMenu}>
+              <Link href="/company/profile" className="link" onClick={closeMenu}>
                 Dashboard
               </Link>
             </li>
             <li className="dropdown__link">
-              <Link href="/settings" className="link" onClick={closeMenu}>
+              <Link href="/company/settings" className="link" onClick={closeMenu}>
                 Settings
               </Link>
             </li>
-            {/* <li className="dropdown__link">
-              <Link href="/candidate/resume" className="link" onClick={closeMenu}>
-                My Resume
-              </Link>
-            </li> */}
+            
             <li className="dropdown__link">
-              <Link href="/candidate/testimonials" className="link" onClick={closeMenu}>
+              <Link href="/comonay/testimonials" className="link" onClick={closeMenu}>
                 Testimonials
               </Link>
             </li>

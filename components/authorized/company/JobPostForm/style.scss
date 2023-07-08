@@ -18,6 +18,10 @@
             }
 
             .input__field {
+                @include inputField;
+            }
+
+            .text__field{
                 font-size: $font-sixteen;
                 font-weight: $font-weight-500;
                 font-family: inherit;
@@ -26,26 +30,18 @@
                 border-radius: 10px;
                 padding: 1rem;
                 background: $secondary;
-                height: 3rem;
+                height: 7rem;
             }
 
             .select__field {
-                font-size: $font-sixteen;
-                font-weight: $font-weight-500;
-                font-family: inherit;
-                border: none;
-                outline: none;
-                border-radius: 10px;
-                padding: 0 1rem;
-                background: $secondary;
-                height: 3rem;
+                @include selectField;
             }
 
             .wrapperClassName {
                 box-sizing: content-box;
                 border: 1px solid #f1f1f1;
                 border-radius: 10px;
-                height: 200px;
+                height: 12.5rem;
             }
         }
         .editorClassName {
@@ -55,15 +51,7 @@
 
         .edit__button,
         .submit__button {
-            width: 100%;
-            height: 3rem;
-            margin-top: 2rem;
-            background: $primary;
-            color: $white;
-            padding: 0.5rem;
-            font-size: $font-sixteen;
-            font-weight: $font-weight-500;
-            border-radius: 10px;
+            @include button;
             display: grid;
             place-items: center;
         }

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import "./style.scss";
-import axios from 'axios';
+import axios from "axios";
 import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import "./style.scss";
 
 const JobPostForm = () => {
   const [isEditMode, setIsEditMode] = useState(true);
@@ -13,7 +13,9 @@ const JobPostForm = () => {
     industry: "",
     requirements: "",
     benefits: "",
-    salary: "",
+    salaryMin: "",
+    salaryMax: "",
+    salaryType: "",
     employmentType: "",
     jobLevel: "",
     educationExperience: "",
@@ -30,7 +32,10 @@ const JobPostForm = () => {
   const handleSaveClick = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('https://minujob.com/api/job-listings', formData);
+      const response = await axios.post(
+        "https://minujob.com/api/job-listings",
+        formData
+      );
       console.log(response.data); // Handle the response
       setIsEditMode(false);
       setFormData(initialFormData);
@@ -38,7 +43,6 @@ const JobPostForm = () => {
       console.error(error); // Handle the error
     }
   };
-  
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -71,19 +75,13 @@ const JobPostForm = () => {
 
         <div className="input__wrap">
           <label htmlFor="job-description">Job Description:</label>
-          <Editor
-            id="job-description"
+          <textarea
             name="jobDescription"
-            editorState={formData.jobDescription}
-            onEditorStateChange={(editorState) =>
-              setFormData((prevFormData) => ({
-                ...prevFormData,
-                jobDescription: editorState,
-              }))
-            }
-            required
-            wrapperClassName="wrapperClassName"
-            editorClassName="editorClassName"
+            className="text__field"
+            cols="30"
+            rows="10"
+            value={formData.jobDescription}
+            onChange={handleChange}
           />
         </div>
 
@@ -113,23 +111,6 @@ const JobPostForm = () => {
               setFormData((prevFormData) => ({
                 ...prevFormData,
                 benefits: editorState,
-              }))
-            }
-            required
-            wrapperClassName="wrapperClassName"
-            editorClassName="editorClassName"
-          />
-        </div>
-
-        <div className="input__wrap">
-          <label htmlFor="industry">Industry:</label>
-          <Editor
-            name="industry"
-            editorState={formData.industry}
-            onEditorStateChange={(editorState) =>
-              setFormData((prevFormData) => ({
-                ...prevFormData,
-                industry: editorState,
               }))
             }
             required
@@ -173,6 +154,18 @@ const JobPostForm = () => {
         </div>
 
         <div className="input__wrap">
+          <label htmlFor="industry">Industry:</label>
+          <input
+            type="text"
+            className="input__field"
+            name="location"
+            value={formData.industry}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div className="input__wrap">
           <label htmlFor="location">Location:</label>
           <input
             type="text"
@@ -194,6 +187,22 @@ const JobPostForm = () => {
             onChange={handleChange}
             required
           />
+        </div>
+
+        <div className="input__wrap">
+          <label htmlFor="salary-type">Salary Type:</label>
+          <select
+            className="select__field"
+            id="salary-type"
+            name="salaryType"
+            value={formData.salaryType}
+            onChange={handleChange}
+            required
+          >
+            <option value="">Select Salary Type</option>
+            <option value="hourly">Hourly</option>
+            <option value="yearly">Yearly</option>
+          </select>
         </div>
 
         <div className="input__wrap">

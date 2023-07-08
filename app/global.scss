@@ -96,33 +96,32 @@ $breakpoint-7: 1440px;
 $breakpoint-8: 1600px;
 $breakpoint-9: 1920px;
 
-
 @mixin title {
     font-size: $font-twentyEight;
     color: $black;
     font-weight: 600;
-  
+
     @media screen and (min-width: $breakpoint-3) {
-      font-size: $font-thirtyTwo;
+        font-size: $font-thirtyTwo;
     }
 
     @media screen and (min-width: $breakpoint-4) {
-      font-size: $font-thirtySix;
-    }   
+        font-size: $font-thirtySix;
+    }
 }
 
 @mixin subtitle {
     font-size: $font-twenty;
     color: $black;
     font-weight: 600;
-  
+
     @media screen and (min-width: $breakpoint-3) {
-      font-size: $font-twentyTwo;
+        font-size: $font-twentyTwo;
     }
 
     @media screen and (min-width: $breakpoint-4) {
-      font-size: $font-twentySix;
-    }   
+        font-size: $font-twentySix;
+    }
 }
 
 @mixin errorMsg {
@@ -133,7 +132,7 @@ $breakpoint-9: 1920px;
     background-color: rgba(250 128 75 / 33%);
     border: 1px solid $error;
     border-radius: $border-radius-1;
-    padding: .15rem;
+    padding: 0.15rem;
 }
 
 @mixin successMsg {
@@ -144,9 +143,53 @@ $breakpoint-9: 1920px;
     background-color: #00ff0070;
     border: 1px solid $success;
     border-radius: $border-radius-1;
-    padding: .15rem;
+    padding: 0.15rem;
 }
-  
+
+@mixin inputField {
+    font-size: $font-sixteen;
+    font-weight: $font-weight-500;
+    font-family: inherit;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    padding: 1rem;
+    background: $secondary;
+    height: 3rem;
+}
+
+@mixin selectField{
+    font-size: $font-sixteen;
+    font-weight: $font-weight-500;
+    font-family: inherit;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    padding: 0 1rem;
+    background: $secondary;
+    height: 3rem;
+    width: 100%;
+}
+
+@mixin button {
+    font-size: $font-sixteen;
+    font-weight: $font-weight-500;
+    font-family: inherit;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    padding: 0 1rem;
+    background: $primary;
+    height: 3rem;
+    width: 100%;
+    color: $white;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+        background: darken($primary, 10%);
+    }
+}
 
 *,
 *::before,
@@ -246,7 +289,7 @@ input {
     overflow: hidden;
 }
 
-.main{
+.main {
     background: $backdrop;
 }
 
@@ -282,19 +325,19 @@ input {
     color: $black;
 }
 
-.section__header{
+.section__header {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     margin-bottom: 3rem;
     text-align: center;
-    
+
     .section__title {
         font-size: $font-twentyEight;
         color: $black;
         font-weight: 600;
-    
+
         @media screen and (min-width: $breakpoint-3) {
             font-size: $font-thirtyTwo;
         }
@@ -303,19 +346,18 @@ input {
             font-size: $font-thirtySix;
         }
     }
-    
+
     .section__subtitle {
         font-size: $font-twenty;
         color: $lightGray;
         font-weight: 400;
-    
+
         @media screen and (min-width: $breakpoint-3) {
             font-size: $font-twenty;
         }
-        
+
         @media screen and (min-width: $breakpoint-4) {
             font-size: $font-twentyTwo;
         }
     }
 }
-

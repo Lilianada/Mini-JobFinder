@@ -22,7 +22,7 @@ export default function CompanyDropdown({ closeMenu }) {
           </Link>
         </li>
         <li className="dropdown__link">
-          <Link href="/settings" className="link" onClick={closeMenu}>
+          <Link href="/company/settings" className="link" onClick={closeMenu}>
             Settings
           </Link>
         </li>

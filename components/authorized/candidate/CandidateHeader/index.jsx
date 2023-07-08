@@ -145,7 +145,7 @@ export default function CandidateHeader() {
               </Link>
             </li>
             <li className="dropdown__link">
-              <Link href="/settings" className="link" onClick={closeMenu}>
+              <Link href="/candidate/settings" className="link" onClick={closeMenu}>
                 Settings
               </Link>
             </li>
