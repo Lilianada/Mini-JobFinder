@@ -10,7 +10,7 @@ export default function HomePage() {
   return (
     <div className='main'>
       <Hero />
-      {/* <ExpectationSection/> */}
+      <ExpectationSection/>
       <SavedJobs/>
       <AppliedJobs/>
     </div>
