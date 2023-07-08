@@ -2,9 +2,8 @@
 
 import React from 'react'
 import '../global.scss';
-// import UnauthorizedHeader from '@components/unauthorized/Header';
 import Footer from '@components/unauthorized/Footer';
-import CandidateHeader from '@components/authorized/AuthorizedHeader/CandidateHeader';
+import UnauthorizedHeader from '@components/unauthorized/Header';
 
 // export const metadata = {
 //     title: "MinuJobs",
@@ -18,7 +17,7 @@ export default function BlogLayout ({
   return (
     <html lang='en'>
         <body>
-        <CandidateHeader />
+        <UnauthorizedHeader />
         <main className="app">{children}</main>
         <Footer />
       </body>
