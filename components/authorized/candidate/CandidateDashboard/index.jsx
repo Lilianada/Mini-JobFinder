@@ -1,11 +1,10 @@
 'use client'
-import InactiveJobs from "@components/authorized/company/InactiveJobs";
-import JobPostForm from "@components/authorized/company/JobPostForm";
 import React, { useState } from "react";
-import "./style.scss";
 import SavedJobs from "../SavedJobs";
 import MyResume from "../MyResume";
 import AppliedJobs from "../AppliedJobs";
+import "./style.scss";
+import CandidateResume from "../MyResume";
 
 const CandidateDashLayout = () => {
   const [activeTab, setActiveTab] = useState("activeJobs");
@@ -56,7 +55,7 @@ const CandidateDashLayout = () => {
       <div className="content__area">
         {activeTab === "savedJobs" && <SavedJobsTab />}
         {activeTab === "appliedJobs" && <AppliedJobsTab />}
-        {activeTab === "postJob" && <MyResumeTab />}
+        {activeTab === "myResume" && <MyResumeTab />}
         {activeTab === "notifications" && <NotificationsTab />}
       </div>
     </div>
@@ -74,7 +73,7 @@ const AppliedJobsTab = () => {
 };
 
 const MyResumeTab = () => {
-  return <MyResume/>;
+  return <CandidateResume/>;
 };
 
 const NotificationsTab = () => {

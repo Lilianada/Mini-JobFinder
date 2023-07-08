@@ -1,7 +1,7 @@
 import React from 'react'
 
-export default function MyResume() {
+export default function CandidateResume() {
   return (
-    <div>MyResume</div>
+    <div>My Resume and more</div>
   )
 }
