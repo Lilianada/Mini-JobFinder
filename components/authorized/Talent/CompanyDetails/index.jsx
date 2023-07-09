@@ -1,14 +1,15 @@
-import React, {useState} from "react";
-import {  MdPeopleOutline } from "react-icons/md";
-import "./style.scss";
+import React, { useState } from "react";
+import { MdPeopleOutline } from "react-icons/md";
 import { AiOutlineEnvironment, AiOutlineMail } from "react-icons/ai";
+import "./style.scss";
+import { BiBriefcase, BiFilter } from "react-icons/bi";
+import { BsClock } from "react-icons/bs";
 
 export default function CompanyDetails() {
   const formData = {
     name: "Lovehoney Group",
     email: "career@lovehoneygroup.com",
-    bio:
-      "The Lovehoney Group is the world’s leading sexual wellbeing company. We offer exciting brands with innovative, high-quality sex toys, lingerie, and accessories in a smooth online shopping experience.\n\nLovehoney employs over 900 awesome, diverse & driven people throughout our 9 offices across the globe, celebrating a broad spectrum of talents in engineering, industrial design, sales, and marketing.\n\nWe are proud to be a company that thrives by doing things differently, challenging expectations and stereotypes while making a positive impact on our customers’ lives.",
+    bio: "The Lovehoney Group is the world’s leading sexual wellbeing company. We offer exciting brands with innovative, high-quality sex toys, lingerie, and accessories in a smooth online shopping experience.\n\nLovehoney employs over 900 awesome, diverse & driven people throughout our 9 offices across the globe, celebrating a broad spectrum of talents in engineering, industrial design, sales, and marketing.\n\nWe are proud to be a company that thrives by doing things differently, challenging expectations and stereotypes while making a positive impact on our customers’ lives.",
     profileImage:
       "https://ouch-cdn2.icons8.com/-JZptPGuKRXkyuzdLeFBi71mdKqKYQHlVYx_4AQFhdQ/rs:fit:256:256/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvNTIx/LzYyOTBlMmU4LWQ2/NmMtNDgzMS1hOWFl/LTUwNDQ3M2ZkMWZj/NS5wbmc.png",
     teamSize: "500-1000",
@@ -18,7 +19,6 @@ export default function CompanyDetails() {
     openPositions: [
       {
         title: "Marketing and Communications",
-        company: "Fast Systems Consultants",
         location: "Wellesley Rd, London",
         industry: "Accountancy",
         employmentType: "Freelance",
@@ -26,7 +26,6 @@ export default function CompanyDetails() {
       },
       {
         title: "Web Developer – .net",
-        company: "Pendragon Green Ltd",
         location: "Needham, MA",
         industry: "IT & Telecoms",
         employmentType: "Part-Time",
@@ -34,7 +33,6 @@ export default function CompanyDetails() {
       },
       {
         title: "Payroll and Office Administrator",
-        company: "Wight Sound Hearing LLC",
         location: "New Castle, PA",
         industry: "Banking",
         employmentType: "Temporary",
@@ -42,7 +40,6 @@ export default function CompanyDetails() {
       },
       {
         title: "Data Entry Administrator",
-        company: "Tan Electrics Ltd",
         location: "Park Avenue, Mumbai",
         industry: "Charity & Voluntary",
         employmentType: "Full-time",
@@ -50,7 +47,6 @@ export default function CompanyDetails() {
       },
       {
         title: "Operational manager part-time",
-        company: "Fleet Home Improvements Pvt",
         location: "Green Lanes, London",
         industry: "Accountancy (Qualified)",
         employmentType: "Part-Time",
@@ -112,13 +108,26 @@ export default function CompanyDetails() {
             <h4 className="title">Open Positions</h4>
             {openPositions.length > 0 ? (
               openPositions.map((position, index) => (
-                <div className="position" key={index}>
-                  <h5>{position.title}</h5>
-                  <p>{`via ${position.company}`}</p>
-                  <p>{position.location}</p>
-                  <p>{position.industry}</p>
-                  <p>{position.employmentType}</p>
-                  <p>{position.postedAgo}</p>
+                <div className="open__position" key={index}>
+                  <h5 className="open__positionTitle">{position.title}</h5>
+                  <div className="flex">
+                    <div className="flex__group">
+                      <AiOutlineEnvironment fill="#9d9d9d" />
+                      <p className="group__text">{position.location}</p>
+                    </div>
+                    <div className="flex__group">
+                      <BiFilter fill="#9d9d9d" />
+                      <p className="group__text">{position.industry}</p>
+                    </div>
+                    <div className="flex__group">
+                      <BiBriefcase fill="#9d9d9d" />
+                      <p className="group__text">{position.employmentType}</p>
+                    </div>
+                    <div className="flex__group">
+                      <BsClock fill="#9d9d9d" />
+                      <p className="group__text">Posted {position.postedAgo}</p>
+                    </div>
+                  </div>
                 </div>
               ))
             ) : (

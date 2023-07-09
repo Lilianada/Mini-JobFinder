@@ -81,6 +81,51 @@
                     font-weight: $font-weight-500;
                     color: $lightGray;
                 }
+
+                .open__position {
+                    border: 1px dashed $accent;
+                    border-radius: 10px;
+                    padding: 1rem;
+                    margin-bottom: 1rem;
+
+                    .open__positionTitle {
+                        font-size: $font-twenty;
+                        font-weight: $font-weight-500;
+                        color: $gray;
+                        margin-bottom: 0.5rem;
+                    }
+
+                    .open__positionText {
+                        font-size: $font-sixteen;
+                        font-weight: $font-weight-500;
+                        color: $lightGray;
+                    }
+
+                    .flex{
+                        display: flex;
+                        gap: .5rem;
+
+                        .flex__group{
+                            display: flex;
+                            align-items: center;
+                            gap: .35rem;
+                            font-size: $font-fourteen;
+                            color: $lightGray;
+                            // margin-top: 1rem;
+    
+                            .group__title {
+                                font-size: $font-fourteen;
+                                font-weight: $font-weight-500;
+                            }
+    
+                            .group__text {
+                                font-size: $font-fourteen;
+                                font-weight: $font-weight-500;
+                                color: $lightGray;
+                            }
+                        }
+                    }
+                }
             }
         }
     }
