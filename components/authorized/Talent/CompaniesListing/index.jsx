@@ -271,7 +271,7 @@ export default function CompaniesListing() {
                 </div>
                 <div className="card__flex">
                   <p className="card__industry">{companies.industry}</p>
-                  <Link href="/candidate/companies/details">
+                  <Link href="/talent/companies/details">
                     <button className="apply__button">
                       {/* <Link to={`/companies/${companies.id}`}>Apply Now</Link> */}
                       View

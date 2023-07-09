@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import { MdEdit, MdPeopleOutline } from "react-icons/md";
 import "./style.scss";
-import { profile } from "../../../public/assets/images/logo.jpeg";
 import { AiOutlineEnvironment, AiOutlineMail } from "react-icons/ai";
 
 export default function CompanyProfile() {
