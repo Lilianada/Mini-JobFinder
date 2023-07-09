@@ -365,7 +365,7 @@ export default function CompaniesListing() {
                   <p className="card__industry">{companies.industry}</p>
                   <Link href="/talent/companies/details">
                     <button className="apply__button">
-                      {/* <Link to={`/companies/${companies.id}`}>Apply Now</Link> */}
+                      {/* <Link to={`/companies/${companies.id}`}>View</Link> */}
                       View
                     </button>
                   </Link>

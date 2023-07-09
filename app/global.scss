@@ -158,7 +158,7 @@ $breakpoint-9: 1920px;
     height: 3rem;
 }
 
-@mixin selectField{
+@mixin selectField {
     font-size: $font-sixteen;
     font-weight: $font-weight-500;
     font-family: inherit;
@@ -298,6 +298,24 @@ input {
 .wrapper {
     display: grid;
     place-items: center;
+}
+
+.body__grid {
+    display: grid;
+    gap: 2rem;
+    margin: 3rem auto;
+    width: 95%;
+    grid-template-columns: 1fr;
+    
+    @media screen and (min-width: $breakpoint-3) {
+        width: 95%;
+        grid-template-columns: 68% 28%;
+    }
+
+    @media screen and (min-width: $breakpoint-4) {
+        width: 90%;
+    }
+
 }
 
 .active__link {

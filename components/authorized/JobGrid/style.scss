@@ -30,58 +30,12 @@
             align-items: center;
             position: relative;
 
-            .sort {
-                .sort__button {
-                    background-color: transparent;
-                    font-weight: 500;
-                    border: none;
-                    outline: none;
-                }
-
-                .show__sort {
-                    position: absolute;
-                    opacity: 1;
-                    visibility: visible;
-                    top: 3rem;
-                    right: 0;
-                    z-index: 8;
-                    width: 200px;
-                    height: fit-content;
-                    transition: opacity 0.3s ease-in-out;
-
-                    background-color: $backdrop;
-                    box-shadow: $box-shadow-1;
-                    padding: 1.5rem;
-                    border-radius: 10px;
-
-                    display: flex;
-                    flex-direction: column;
-                    gap: 0.5rem;
-
-                    .sort__item {
-                        display: flex;
-                        align-items: center;
-                        gap: 0.5rem;
-                    }
-                }
-
-                .sort__group {
-                    position: absolute;
-                    opacity: 0;
-                    visibility: hidden;
-                    top: 3rem;
-                    right: 0;
-                    width: 200px;
-                    height: fit-content;
-                    transition: opacity 0.3s ease-in-out;
-                }
-            }
 
             .filter {
                 .filter__button {
                     display: grid;
                     align-content: center;
-                    border: 1px solid $primary;
+                    border: 1px solid #e0e6f7;
                     border-radius: 10px;
                     padding: 0.5rem;
                     width: 7.5rem;
@@ -89,7 +43,12 @@
                     font-size: $font-fourteen;
                     font-weight: $font-weight-500;
                     color: $black;
-                    background-color: transparent;
+                    background-color: $secondary;
+                    cursor: pointer;
+
+                    &:hover {
+                       border-color: $primary;
+                    }
                 }
 
                 .filter__group {
@@ -98,7 +57,6 @@
                     visibility: hidden;
                     top: 3rem;
                     right: 0;
-                    // width: 530px;
                     
                     height: fit-content;
                     transition: opacity 0.3s ease-in-out;

@@ -133,7 +133,7 @@ export default function CandidateHeader() {
                 Home
               </Link>
             </li>
-            <li className="nav__item">
+            <li className="nav__item  pd_btm">
               <Link
                 href="/talent/jobs"
                 onClick={() => handleMenuClick("jobs")}

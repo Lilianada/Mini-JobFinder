@@ -17,8 +17,8 @@
             align-content: center;
 
             @media screen and (min-width: $breakpoint-3) {
-                height: 300px;
-                padding: 2rem;
+                height: 280px;
+                padding: 1.5rem;
             }
     
             .hero__title{
@@ -46,7 +46,7 @@
                 width: 90%;
                 background: $white;
                 box-shadow: $box-shadow-1;
-                border-radius: 0.5rem;
+                border-radius: 1rem;
                 padding: 0.75rem 0;
                 z-index: 1;
     
@@ -141,7 +141,7 @@
                 .filter__button {
                     display: grid;
                     align-content: center;
-                    border: 1px solid $primary;
+                    border: 1px solid #e0e6f7;
                     border-radius: 10px;
                     padding: 0.5rem;
                     width: 7.5rem;
@@ -149,7 +149,12 @@
                     font-size: $font-fourteen;
                     font-weight: $font-weight-500;
                     color: $black;
-                    background-color: transparent;
+                    background-color: $secondary;
+                    cursor: pointer;
+
+                     &:hover {
+                        border-color: $primary;
+                     }
                 }
 
                 .filter__group {
@@ -158,7 +163,6 @@
                     visibility: hidden;
                     top: 3rem;
                     right: 0;
-                    // width: 530px;
 
                     height: fit-content;
                     transition: opacity 0.3s ease-in-out;
