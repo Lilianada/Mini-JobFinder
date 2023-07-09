@@ -3,7 +3,6 @@ import "./style.scss";
 
 export default function Terms() {
   return (
-    
     <section className="terms__page">
       <div className="terms__container">
         <div className="terms__header">
