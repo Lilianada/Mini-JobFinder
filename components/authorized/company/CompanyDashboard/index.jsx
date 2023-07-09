@@ -1,7 +1,7 @@
 'use client'
-import ActiveJobs from "@components/authorized/company/ActiveJobs";
-import InactiveJobs from "@components/authorized/company/InactiveJobs";
-import JobPostForm from "@components/authorized/company/JobPostForm";
+import ActiveJobs from "@components/authorized/Company/ActiveJobs";
+import InactiveJobs from "@components/authorized/Company/InactiveJobs";
+import JobPostForm from "@components/authorized/Company/JobPostForm";
 import React, { useState } from "react";
 import "./style.scss";
 

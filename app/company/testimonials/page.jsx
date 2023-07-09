@@ -1,5 +1,5 @@
 "use client";
-import TestimonialsLayout from "@components/TestimonialsLayout";
+import TestimonialsLayout from "@components/authorized/TestimonialsLayout";
 import React, { useState } from "react";
 
 const testimonialsData = [

@@ -1,9 +1,9 @@
 'use client'
-import Hero from '@components/authorized/company/CompanyHero';
+import Hero from '@components/authorized/Company/CompanyHero';
 import React from 'react';
-import StepsToHire from '@components/authorized/company/StepsToHire';
-import CompanyService from '@components/authorized/company/CompanyService';
-import CompanyTeam from '@components/authorized/company/CompanyTeam';
+import StepsToHire from '@components/authorized/Company/StepsToHire';
+import CompanyService from '@components/authorized/Company/CompanyService';
+import CompanyTeam from '@components/authorized/Company/CompanyTeam';
 
 export default function HomePage() {
   return (
