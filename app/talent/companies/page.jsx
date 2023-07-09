@@ -1,7 +1,9 @@
-import React from 'react'
+"use client"
+import React from 'react';
+import CompaniesListing from '@components/authorized/Talent/CompaniesListing'
 
 export default function CompaniesListPage() {
   return (
-    <div>CompaniesListPage</div>
+    <CompaniesListing/>
   )
 }

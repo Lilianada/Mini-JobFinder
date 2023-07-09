@@ -70,6 +70,15 @@ export default function CandidateHeader() {
                 Jobs
               </Link>
             </li>
+            <li className="nav__item">
+              <Link
+                href="/talent/companies"
+                onClick={() => handleMenuClick("companies")}
+                className={`nav__link ${active === "companies" ? "active__link" : ""}`}
+              >
+                Companies
+              </Link>
+            </li>
             <li
               className={accountDropdown ? "active__menu" : "nav__menu"}
               onClick={toggleAccountDropdown}
@@ -131,6 +140,15 @@ export default function CandidateHeader() {
                 className={`nav__link ${active === "jobs" ? "active__link" : ""}`}
               >
                 Jobs
+              </Link>
+            </li>
+            <li className="nav__item">
+              <Link
+                href="/talent/companies"
+                onClick={() => handleMenuClick("companies")}
+                className={`nav__link ${active === "companies" ? "active__link" : ""}`}
+              >
+                Companies
               </Link>
             </li>
           </ul>

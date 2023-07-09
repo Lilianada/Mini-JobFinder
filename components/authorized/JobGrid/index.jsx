@@ -303,27 +303,9 @@ const JobGrid = () => {
                     <input
                       type="checkbox"
                       className="sort__check"
-                      value="select Option"
+                      value="last 24 Hours"
                     />
-                    <p>Select an option</p>
-                  </div>
-                  <div className="check__item">
-                    {" "}
-                    <input
-                      type="checkbox"
-                      className="sort__check"
-                      value="last Hr"
-                    />
-                    <p>Last hr</p>
-                  </div>
-                  <div className="check__item">
-                    {" "}
-                    <input
-                      type="checkbox"
-                      className="sort__check"
-                      value="last 24 Hrs"
-                    />
-                    <p>Last 24 hrs</p>
+                    <p>Last 24 hours</p>
                   </div>
                   <div className="check__item">
                     {" "}
@@ -388,15 +370,6 @@ const JobGrid = () => {
                     />
                     Estate Agency
                   </div>
-                  <div className="check__item">
-                    <input
-                      type="checkbox"
-                      name=""
-                      id="filter__checkbox"
-                      value="Graduate"
-                    />
-                    Graduate
-                  </div>
                 </div>
               </div>
               <div className="filter__item">
@@ -443,15 +416,7 @@ const JobGrid = () => {
               <div className="filter__item">
                 <label htmlFor="experience">Experience:</label>
                 <div className="items">
-                  <div className="check__item">
-                    <input
-                      type="checkbox"
-                      name=""
-                      id="filter__checkbox"
-                      value="Fresher"
-                    />
-                    <p>Fresher</p>
-                  </div>
+                 
                   <div className="check__item">
                     <input
                       type="checkbox"
