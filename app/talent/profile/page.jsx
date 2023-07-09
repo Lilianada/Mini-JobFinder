@@ -1,9 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import { MdEdit } from "react-icons/md";
-import "./style.scss";
-import { profile } from "../../../public/assets/images/logo.jpeg";
 import { AiOutlineEnvironment } from "react-icons/ai";
+import "./style.scss";
 
 export default function CandidateProfile() {
   const [isEditMode, setIsEditMode] = useState(false);
@@ -25,6 +24,8 @@ export default function CandidateProfile() {
     mobile: " 1234567890",
     resume: null,
     skills: " HTML, CSS, JavaScript, React, Node.js",
+    school: "University of Toronto, Canada",
+    degree: " Bachelor of Art"
   });
 
   const handleEditClick = () => {
@@ -64,7 +65,6 @@ export default function CandidateProfile() {
     pronouns,
     jobTitle,
     desiredSalary,
-    githubLink,
     linkedInLink,
     portfolioLink,
     address,
@@ -72,6 +72,8 @@ export default function CandidateProfile() {
     mobile,
     resume,
     skills,
+    degree,
+    school,
   } = formData;
 
   return (
@@ -272,6 +274,24 @@ export default function CandidateProfile() {
               onChange={handleInputChange}
               className="form__text"
             />
+
+          </div>
+          <div className="form__group">
+            <label htmlFor="skills">Education:</label>
+            <input
+              type="text"
+              name="school"
+              value={school}
+              onChange={handleInputChange}
+              className="form__input"
+            />
+             <input
+              type="text"
+              name="degree"
+              value={degree}
+              onChange={handleInputChange}
+              className="form__input"
+            />
           </div>
 
           <button onClick={handleSaveClick} className="save__button">
@@ -326,6 +346,12 @@ export default function CandidateProfile() {
             <div className="profile__box">
               <h4 className="title">Skills</h4>
               <p className="text">{skills}</p>
+            </div>
+
+            <div className="profile__box">
+            <h4 className="title">Education</h4>
+            <p className="text">{school}</p>
+            <p className="text">{degree}</p>
             </div>
 
             <div className="profile__box">
