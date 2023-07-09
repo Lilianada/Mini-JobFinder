@@ -4,8 +4,24 @@ import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import "./style.scss";
 
+const removeImmutable = (data) => {
+  if (typeof data === "object" && data !== null) {
+    if (data._immutable) {
+      delete data._immutable;
+    }
+    Object.keys(data).forEach((key) => {
+      data[key] = removeImmutable(data[key]);
+    });
+  }
+  return data;
+};
+
 const JobPostForm = () => {
   const [isEditMode, setIsEditMode] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [isError, setIsError] = useState(false);
+
   const initialFormData = {
     jobTitle: "",
     jobDescription: "",
@@ -21,7 +37,6 @@ const JobPostForm = () => {
     educationExperience: "",
     experience: "",
     deadline: "",
-    qualifications: "",
   };
   const [formData, setFormData] = useState(initialFormData);
 
@@ -31,16 +46,58 @@ const JobPostForm = () => {
 
   const handleSaveClick = async (e) => {
     e.preventDefault();
+
+    // Clean up the formData before sending the request
+    const cleanFormData = {
+      title: formData.jobTitle,
+      description: formData.jobDescription,
+      datePosted: formatDate(new Date()), // Format the date to YYYY-MM-DD
+      deadline: formatDate(new Date(formData.deadline)), // Format the deadline date to YYYY-MM-DD
+      jobId: 1,
+      industry: formData.industry,
+      jobLevel: formData.jobLevel,
+      salary: formData.salaryMax,
+      jobType: formData.employmentType,
+      location: formData.location,
+      active: true,
+      inactive: false,
+      saved: true,
+      seen: true,
+      applied: true,
+    };
+
+    // Remove _immutable property from requirements, benefits, and educationExperience
+    if (cleanFormData.requirements && cleanFormData.requirements._immutable) {
+      delete cleanFormData.requirements._immutable;
+    }
+    if (cleanFormData.benefits && cleanFormData.benefits._immutable) {
+      delete cleanFormData.benefits._immutable;
+    }
+    if (
+      cleanFormData.educationExperience &&
+      cleanFormData.educationExperience._immutable
+    ) {
+      delete cleanFormData.educationExperience._immutable;
+    }
+
+    const payload = {
+      data: cleanFormData,
+    };
+
+    console.log("Data to be sent:", payload); // Log the data
+
     try {
+      setIsLoading(true);
       const response = await axios.post(
-        "https://minujob.com/api/job-listings",
-        formData
+        "http://localhost:1337/api/jobs",
+        payload
       );
       console.log(response.data); // Handle the response
-      setIsEditMode(false);
       setFormData(initialFormData);
     } catch (error) {
       console.error(error); // Handle the error
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -52,8 +109,27 @@ const JobPostForm = () => {
     }));
   };
 
+  // Function to format the date to YYYY-MM-DD
+  const formatDate = (date) => {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  };
+
   return (
     <section className="jobPostings__section">
+      <div className="spinner">
+        {/* Display spinner if loading state is true */}
+        {isLoading && (
+          <div className="spinner__container">
+            <div
+              className="spinner__inner"
+              style={{ borderTopColor: "var(--primary-color)" }}
+            ></div>
+          </div>
+        )}
+      </div>
       <div className="section__header">
         <h2 className="section__title">Job Postings</h2>
         <p className="section__subtitle">
@@ -69,6 +145,7 @@ const JobPostForm = () => {
             name="jobTitle"
             value={formData.jobTitle}
             onChange={handleChange}
+            placeholder="Enter the job title"
             required
           />
         </div>
@@ -82,6 +159,8 @@ const JobPostForm = () => {
             rows="10"
             value={formData.jobDescription}
             onChange={handleChange}
+            required
+            placeholder="Describe the job in detail"
           />
         </div>
 
@@ -120,23 +199,6 @@ const JobPostForm = () => {
         </div>
 
         <div className="input__wrap">
-          <label htmlFor="qualifications">Qualifications:</label>
-          <Editor
-            name="qualifications"
-            editorState={formData.qualifications}
-            onEditorStateChange={(editorState) =>
-              setFormData((prevFormData) => ({
-                ...prevFormData,
-                qualifications: editorState,
-              }))
-            }
-            required
-            wrapperClassName="wrapperClassName"
-            editorClassName="editorClassName"
-          />
-        </div>
-
-        <div className="input__wrap">
           <label htmlFor="education-experience">Education & Experience:</label>
           <Editor
             name="educationExperience"
@@ -158,9 +220,10 @@ const JobPostForm = () => {
           <input
             type="text"
             className="input__field"
-            name="location"
+            name="industry"
             value={formData.industry}
             onChange={handleChange}
+            placeholder="e.g. Software Development"
             required
           />
         </div>
@@ -173,6 +236,7 @@ const JobPostForm = () => {
             name="location"
             value={formData.location}
             onChange={handleChange}
+            placeholder="e.g. Lagos, Nigeria"
             required
           />
         </div>
@@ -182,10 +246,20 @@ const JobPostForm = () => {
           <input
             type="text"
             className="input__field"
-            name="salary"
-            value={formData.salary}
+            name="salaryMin"
+            value={formData.salaryMin}
             onChange={handleChange}
             required
+            placeholder="Minimum Salary"
+          />
+          <input
+            type="text"
+            className="input__field"
+            name="salaryMax"
+            value={formData.salaryMax}
+            onChange={handleChange}
+            required
+            placeholder="Maximum Salary"
           />
         </div>
 
@@ -243,10 +317,12 @@ const JobPostForm = () => {
           <label htmlFor="experience">Years of Experience:</label>
           <input
             type="number"
+            min={0}
             className="input__field"
             name="experience"
             value={formData.experience}
             onChange={handleChange}
+            placeholder="Years of Experience"
             required
           />
         </div>
@@ -259,6 +335,7 @@ const JobPostForm = () => {
             name="deadline"
             value={formData.deadline}
             onChange={handleChange}
+            placeholder="Deadline"
             required
           />
         </div>

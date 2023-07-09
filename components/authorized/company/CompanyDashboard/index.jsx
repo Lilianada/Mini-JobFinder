@@ -4,6 +4,7 @@ import InactiveJobs from "@components/authorized/Company/InactiveJobs";
 import JobPostForm from "@components/authorized/Company/JobPostForm";
 import React, { useState } from "react";
 import "./style.scss";
+import PostTestimonial from "@components/authorized/PostTestimonial";
 
 const DashboardLayout = () => {
   const [activeTab, setActiveTab] = useState("activeJobs");
@@ -40,6 +41,14 @@ const DashboardLayout = () => {
           >
             Post Job
           </li>
+          <li
+            className={`sidebar__item ${
+              activeTab === "postTestimonial" ? "active" : ""
+            }`}
+            onClick={() => handleTabClick("postTestimonial")}
+          >
+            Post Testimonial
+          </li>
           {/* <li
             className={`sidebar__item ${
               activeTab === "candidates" ? "active" : ""
@@ -50,27 +59,11 @@ const DashboardLayout = () => {
           </li> */}
           <li
             className={`sidebar__item ${
-              activeTab === "analytics" ? "active" : ""
-            }`}
-            onClick={() => handleTabClick("analytics")}
-          >
-            Analytics
-          </li>
-          <li
-            className={`sidebar__item ${
               activeTab === "notifications" ? "active" : ""
             }`}
             onClick={() => handleTabClick("notifications")}
           >
             Notifications
-          </li>
-          <li
-            className={`sidebar__item ${
-              activeTab === "accountSettings" ? "active" : ""
-            }`}
-            onClick={() => handleTabClick("accountSettings")}
-          >
-            Account Settings
           </li>
         </ul>
       </div>
@@ -79,10 +72,9 @@ const DashboardLayout = () => {
         {activeTab === "activeJobs" && <ActiveJobsTab />}
         {activeTab === "inactiveJobs" && <InactiveJobsTab />}
         {activeTab === "postJob" && <PostJobTab />}
+        {activeTab === "postTestimonial" && <PostTestimonialTab />}
         {/* {activeTab === "candidates" && <CandidatesTab />} */}
-        {activeTab === "analytics" && <AnalyticsTab />}
         {activeTab === "notifications" && <NotificationsTab />}
-        {activeTab === "accountSettings" && <AccountSettingsTab />}
       </div>
     </div>
   );
@@ -101,21 +93,17 @@ const InactiveJobsTab = () => {
 const PostJobTab = () => {
   return <JobPostForm/>;
 };
+const PostTestimonialTab = () => {
+  return <PostTestimonial/>;
+};
 
 // const CandidatesTab = () => {
 //   return <div>Candidates Tab Content</div>;
 // };
 
-const AnalyticsTab = () => {
-  return <div>Analytics Tab Content</div>;
-};
 
 const NotificationsTab = () => {
   return <div>Notifications Tab Content</div>;
-};
-
-const AccountSettingsTab = () => {
-  return <div>Account Settings Tab Content</div>;
 };
 
 export default DashboardLayout;

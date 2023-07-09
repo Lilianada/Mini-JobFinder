@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import strapi from "../../../lib/strapi";
 import { AiOutlineClockCircle, AiOutlineEnvironment } from "react-icons/ai";
 import { CgBriefcase } from "react-icons/cg";
 import Link from "next/link";
@@ -177,7 +178,17 @@ const jobPostings = [
   },
 ];
 
-const JobGrid = () => {
+export async function getServerSideProps() {
+  var jobs = await strapi.find("jobs");
+
+  return {
+    props: {
+      jobs,
+    },
+  };
+}
+
+const JobGrid = ({ jobs }) => {
   const [toggleFilter, setToggleFilter] = useState(false);
   const [toggleSort, setToggleSort] = useState(false);
 
@@ -186,19 +197,14 @@ const JobGrid = () => {
     setToggleSort(false);
   };
 
-  const isSortToggled = () => {
-    setToggleSort(!toggleSort);
-    setToggleFilter(false);
-  };
-
   const [currentPage, setCurrentPage] = useState(1);
   const jobsPerPage = 8;
 
   const indexOfLastJob = currentPage * jobsPerPage;
   const indexOfFirstJob = indexOfLastJob - jobsPerPage;
-  const currentJobs = jobPostings.slice(indexOfFirstJob, indexOfLastJob);
+  const currentJobs = jobs.slice(indexOfFirstJob, indexOfLastJob);
 
-  const pageNumbers = Math.ceil(jobPostings.length / jobsPerPage);
+  const pageNumbers = Math.ceil(jobs.length / jobsPerPage);
 
   const handleClick = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -224,8 +230,8 @@ const JobGrid = () => {
             Showing{" "}
             <span className="job__number">
               {indexOfFirstJob + 1} -{" "}
-              {indexOfLastJob > jobPostings.length
-                ? jobPostings.length
+              {indexOfLastJob > jobs.length
+                ? jobs.length
                 : indexOfLastJob}
             </span>{" "}
             of available jobs
@@ -233,62 +239,6 @@ const JobGrid = () => {
         </div>
 
         <div className="header__right">
-          {/* <div className="sort">
-            <button className="sort__button" onClick={isSortToggled}>
-              Sort by:
-            </button>
-            <div className={toggleSort ? "show__sort" : "sort__group"}>
-              <div className="sort__item">
-                <input
-                  type="checkbox"
-                  className="sort__check"
-                  value="select Option"
-                />
-                <p>Select an option</p>
-              </div>
-              <div className="sort__item">
-                <input
-                  type="checkbox"
-                  className="sort__check"
-                  value="last Hr"
-                />
-                <p>Last hr</p>
-              </div>
-              <div className="sort__item">
-                <input
-                  type="checkbox"
-                  className="sort__check"
-                  value="last 24 hrs"
-                />
-                <p>Last 24 hrs</p>
-              </div>
-              <div className="sort__item">
-                <input
-                  type="checkbox"
-                  className="sort__check"
-                  value="last 7 days"
-                />
-                <p>Last 7 days</p>
-              </div>
-              <div className="sort__item">
-                <input
-                  type="checkbox"
-                  className="sort__check"
-                  value="last 30 days"
-                />
-                <p>Last 30 days</p>
-              </div>
-              <div className="sort__item">
-                <input
-                  type="checkbox"
-                  className="sort__check"
-                  value="all time"
-                />
-                <p>All time</p>
-              </div>
-            </div>
-          </div> */}
-
           <div className="filter">
             <button className="filter__button" onClick={isFilterToggled}>
               Show Filter
@@ -416,7 +366,6 @@ const JobGrid = () => {
               <div className="filter__item">
                 <label htmlFor="experience">Experience:</label>
                 <div className="items">
-                 
                   <div className="check__item">
                     <input
                       type="checkbox"
@@ -462,7 +411,7 @@ const JobGrid = () => {
 
       {/* Job listings */}
       <div className="grid__body">
-        {jobPostings.length > 0 ? (
+        {jobs.length > 0 ? (
           currentJobs.map((job) => {
             return (
               <div className="jobs__card" key={job.id}>

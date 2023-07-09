@@ -23,7 +23,7 @@
 
             .text__field{
                 font-size: $font-sixteen;
-                font-weight: $font-weight-500;
+                font-weight: $font-weight-400;
                 font-family: inherit;
                 border: none;
                 outline: none;
@@ -41,7 +41,6 @@
                 box-sizing: content-box;
                 border: 1px solid #f1f1f1;
                 border-radius: 10px;
-                height: 12.5rem;
             }
         }
         .editorClassName {
