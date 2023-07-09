@@ -222,7 +222,7 @@ export default function FeaturedPosts() {
             </div>
           </div>
         )}
-        <div className="featured__posts">
+        <Link href="blog/details" className="featured__posts">
           {postData.map((post, index) => (
             <div className="post" key={index}>
               <img
@@ -266,7 +266,7 @@ export default function FeaturedPosts() {
               </div>
             </div>
           ))}
-        </div>
+        </Link>
       </div>
     </section>
   );

@@ -503,7 +503,7 @@ const JobGrid = () => {
                 </div>
                 <div className="card__flex">
                   <p className="company__pay">{job.company.pay}</p>
-                  <Link href="/candidate/jobs/details">
+                  <Link href="/talent/jobs/details">
                     <button className="apply__button">
                       {/* <Link to={`/job/${job.id}`}>Apply Now</Link> */}
                       Apply Now

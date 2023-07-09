@@ -8,7 +8,7 @@ export const metadata = {
   keywords: "hire, talents, jobs, remote, malta",
 };
 
-export default function CandidateLayout({ children }) {
+export default function CompanyLayout({ children }) {
   return (
     <html lang="en">
       <body>

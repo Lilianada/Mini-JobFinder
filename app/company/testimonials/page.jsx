@@ -84,7 +84,7 @@ const testimonialsData = [
   // Add more testimonials here
 ];
 
-export default function CandidateTestimonials() {
+export default function TalentsTestimonials() {
   const [currentPage, setCurrentPage] = useState(1);
   const testimonialsPerPage = 6;
 

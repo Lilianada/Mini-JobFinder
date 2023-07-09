@@ -1,6 +1,6 @@
 import React from "react";
 import Footer from "@components/authorized/Footer";
-import CandidateHeader from "@components/authorized/Talent/TalentHeader";
+import TalentHeader from "@components/authorized/Talent/TalentHeader";
 
 export const metadata = {
   title: "MinuJobs",
@@ -8,12 +8,12 @@ export const metadata = {
   keywords: "hire, talents, jobs, remote, malta",
 };
 
-export default function CandidateLayout({ children }) {
+export default function TalentLayout({ children }) {
   return (
     <html lang="en">
       <body>
         <div className="app">
-          <CandidateHeader />
+          <TalentHeader />
           <main className="main">{children}</main>
           <Footer />
         </div>

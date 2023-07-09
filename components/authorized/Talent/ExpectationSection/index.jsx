@@ -23,7 +23,7 @@ export default function ExpectationSection() {
         <li className="expect__step">
           <span className="step__head">Get interview requests</span>
           <p className="step__text">
-            Employers see your profile on their curated candidate list for 10
+            Employers see your profile on their curated talents list for 10
             weeks, and will send you interview requests if they are interested
             in talking to you.
           </p>

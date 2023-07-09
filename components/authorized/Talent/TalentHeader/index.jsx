@@ -7,7 +7,7 @@ import AccountDropdown from "../AccountDropdown";
 import Link from "next/link";
 import "./style.scss";
 
-export default function CandidateHeader() {
+export default function TalentHeader() {
   const [showMenu, setShowMenu] = useState(false);
   const [accountDropdown, setAccountDropdown] = useState(false);
   const [active, setActive] = useState(null);

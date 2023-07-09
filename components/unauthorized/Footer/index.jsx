@@ -7,7 +7,7 @@ export default function Footer() {
     <footer className="unauthorized__footer">
       <div className="footer__top">
         <div className="footer__top_component">
-          <h3 className="title">For Candidates</h3>
+          <h3 className="title">For Talents</h3>
           <ul className="footer__list">
             <li className="footer__list_item">
               <Link href="/" className="footer__link">
@@ -16,7 +16,7 @@ export default function Footer() {
             </li>
             <li className="footer__list_item">
               <Link href="/" className="footer__link">
-                Candidate Dashboard
+                Browse Companies
               </Link>
             </li>
             <li className="footer__list_item">
