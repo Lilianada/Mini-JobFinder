@@ -3,6 +3,7 @@ import { MdVerified } from "react-icons/md";
 import { BsDot } from "react-icons/bs";
 import { GoUnverified } from "react-icons/go";
 import "./style.scss";
+import Link from "next/link";
 
 export const Posts = [
     {
