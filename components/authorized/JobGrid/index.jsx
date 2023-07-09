@@ -528,9 +528,11 @@ const JobGrid = () => {
                       {job.timePosted}
                     </p>
                   </div>
-                    <p className="card__description">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae architecto eveniet, dolor quo repellendus pariatur.
-                    </p>
+                  <p className="card__description">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Recusandae architecto eveniet, dolor quo repellendus
+                    pariatur.
+                  </p>
                   <ul className="card__tags">
                     {job.tags.map((tag) => (
                       <li key={tag}>{tag}</li>
@@ -539,12 +541,12 @@ const JobGrid = () => {
                 </div>
                 <div className="card__flex">
                   <p className="company__pay">{job.company.pay}</p>
-                    <Link href='/candidate/jobs/details'>
-                  <button className="apply__button">
-                    {/* <Link to={`/job/${job.id}`}>Apply Now</Link> */}
+                  <Link href="/candidate/jobs/details">
+                    <button className="apply__button">
+                      {/* <Link to={`/job/${job.id}`}>Apply Now</Link> */}
                       Apply Now
-                  </button>
-                      </Link>
+                    </button>
+                  </Link>
                 </div>
               </div>
             );

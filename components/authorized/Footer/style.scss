@@ -18,7 +18,7 @@
         margin: 2rem auto 0;
 
         .footer__right {
-            width: 100%;
+            width: 70%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -44,7 +44,7 @@
             font-size: $font-twelve;
             font-weight: $font-weight-400;
             text-align: right;
-            width: 50%;
+            width: 100%;
             color: $lightGray;
         }
     }

@@ -8,66 +8,77 @@ const testimonialsData = [
     name: "John Doe",
     testimonial:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget sapien nisl. Proin ut hendrerit sapien.",
+    company: "ABC company",
   },
   {
     id: 2,
     name: "Jane Smith",
     testimonial:
       "Sed quis mauris quis nunc interdum tristique. Vivamus posuere enim eget purus placerat, eget molestie ex iaculis.",
+    company: "XYZ Corporation",
   },
   {
     id: 3,
     name: "Jane Smith",
     testimonial:
       "Sed quis mauris quis nunc interdum tristique. Vivamus posuere enim eget purus placerat, eget molestie ex iaculis.",
+    company: "XYZ Corporation",
   },
   {
     id: 4,
     name: "Jane Smith",
     testimonial:
       "Sed quis mauris quis nunc interdum tristique. Vivamus posuere enim eget purus placerat, eget molestie ex iaculis.",
+    company: "XYZ Corporation",
   },
   {
     id: 5,
     name: "Jane Smith",
     testimonial:
       "Sed quis mauris quis nunc interdum tristique. Vivamus posuere enim eget purus placerat, eget molestie ex iaculis.",
+    company: "XYZ Corporation",
   },
   {
     id: 6,
     name: "Jane Smith",
     testimonial:
       "Sed quis mauris quis nunc interdum tristique. Vivamus posuere enim eget purus placerat, eget molestie ex iaculis.",
+    company: "XYZ Corporation",
   },
   {
     id: 7,
     name: "Jane Smith",
     testimonial:
       "Sed quis mauris quis nunc interdum tristique. Vivamus posuere enim eget purus placerat, eget molestie ex iaculis.",
+    company: "XYZ Corporation",
   },
   {
     id: 8,
     name: "Jane Smith",
     testimonial:
       "Sed quis mauris quis nunc interdum tristique. Vivamus posuere enim eget purus placerat, eget molestie ex iaculis.",
+    company: "XYZ Corporation",
   },
   {
     id: 9,
     name: "Jane Smith",
     testimonial:
       "Sed quis mauris quis nunc interdum tristique. Vivamus posuere enim eget purus placerat, eget molestie ex iaculis.",
+    company: "XYZ Corporation",
   },
   {
     id: 10,
     name: "Jane Smith",
     testimonial:
       "Sed quis mauris quis nunc interdum tristique. Vivamus posuere enim eget purus placerat, eget molestie ex iaculis.",
+    company: "XYZ Corporation",
   },
   {
     id: 11,
     name: "Jane Smith",
     testimonial:
       "Sed quis mauris quis nunc interdum tristique. Vivamus posuere enim eget purus placerat, eget molestie ex iaculis.",
+    company: "XYZ Corporation",
   },
 
   // Add more testimonials here
