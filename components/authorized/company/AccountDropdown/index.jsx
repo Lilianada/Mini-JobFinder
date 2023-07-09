@@ -7,18 +7,13 @@ export default function CompanyDropdown({ closeMenu }) {
     <div className="account__menu">
       <ul className="dropdown__list">
         <li className="dropdown__link">
-          <Link href="/company/dashboard" className="link" onClick={closeMenu}>
-            Dashboard
-          </Link>
-        </li>
-        <li className="dropdown__link">
           <Link href="/company/profile" className="link" onClick={closeMenu}>
             Profile
           </Link>
         </li>
         <li className="dropdown__link">
-          <Link href="/company/testimonials" className="link" onClick={closeMenu}>
-            Testimonials
+          <Link href="/company/dashboard" className="link" onClick={closeMenu}>
+            Dashboard
           </Link>
         </li>
         <li className="dropdown__link">

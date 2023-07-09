@@ -8,17 +8,17 @@ export default function AccountDropdown() {
     <div className="account__menu">
       <ul className="dropdown__list">
         <li className="dropdown__link">
-          <Link href="/candidate/profile" className="link">
+          <Link href="/talent/profile" className="link">
             Profile
           </Link>
         </li>
         <li className="dropdown__link">
-          <Link href="/candidate/settings" className="link">
+          <Link href="/talent/settings" className="link">
             Setting
           </Link>
         </li>
         <li className="dropdown__link">
-          <Link href="/candidate/testimonials" className="link">
+          <Link href="/talent/testimonials" className="link">
             Testimonials
           </Link>
         </li>

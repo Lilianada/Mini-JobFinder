@@ -61,15 +61,6 @@ export default function CompanyHeader() {
                 Home
               </Link>
             </li>
-            <li className="nav__item">
-              <Link
-                href="/company/jobs"
-                onClick={() => handleMenuClick("jobs")}
-                className={`nav__link ${active === "jobs" ? "active__link" : ""}`}
-              >
-                Jobs
-              </Link>
-            </li>
             <li
               className={accountDropdown ? "active__menu" : "nav__menu"}
               onClick={toggleAccountDropdown}
@@ -79,6 +70,15 @@ export default function CompanyHeader() {
               <div className={`${accountDropdown ? "account__modal" : "no__show"}`}>
                 <CompanyDropdown />
               </div>
+            </li>
+            <li className="nav__item">
+              <Link
+                href="/company/testimonials"
+                onClick={() => handleMenuClick("jobs")}
+                className={`nav__link ${active === "jobs" ? "active__link" : ""}`}
+              >
+                Testimonials
+              </Link>
             </li>
             <li className="nav__item">
               <Link
@@ -126,11 +126,11 @@ export default function CompanyHeader() {
             </li>
             <li className="nav__item">
               <Link
-                href="/company/jobs"
-                onClick={() => handleMenuClick("jobs")}
-                className={`nav__link ${active === "jobs" ? "active__link" : ""}`}
+                href="/company/testimonials"
+                onClick={() => handleMenuClick("testimonials")}
+                className={`nav__link ${active === "testimonials" ? "active__link" : ""}`}
               >
-                Jobs Posted
+                Testimonials
               </Link>
             </li>
           </ul>
@@ -141,18 +141,17 @@ export default function CompanyHeader() {
             </h4>
             <li className="dropdown__link">
               <Link href="/company/profile" className="link" onClick={closeMenu}>
+                Profile
+              </Link>
+            </li>
+            <li className="dropdown__link">
+              <Link href="/company/dashboard" className="link" onClick={closeMenu}>
                 Dashboard
               </Link>
             </li>
             <li className="dropdown__link">
               <Link href="/company/settings" className="link" onClick={closeMenu}>
                 Settings
-              </Link>
-            </li>
-            
-            <li className="dropdown__link">
-              <Link href="/comonay/testimonials" className="link" onClick={closeMenu}>
-                Testimonials
               </Link>
             </li>
           </ul>

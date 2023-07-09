@@ -1,6 +1,6 @@
-@import "../../../app/global.scss";
+@import "../../../../app/global.scss";
 
-.job__grid {
+.companies__grid {
     width: 90%;
     margin: 2rem auto;
 
@@ -15,10 +15,10 @@
         gap: 1rem;
 
         .header__left {
-            .total__jobs {
+            .total__companies {
                 font-size: $font-fourteen;
 
-                .job__number {
+                .companies__number {
                     font-weight: $font-weight-600;
                 }
             }
@@ -30,52 +30,6 @@
             align-items: center;
             position: relative;
 
-            .sort {
-                .sort__button {
-                    background-color: transparent;
-                    font-weight: 500;
-                    border: none;
-                    outline: none;
-                }
-
-                .show__sort {
-                    position: absolute;
-                    opacity: 1;
-                    visibility: visible;
-                    top: 3rem;
-                    right: 0;
-                    z-index: 8;
-                    width: 200px;
-                    height: fit-content;
-                    transition: opacity 0.3s ease-in-out;
-
-                    background-color: $backdrop;
-                    box-shadow: $box-shadow-1;
-                    padding: 1.5rem;
-                    border-radius: 10px;
-
-                    display: flex;
-                    flex-direction: column;
-                    gap: 0.5rem;
-
-                    .sort__item {
-                        display: flex;
-                        align-items: center;
-                        gap: 0.5rem;
-                    }
-                }
-
-                .sort__group {
-                    position: absolute;
-                    opacity: 0;
-                    visibility: hidden;
-                    top: 3rem;
-                    right: 0;
-                    width: 200px;
-                    height: fit-content;
-                    transition: opacity 0.3s ease-in-out;
-                }
-            }
 
             .filter {
                 .filter__button {
@@ -171,7 +125,7 @@
             grid-template-columns: repeat(4, 1fr);
         }
 
-        .jobs__card {
+        .companiess__card {
             width: 100%;
             border: 1px solid #e0e6f7;
             overflow: hidden;

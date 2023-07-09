@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from "react";
-import "./style.scss";
 import axios from "axios";
 import { AiOutlineClockCircle, AiOutlineEnvironment } from "react-icons/ai";
 import { CgBriefcase } from "react-icons/cg";
 import Link from "next/link";
+import "./style.scss";
 
 const jobPostings = [
   {
     id: 1,
     title: "Software Engineer",
     location: "San Francisco",
-    timePosted: "2 hours ago",
+    timePosted: "2 hrs ago",
     tags: ["Full-Time", "JavaScript", "React"],
     company: {
       name: "Paypal",
       location: "San Francisco",
-      pay: "$120,000/year",
+      pay: "$120,000/yr",
       logo: "https://plus.unsplash.com/premium_photo-1666533177885-64832208c5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60", // Replace with actual logo URL
     },
   },
@@ -28,7 +28,7 @@ const jobPostings = [
     company: {
       name: "LinkedIn",
       location: "New York City",
-      pay: "$50/hour",
+      pay: "$50/hr",
       logo: "https://plus.unsplash.com/premium_photo-1666533177885-64832208c5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60", // Replace with actual logo URL
     },
   },
@@ -41,7 +41,7 @@ const jobPostings = [
     company: {
       name: "LinkedIn",
       location: "New York City",
-      pay: "$50/hour",
+      pay: "$50/hr",
       logo: "https://plus.unsplash.com/premium_photo-1666533177885-64832208c5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60", // Replace with actual logo URL
     },
   },
@@ -54,7 +54,7 @@ const jobPostings = [
     company: {
       name: "LinkedIn",
       location: "New York City",
-      pay: "$50/hour",
+      pay: "$50/hr",
       logo: "https://plus.unsplash.com/premium_photo-1666533177885-64832208c5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60", // Replace with actual logo URL
     },
   },
@@ -67,7 +67,7 @@ const jobPostings = [
     company: {
       name: "LinkedIn",
       location: "New York City",
-      pay: "$50/hour",
+      pay: "$50/hr",
       logo: "https://plus.unsplash.com/premium_photo-1666533177885-64832208c5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60", // Replace with actual logo URL
     },
   },
@@ -75,12 +75,12 @@ const jobPostings = [
     id: 6,
     title: "Software Engineer",
     location: "San Francisco",
-    timePosted: "2 hours ago",
+    timePosted: "2 hrs ago",
     tags: ["Full-Time", "JavaScript", "React"],
     company: {
       name: "Paypal",
       location: "San Francisco",
-      pay: "$120,000/year",
+      pay: "$120,000/yr",
       logo: "https://plus.unsplash.com/premium_photo-1666533177885-64832208c5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60", // Replace with actual logo URL
     },
   },
@@ -88,12 +88,12 @@ const jobPostings = [
     id: 7,
     title: "Software Engineer",
     location: "San Francisco",
-    timePosted: "2 hours ago",
+    timePosted: "2 hrs ago",
     tags: ["Full-Time", "JavaScript", "React"],
     company: {
       name: "Teamway",
       location: "San Francisco",
-      pay: "$120,000/year",
+      pay: "$120,000/yr",
       logo: "https://plus.unsplash.com/premium_photo-1666533177885-64832208c5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60", // Replace with actual logo URL
     },
   },
@@ -101,12 +101,12 @@ const jobPostings = [
     id: 8,
     title: "Software Engineer",
     location: "San Francisco",
-    timePosted: "2 hours ago",
+    timePosted: "2 hrs ago",
     tags: ["Full-Time", "JavaScript", "React"],
     company: {
       name: "Twitter",
       location: "San Francisco",
-      pay: "$120,000/year",
+      pay: "$120,000/yr",
       logo: "https://plus.unsplash.com/premium_photo-1666533177885-64832208c5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60", // Replace with actual logo URL
     },
   },
@@ -114,12 +114,12 @@ const jobPostings = [
     id: 9,
     title: "Software Engineer",
     location: "San Francisco",
-    timePosted: "2 hours ago",
+    timePosted: "2 hrs ago",
     tags: ["Full-Time", "JavaScript", "React"],
     company: {
       name: "Paypal",
       location: "San Francisco",
-      pay: "$120,000/year",
+      pay: "$120,000/yr",
       logo: "https://plus.unsplash.com/premium_photo-1666533177885-64832208c5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60", // Replace with actual logo URL
     },
   },
@@ -132,7 +132,7 @@ const jobPostings = [
     company: {
       name: "LinkedIn",
       location: "New York City",
-      pay: "$50/hour",
+      pay: "$50/hr",
       logo: "https://plus.unsplash.com/premium_photo-1666533177885-64832208c5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60", // Replace with actual logo URL
     },
   },
@@ -145,7 +145,7 @@ const jobPostings = [
     company: {
       name: "LinkedIn",
       location: "New York City",
-      pay: "$50/hour",
+      pay: "$50/hr",
       logo: "https://plus.unsplash.com/premium_photo-1666533177885-64832208c5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60", // Replace with actual logo URL
     },
   },
@@ -158,7 +158,7 @@ const jobPostings = [
     company: {
       name: "LinkedIn",
       location: "New York City",
-      pay: "$50/hour",
+      pay: "$50/hr",
       logo: "https://plus.unsplash.com/premium_photo-1666533177885-64832208c5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60", // Replace with actual logo URL
     },
   },
@@ -171,7 +171,7 @@ const jobPostings = [
     company: {
       name: "LinkedIn",
       location: "New York City",
-      pay: "$50/hour",
+      pay: "$50/hr",
       logo: "https://plus.unsplash.com/premium_photo-1666533177885-64832208c5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60", // Replace with actual logo URL
     },
   },
@@ -233,10 +233,7 @@ const JobGrid = () => {
         </div>
 
         <div className="header__right">
-          <div className="sort">
-            {/* <label htmlFor="sortBy" className="sort__label">
-               
-            </label>{" "} */}
+          {/* <div className="sort">
             <button className="sort__button" onClick={isSortToggled}>
               Sort by:
             </button>
@@ -253,17 +250,17 @@ const JobGrid = () => {
                 <input
                   type="checkbox"
                   className="sort__check"
-                  value="last Hour"
+                  value="last Hr"
                 />
-                <p>Last hour</p>
+                <p>Last hr</p>
               </div>
               <div className="sort__item">
                 <input
                   type="checkbox"
                   className="sort__check"
-                  value="last 24 hours"
+                  value="last 24 hrs"
                 />
-                <p>Last 24 hours</p>
+                <p>Last 24 hrs</p>
               </div>
               <div className="sort__item">
                 <input
@@ -290,7 +287,7 @@ const JobGrid = () => {
                 <p>All time</p>
               </div>
             </div>
-          </div>
+          </div> */}
 
           <div className="filter">
             <button className="filter__button" onClick={isFilterToggled}>
@@ -315,18 +312,18 @@ const JobGrid = () => {
                     <input
                       type="checkbox"
                       className="sort__check"
-                      value="last Hour"
+                      value="last Hr"
                     />
-                    <p>Last hour</p>
+                    <p>Last hr</p>
                   </div>
                   <div className="check__item">
                     {" "}
                     <input
                       type="checkbox"
                       className="sort__check"
-                      value="last 24 Hours"
+                      value="last 24 Hrs"
                     />
-                    <p>Last 24 hours</p>
+                    <p>Last 24 hrs</p>
                   </div>
                   <div className="check__item">
                     {" "}

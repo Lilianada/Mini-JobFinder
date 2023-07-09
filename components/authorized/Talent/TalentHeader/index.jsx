@@ -54,7 +54,7 @@ export default function CandidateHeader() {
           <ul className="nav__list">
             <li className="nav__item">
               <Link
-                href="/candidate/"
+                href="/talent/"
                 onClick={() => handleMenuClick("home")}
                 className={`nav__link ${active === "home" ? "active__link" : ""}`}
               >
@@ -63,7 +63,7 @@ export default function CandidateHeader() {
             </li>
             <li className="nav__item">
               <Link
-                href="/candidate/jobs"
+                href="/talent/jobs"
                 onClick={() => handleMenuClick("jobs")}
                 className={`nav__link ${active === "jobs" ? "active__link" : ""}`}
               >
@@ -117,7 +117,7 @@ export default function CandidateHeader() {
           <ul className="nav__list">
             <li className="nav__item pd_btm">
               <Link
-                href="/candidate/"
+                href="/talent/"
                 onClick={() => handleMenuClick("home")}
                 className={`nav__link ${active === "home" ? "active__link" : ""}`}
               >
@@ -126,7 +126,7 @@ export default function CandidateHeader() {
             </li>
             <li className="nav__item">
               <Link
-                href="/candidate/jobs"
+                href="/talent/jobs"
                 onClick={() => handleMenuClick("jobs")}
                 className={`nav__link ${active === "jobs" ? "active__link" : ""}`}
               >
@@ -140,17 +140,17 @@ export default function CandidateHeader() {
               <BsChevronDown fill="#827f7f" size={10} />
             </h4>
             <li className="dropdown__link">
-              <Link href="/candidate/profile" className="link" onClick={closeMenu}>
+              <Link href="/talent/profile" className="link" onClick={closeMenu}>
                 Profile
               </Link>
             </li>
             <li className="dropdown__link">
-              <Link href="/candidate/settings" className="link" onClick={closeMenu}>
+              <Link href="/talent/settings" className="link" onClick={closeMenu}>
                 Settings
               </Link>
             </li>
             <li className="dropdown__link">
-              <Link href="/candidate/testimonials" className="link" onClick={closeMenu}>
+              <Link href="/talent/testimonials" className="link" onClick={closeMenu}>
                 Testimonials
               </Link>
             </li>
