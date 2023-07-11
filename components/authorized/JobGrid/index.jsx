@@ -1,204 +1,36 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import strapi from "../../../lib/strapi";
 import { AiOutlineClockCircle, AiOutlineEnvironment } from "react-icons/ai";
 import { CgBriefcase } from "react-icons/cg";
 import Link from "next/link";
 import "./style.scss";
 
-const jobPostings = [
-  {
-    id: 1,
-    title: "Software Engineer",
-    location: "San Francisco",
-    timePosted: "2 hrs ago",
-    tags: ["Full-Time", "JavaScript", "React"],
-    company: {
-      name: "Paypal",
-      location: "San Francisco",
-      pay: "$120,000/yr",
-      logo: "https://plus.unsplash.com/premium_photo-1666533177885-64832208c5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60", // Replace with actual logo URL
-    },
-  },
-  {
-    id: 2,
-    title: "Marketing Specialist",
-    location: "New York City",
-    timePosted: "1 day ago",
-    tags: ["Part-Time", "Digital Marketing"],
-    company: {
-      name: "LinkedIn",
-      location: "New York City",
-      pay: "$50/hr",
-      logo: "https://plus.unsplash.com/premium_photo-1666533177885-64832208c5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60", // Replace with actual logo URL
-    },
-  },
-  {
-    id: 3,
-    title: "Marketing Specialist",
-    location: "New York City",
-    timePosted: "1 day ago",
-    tags: ["Part-Time", "Digital Marketing"],
-    company: {
-      name: "LinkedIn",
-      location: "New York City",
-      pay: "$50/hr",
-      logo: "https://plus.unsplash.com/premium_photo-1666533177885-64832208c5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60", // Replace with actual logo URL
-    },
-  },
-  {
-    id: 4,
-    title: "Marketing Specialist",
-    location: "New York City",
-    timePosted: "1 day ago",
-    tags: ["Part-Time", "Digital Marketing"],
-    company: {
-      name: "LinkedIn",
-      location: "New York City",
-      pay: "$50/hr",
-      logo: "https://plus.unsplash.com/premium_photo-1666533177885-64832208c5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60", // Replace with actual logo URL
-    },
-  },
-  {
-    id: 5,
-    title: "Marketing Specialist",
-    location: "New York City",
-    timePosted: "1 day ago",
-    tags: ["Part-Time", "Digital Marketing"],
-    company: {
-      name: "LinkedIn",
-      location: "New York City",
-      pay: "$50/hr",
-      logo: "https://plus.unsplash.com/premium_photo-1666533177885-64832208c5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60", // Replace with actual logo URL
-    },
-  },
-  {
-    id: 6,
-    title: "Software Engineer",
-    location: "San Francisco",
-    timePosted: "2 hrs ago",
-    tags: ["Full-Time", "JavaScript", "React"],
-    company: {
-      name: "Paypal",
-      location: "San Francisco",
-      pay: "$120,000/yr",
-      logo: "https://plus.unsplash.com/premium_photo-1666533177885-64832208c5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60", // Replace with actual logo URL
-    },
-  },
-  {
-    id: 7,
-    title: "Software Engineer",
-    location: "San Francisco",
-    timePosted: "2 hrs ago",
-    tags: ["Full-Time", "JavaScript", "React"],
-    company: {
-      name: "Teamway",
-      location: "San Francisco",
-      pay: "$120,000/yr",
-      logo: "https://plus.unsplash.com/premium_photo-1666533177885-64832208c5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60", // Replace with actual logo URL
-    },
-  },
-  {
-    id: 8,
-    title: "Software Engineer",
-    location: "San Francisco",
-    timePosted: "2 hrs ago",
-    tags: ["Full-Time", "JavaScript", "React"],
-    company: {
-      name: "Twitter",
-      location: "San Francisco",
-      pay: "$120,000/yr",
-      logo: "https://plus.unsplash.com/premium_photo-1666533177885-64832208c5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60", // Replace with actual logo URL
-    },
-  },
-  {
-    id: 9,
-    title: "Software Engineer",
-    location: "San Francisco",
-    timePosted: "2 hrs ago",
-    tags: ["Full-Time", "JavaScript", "React"],
-    company: {
-      name: "Paypal",
-      location: "San Francisco",
-      pay: "$120,000/yr",
-      logo: "https://plus.unsplash.com/premium_photo-1666533177885-64832208c5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60", // Replace with actual logo URL
-    },
-  },
-  {
-    id: 10,
-    title: "Marketing Specialist",
-    location: "New York City",
-    timePosted: "1 day ago",
-    tags: ["Part-Time", "Digital Marketing"],
-    company: {
-      name: "LinkedIn",
-      location: "New York City",
-      pay: "$50/hr",
-      logo: "https://plus.unsplash.com/premium_photo-1666533177885-64832208c5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60", // Replace with actual logo URL
-    },
-  },
-  {
-    id: 11,
-    title: "Marketing Specialist",
-    location: "New York City",
-    timePosted: "1 day ago",
-    tags: ["Part-Time", "Digital Marketing"],
-    company: {
-      name: "LinkedIn",
-      location: "New York City",
-      pay: "$50/hr",
-      logo: "https://plus.unsplash.com/premium_photo-1666533177885-64832208c5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60", // Replace with actual logo URL
-    },
-  },
-  {
-    id: 12,
-    title: "Marketing Specialist",
-    location: "New York City",
-    timePosted: "1 day ago",
-    tags: ["Part-Time", "Digital Marketing"],
-    company: {
-      name: "LinkedIn",
-      location: "New York City",
-      pay: "$50/hr",
-      logo: "https://plus.unsplash.com/premium_photo-1666533177885-64832208c5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60", // Replace with actual logo URL
-    },
-  },
-  {
-    id: 13,
-    title: "Marketing Specialist",
-    location: "New York City",
-    timePosted: "1 day ago",
-    tags: ["Part-Time", "Digital Marketing"],
-    company: {
-      name: "LinkedIn",
-      location: "New York City",
-      pay: "$50/hr",
-      logo: "https://plus.unsplash.com/premium_photo-1666533177885-64832208c5c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHx8&auto=format&fit=crop&w=800&q=60", // Replace with actual logo URL
-    },
-  },
-];
-
-export async function getServerSideProps() {
-  var jobs = await strapi.find("jobs");
-
-  return {
-    props: {
-      jobs,
-    },
-  };
-}
-
-const JobGrid = ({ jobs }) => {
+const JobGrid = () => {
   const [toggleFilter, setToggleFilter] = useState(false);
   const [toggleSort, setToggleSort] = useState(false);
+  const [jobs, setJobs] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const jobsPerPage = 8;
+
+  useEffect(() => {
+    fetchJobs();
+  }, []);
+
+  const fetchJobs = async () => {
+    try {
+      const response = await axios.get("http://localhost:1337/api/jobs");
+      const fetchedJobs = response.data;
+      setJobs(fetchedJobs.data);
+      console.log(fetchedJobs.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const isFilterToggled = () => {
     setToggleFilter(!toggleFilter);
     setToggleSort(false);
   };
-
-  const [currentPage, setCurrentPage] = useState(1);
-  const jobsPerPage = 8;
 
   const indexOfLastJob = currentPage * jobsPerPage;
   const indexOfFirstJob = indexOfLastJob - jobsPerPage;
@@ -230,9 +62,7 @@ const JobGrid = ({ jobs }) => {
             Showing{" "}
             <span className="job__number">
               {indexOfFirstJob + 1} -{" "}
-              {indexOfLastJob > jobs.length
-                ? jobs.length
-                : indexOfLastJob}
+              {indexOfLastJob > jobs.length ? jobs.length : indexOfLastJob}
             </span>{" "}
             of available jobs
           </h5>
@@ -410,62 +240,70 @@ const JobGrid = ({ jobs }) => {
       </div>
 
       {/* Job listings */}
-      <div className="grid__body">
-        {jobs.length > 0 ? (
-          currentJobs.map((job) => {
+      {jobs.length > 0 ? (
+        <div className="grid__body">
+
+          {currentJobs.map((job) => {
+      const salaryMinFormatted = job.attributes.salaryMin.toLocaleString();
+      const salaryMaxFormatted = job.attributes.salaryMax.toLocaleString();
+      const timePostedFormatted = new Date(job.attributes.timePosted).toLocaleTimeString('en-US', {
+        hour: 'numeric',
+        minute: 'numeric',
+        hour12: true,
+      });
             return (
               <div className="jobs__card" key={job.id}>
                 <div className="card__info">
                   <div className="card__company">
                     <div className="card__logo">
-                      <img src={job.company.logo} alt={job.company.name} />
+                      <img src={job.attributes.companyLogo} alt={job.attributes.companyName} />
                       <div className="company__info">
-                        <h5 className="company__name">{job.company.name}</h5>
+                        <h5 className="company__name">{job.attributes.companyName}</h5>
                         <p className="company__location">
                           <AiOutlineEnvironment />
-                          {job.company.location}
+                          {job.attributes.location}
                         </p>
                       </div>
                     </div>
                   </div>
-                  <h4 className="card__title">{job.title}</h4>
+                  <h4 className="card__title">{job.attributes.title}</h4>
                   <div className="card__flex">
                     <p className="card__location">
                       <CgBriefcase />
-                      Full-time
+                      {job.attributes.jobType}
                     </p>
                     <p className="card__time">
                       <AiOutlineClockCircle />
-                      {job.timePosted}
+                      {timePostedFormatted}
                     </p>
                   </div>
                   <p className="card__description">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Recusandae architecto eveniet, dolor quo repellendus
-                    pariatur.
+                    {job.attributes.description}
                   </p>
-                  <ul className="card__tags">
-                    {job.tags.map((tag) => (
-                      <li key={tag}>{tag}</li>
-                    ))}
-                  </ul>
+                  {/* <ul className="card__tags">
+              {jobTags.map((tag) => (
+                <li key={tag}>{tag}</li>
+              ))}
+            </ul> */}
                 </div>
                 <div className="card__flex">
-                  <p className="company__pay">{job.company.pay}</p>
+                  <p className="company__pay">
+                    ${salaryMinFormatted} - ${salaryMaxFormatted}{" "}
+                  </p>
                   <Link href="/talent/jobs/details">
                     <button className="apply__button">
                       {/* <Link to={`/job/${job.id}`}>Apply Now</Link> */}
-                      Apply Now
+                      View More
                     </button>
                   </Link>
                 </div>
               </div>
             );
-          })
-        ) : (
-          <p>No jobs found.</p>
-        )}
-      </div>
+          })}
+        </div>
+      ) : (
+        <p className="no__jobs">No jobs found.</p>
+      )}
 
       {/* Pagination */}
       <div className="pagination">
@@ -502,5 +340,26 @@ const JobGrid = ({ jobs }) => {
     </section>
   );
 };
+
+export async function getServerSideProps() {
+  try {
+    const response = await axios.get("http://localhost:1337/api/jobs");
+    const jobs = response.data;
+
+    return {
+      props: {
+        jobs,
+      },
+    };
+  } catch (error) {
+    console.error(error);
+
+    return {
+      props: {
+        jobs: [],
+      },
+    };
+  }
+}
 
 export default JobGrid;

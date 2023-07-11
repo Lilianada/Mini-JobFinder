@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
-require('dotenv').config();
 import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import { useRouter } from "next/navigation";
 import "./style.scss";
 
-const removeImmutable = (data) => {
+export default function EditJobForm() {
   if (typeof data === "object" && data !== null) {
     if (data._immutable) {
       delete data._immutable;
@@ -17,30 +17,49 @@ const removeImmutable = (data) => {
   return data;
 };
 
-const JobPostForm = () => {
+const EditJobForm = () => {
+  const router = useRouter();
+  const jobId = router.query.jobId; // Get the jobId from the query parameters
+
   const [isEditMode, setIsEditMode] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const [isError, setIsError] = useState(false);
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-
-  const initialFormData = {
-    jobTitle: "",
-    jobDescription: "",
-    location: "",
-    industry: "",
-    requirements: "",
-    benefits: "",
-    salaryMin: "",
-    salaryMax: "",
-    salaryType: "",
-    employmentType: "",
-    jobLevel: "",
-    educationExperience: "",
-    experience: "",
-    deadline: "",
-  };
   const [formData, setFormData] = useState(initialFormData);
+
+  useEffect(() => {
+    // Fetch the job data based on the jobId
+    if (jobId) {
+      fetchJobData(jobId);
+    }
+  }, [jobId]);
+
+  const fetchJobData = async (jobId) => {
+    try {
+      const response = await axios.get(
+        `http://localhost:1337/api/jobs/${jobId}`
+      );
+      const jobData = response.data;
+
+      // Populate the form data with the fetched job data
+      setFormData({
+        jobTitle: jobData.title,
+        jobDescription: jobData.description,
+        deadline: jobData.deadline,
+        industry: jobData.industry,
+        jobLevel: jobData.jobLevel,
+        salaryMin: jobData.salaryMin,
+        salaryMax: jobData.salaryMax,
+        employmentType: jobData.employmentType,
+        location: jobData.location,
+        requirements: jobData.requirements,
+        benefits: jobData.benefits,
+        educationExperience: jobData.educationExperience,
+        
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const handleEditClick = () => {
     setIsEditMode(true);
@@ -91,7 +110,7 @@ const JobPostForm = () => {
     try {
       setIsLoading(true);
       const response = await axios.post(
-        `${apiUrl}/jobs`,
+        "http://localhost:1337/api/jobs",
         payload
       );
       console.log(response.data); // Handle the response
@@ -99,6 +118,7 @@ const JobPostForm = () => {
       setTimeout(() => {
         setIsSuccess(true);
       }, 3000);
+      router.push(`/company/dashboard`);
     } catch (error) {
       console.error(error); // Handle the error
     } finally {
@@ -125,9 +145,9 @@ const JobPostForm = () => {
   return (
     <section className="jobPostings__section">
       <div className="section__header">
-        <h2 className="section__title">Job Postings</h2>
+        <h2 className="section__title">Edit Job</h2>
         <p className="section__subtitle">
-          Share the details of your job advert.
+          Edit the details of your job advert.
         </p>
       </div>
       <form className="jobPosting__form" onSubmit={handleSaveClick}>
@@ -347,11 +367,9 @@ const JobPostForm = () => {
           </button>
         )}
         {isSuccess && (
-          <p className="success__msg">Job Post Created Successfully</p>
+          <p className="success__msg">Job Post Edited Successfully</p>
         )}
       </form>
     </section>
   );
 };
-
-export default JobPostForm;

@@ -3,22 +3,92 @@ import React, { useState } from "react";
 import "./style.scss";
 import Link from "next/link";
 import axios from "axios";
-import { AiFillGoogleCircle } from "react-icons/ai";
-import { BsFacebook } from "react-icons/bs";
+require("dotenv").config();
 
 export default function Register() {
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
   const [activeTab, setActiveTab] = useState("talents");
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+
   const [talentFormData, setTalentFormData] = useState({
     username: "",
     email: "",
     password: "",
   });
 
+  // State for companies
   const [companyFormData, setCompanyFormData] = useState({
     companyName: "",
     companyEmail: "",
     password: "",
   });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (activeTab === "talents") {
+      handleTalentSub(talentFormData);
+    } else if (activeTab === "companies") {
+      handleCompanySub(companyFormData);
+    }
+  };
+
+  const handleTalentSub = async (talentFormData) => {
+    if (passwordMatch) {
+      try {
+        const { username, email, password } = talentFormData;
+  
+        const payload = {
+          username,
+          email,
+          password,
+        };
+  
+        const response = await axios.post(
+          `${apiUrl}/auth/local/register`,
+          payload
+        );
+        console.log(response.data);
+        setSuccess("Registration successful!");
+        setTimeout(() => {
+          setSuccess("");
+        }, 4000);
+        // Send email confirmation
+        await sendEmailConfirmation(email);
+        // Redirect to the login page
+        router.push("/login");
+      } catch (error) {
+        if (error.response && error.response.data) {
+          const { message } = error.response.data;
+          console.error(message);
+          setError(message);
+          setTimeout(() => {
+            setError("");
+          }, 4000);
+          // Display error message to the user (e.g., set it to state and show it in the UI)
+        } else {
+          console.error("An error occurred during registration.");
+        }
+      }
+    }
+  };
+  
+
+  const handleCompanySub = async (companyFormData) => {
+    if (passwordMatch) {
+      try {
+        const response = await axios.post(
+          "https://minujob.com/companies",
+          companyFormData
+        );
+        console.log(response.data); // Do something with the response
+      } catch (error) {
+        console.log(error); // Handle the error
+      }
+    }
+  };
+
 
   const [passwordMatch, setPasswordMatch] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
@@ -62,45 +132,6 @@ export default function Register() {
     }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (activeTab === "talents") {
-      handleTalentSub(talentFormData);
-    } else if (activeTab === "companies") {
-      handleCompanySub(companyFormData);
-    }
-  };
-
-  const handleTalentSub = async (talentFormData) => {
-    if (passwordMatch) {
-      try {
-        const response = await axios.post(
-          "http://minujob.com/api/auth/local/register",
-          talentFormData
-        );
-        console.log(response.data);
-        // Send email confirmation
-        await sendEmailConfirmation(companyFormData.companyEmail);
-      } catch (error) {
-        console.log(error); // Handle the error
-      }
-    }
-  };
-
-  const handleCompanySub = async (companyFormData) => {
-    if (passwordMatch) {
-      try {
-        const response = await axios.post(
-          "https://minujob.com/companies",
-          companyFormData
-        );
-        console.log(response.data); // Do something with the response
-      } catch (error) {
-        console.log(error); // Handle the error
-      }
-    }
-  };
 
   //validate password
   const validatePassword = (password) => {
@@ -115,11 +146,11 @@ export default function Register() {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
 
-  // handle email confirmation
+  //handle email confirmation
   const sendEmailConfirmation = async (email) => {
     try {
       const response = await axios.post(
-        "http://minujob.com/api/auth/send-email-confirmation",
+        "http://localhost:1337/api/auth/send-email-confirmation",
         { email }
       );
       console.log("Email confirmation sent successfully:", response.data);
@@ -174,10 +205,10 @@ export default function Register() {
               <form className="form__wrap" onSubmit={handleSubmit}>
                 <input
                   type="text"
-                  name="name"
+                  name="username"
                   placeholder="Full Name"
                   className="input__field"
-                  value={talentFormData.name}
+                  value={talentFormData.username}
                   onChange={handleChange}
                 />
                 <input
@@ -237,7 +268,7 @@ export default function Register() {
                 </button>
                 <div className="signin__info">
                   <p className="text">Already have an account?</p>{" "}
-                  <Link href={"/signin"} className="signin__text">
+                  <Link href={"/login"} className="signin__text">
                     Sign In
                   </Link>
                 </div>
@@ -301,6 +332,12 @@ export default function Register() {
                       "Password does not match. "}
                   </p>
                 )}
+                {
+                  error && <p className="error">{error}</p>
+                }
+                {
+                  success && <p className="success">{success}</p>
+                }
                 <button
                   className="signup__btn"
                   type="submit"
@@ -310,7 +347,7 @@ export default function Register() {
                 </button>
                 <div className="signin__info">
                   <p className="text">Already have an account?</p>{" "}
-                  <Link href={"/signin"} className="signin__text">
+                  <Link href={"/login"} className="signin__text">
                     Sign In
                   </Link>
                 </div>

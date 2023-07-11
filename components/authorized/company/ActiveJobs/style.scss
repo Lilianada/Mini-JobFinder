@@ -10,12 +10,14 @@
             box-shadow: 1px -1px 10px 0px rgb(100 100 100 / 15%);
             padding: 1rem;
             border-radius: 10px;
+            margin-bottom: 2rem;
     
             .jobPosting__header {
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
                 margin-bottom: 2rem;
+                gap: 1rem;
     
                 .jobPosting__title {
                     font-size: $font-twentyFour;
