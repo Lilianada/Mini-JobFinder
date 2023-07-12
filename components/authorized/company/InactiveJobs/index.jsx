@@ -1,7 +1,7 @@
 "use client";
-import React, { useState } from "react";
-import Link from "next/link";
+import React, { useState, useEffect } from "react";
 import "./style.scss";
+import { useRouter } from "next/navigation";
 
 export default function ActiveJobs() {
   const [jobs, setJobs] = useState([]);

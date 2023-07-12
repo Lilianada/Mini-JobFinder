@@ -71,6 +71,8 @@ const PostTestimonial = () => {
     }
   };
 
+  //call the testimonial endpoint to return the testimonial in the input fields
+  //if no testimonial, then display the empty form
   return (
     <section className="testimonialPostForm__section">
       <div className="section__header">
