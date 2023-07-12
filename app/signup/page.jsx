@@ -49,14 +49,26 @@ export default function Register() {
           `${apiUrl}/auth/local/register`,
           payload
         );
-        console.log(response.data);
-        setSuccess("Registration successful!");
-        setTimeout(() => {
-          setSuccess("");
-        }, 4000);
+  
+        const userId = response.data.user.id; // Get the user ID from the signup response
+  
+        const talentData = {
+          data: {
+            ...payload,
+            userId,
+          },
+        };
+  
+        const data = await axios.post(
+          `${apiUrl}/talents`,
+          talentData
+        );
+  
+        console.log(data.data);
         // Send email confirmation
         await sendEmailConfirmation(email);
         // Redirect to the login page
+        window.location.href = "/login";
         router.push("/login");
       } catch (error) {
         if (error.response && error.response.data) {
@@ -74,7 +86,6 @@ export default function Register() {
     }
   };
   
-
   const handleCompanySub = async (companyFormData) => {
     if (passwordMatch) {
       try {

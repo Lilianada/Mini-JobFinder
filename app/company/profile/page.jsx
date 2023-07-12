@@ -15,6 +15,7 @@ export default function CompanyProfile() {
     linkedInLink: "https://www.linkedin.com/company/lovehoney-group/",
     companySite: "https://www.lovehoneygroup.com/",
     address: "Berlin, Germany (hybrid)",
+    
   });
 
   const handleEditClick = () => {

@@ -7,45 +7,77 @@ import "./style.scss";
 export default function TalentProfileData({ handleEditClick }) {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
   const [isLoading, setIsLoading] = useState(false);
-  const [formData, setFormData] = useState({
-    username,
-    email,
-    bio,
-    profileImage,
-    dob,
-    gender,
-    pronouns,
-    jobTitle,
-    minSalary,
-    maxSalary,
-    linkedInLink,
-    portfolioLink,
-    address,
-    phone,
-    mobile,
-    resume,
-    skills,
-    degree,
-    institute,
-    company,
-    position,
-  });
+  const initialFormData = {
+    id: "",
+    userId: "",
+    username: "",
+    email: "",
+    bio: "",
+    photo: null,
+    dob: "",
+    gender: "",
+    pronouns: "",
+    jobTitle: "",
+    minSalary: "",
+    maxSalary: "",
+    linkedin: "",
+    portfolio: "",
+    address: "",
+    phone: "",
+    mobile: "",
+    resume: null,
+    skills: "",
+    institute: "",
+    degree: "",
+    company: "",
+    position: "",
+  };
+
+  const [formData, setFormData] = useState(initialFormData);
 
   useEffect(() => {
-    fetchFormData();
+    fetchUserData();
   }, []);
 
-  const fetchFormData = async () => {
+  const fetchUserData = async () => {
     try {
-      setIsLoading(true);
-      const response = await axios.get(`${apiUrl}/talents`);
-      const talentData = response.data;
+      const token = localStorage.getItem("token");
+      const header = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+      const response = await axios.get(`${apiUrl}/users/me`, header);
+      const userData = response.data;
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        id: userData.id,
+        username: userData.username,
+        email: userData.email,
+        bio: userData.bio,
+        photo: userData.photo,
+        dob: userData.dob,
+        gender: userData.gender,
+        pronouns: userData.pronouns,
+        jobTitle: userData.jobTitle,
+        minSalary: userData.minSalary,
+        maxSalary: userData.maxSalary,
+        linkedin: userData.linkedin,
+        portfolio: userData.portfolio,
+        address: userData.address,
+        phone: userData.phone,
+        mobile: userData.mobile,
+        resume: userData.resume,
+        skills: userData.skills,
+        institute: userData.institute,
+        degree: userData.degree,
+        company: userData.company,
+        position: userData.position,
 
-      setFormData(talentData);
+      }));
     } catch (error) {
       console.error(error);
-    } finally {
-      setIsLoading(false);
+      console.log("error");
     }
   };
 
@@ -58,22 +90,22 @@ export default function TalentProfileData({ handleEditClick }) {
         </h4>
         <div className="profile__top">
           <div className="profile__column">
-            {profileImage && (
+            {formData.photo && (
               <img
-                src={profileImage}
+                src={formData.photo}
                 alt="Profile"
                 className="profile__image"
               />
             )}
 
             <div className="profile__row">
-              <h4 className="user__name">{username}</h4>
+              <h4 className="user__name">{formData.username}</h4>
               <p className="user__address">
                 <AiOutlineEnvironment />
-                {address}
+                {formData.address}
               </p>
             </div>
-            <p className="user__title">{jobTitle}</p>
+            <p className="user__title">{formData.jobTitle}</p>
           </div>
         </div>
 
@@ -81,35 +113,35 @@ export default function TalentProfileData({ handleEditClick }) {
           <div className="profile__box">
             <h4 className="title">Personal Details</h4>
             <p className="text">
-              <strong>Pronouns:</strong> {pronouns}
+              <strong>Pronouns:</strong> {formData.pronouns}
             </p>
             <p className="text">
-              <strong>Gender:</strong> {gender}
+              <strong>Gender:</strong> {formData.gender}
             </p>
             <p className="text">
-              <strong>DOB:</strong> {dob}
+              <strong>DOB:</strong> {formData.dob}
             </p>
           </div>
 
           <div className="profile__box">
             <h4 className="title">About</h4>
-            <p className="text">{bio}</p>
+            <p className="text">{formData.bio}</p>
           </div>
 
           <div className="profile__box">
             <h4 className="title">Skills</h4>
-            <p className="text">{skills}</p>
+            <p className="text">{formData.skills}</p>
           </div>
 
           <div className="profile__box">
             <h4 className="title">Education</h4>
             <p className="text">
               <strong>Institution: </strong>
-              {institute}
+              {formData.institute}
             </p>
             <p className="text">
               <strong>Degree: </strong>
-              {degree}
+              {formData.degree}
             </p>
           </div>
 
@@ -117,11 +149,11 @@ export default function TalentProfileData({ handleEditClick }) {
             <h4 className="title">Experience</h4>
             <p className="text">
               <strong>Company: </strong>
-              {company}
+              {formData.company}
             </p>
             <p className="text">
               <strong>Position: </strong>
-              {position}
+              {formData.position}
             </p>
           </div>
 
@@ -129,35 +161,35 @@ export default function TalentProfileData({ handleEditClick }) {
             <h4 className="title">Contact</h4>
             <p className="text">
               <strong>Email: </strong>
-              {email}
+              {formData.email}
             </p>
             <p className="text">
               <strong>Phone: </strong>
-              {phone}
+              {formData.phone}
             </p>
             <p className="text">
               <strong>Mobile: </strong>
-              {mobile}
+              {formData.mobile}
             </p>
           </div>
 
           <div className="profile__box">
             <h4 className="title">Social Links</h4>
             <p className="text">
-              <strong>LinkedIn:</strong> {linkedInLink}
+              <strong>LinkedIn:</strong> {formData.linkedInLink}
             </p>
             <p className="text">
-              <strong>Portfolio:</strong> {portfolioLink}
+              <strong>Portfolio:</strong> {formData.portfolioLink}
             </p>
           </div>
 
           <div className="profile__box">
             <h4 className="title">Resume*</h4>
-            {resume === null ? (
+            {formData.resume === null ? (
               <p className="text">No resume uploaded</p>
             ) : (
               <a
-                href={resume}
+                href={formData.resume}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text"
@@ -170,7 +202,7 @@ export default function TalentProfileData({ handleEditClick }) {
           <div className="profile__box">
             <h4 className="title">Additional Information</h4>
             <p className="text">
-              <strong>Desired Salary:</strong> ${minSalary} - ${maxSalary}
+              <strong>Desired Salary:</strong> ${formData.minSalary} - ${formData.maxSalary}
             </p>
           </div>
         </div>

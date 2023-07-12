@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import { MdEdit } from "react-icons/md";
 import axios from "axios";
 import "./style.scss";
+import { useRouter } from "next/navigation";
 
-export default function TalentProfileForm() {
+export default function TalentProfileForm({setIsEditMode}) {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
   const initialFormData = {
     id: "",
+    userId: "",
     username: "",
     email: "",
     bio: "",
@@ -29,8 +31,13 @@ export default function TalentProfileForm() {
     company: "",
     position: "",
   };
+
   const [formData, setFormData] = useState(initialFormData);
+  const [form, setForm] = useState({ ...initialFormData });
+
   const [isLoading, setIsLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
+  const [successMsg, setSuccessMsg] = useState("");
 
   useEffect(() => {
     fetchUserData();
@@ -39,28 +46,38 @@ export default function TalentProfileForm() {
   const fetchUserData = async () => {
     try {
       const token = localStorage.getItem("token");
-      console.log(token);
-      console.log(process.env.NEXT_PUBLIC_API_URL)
-      // Configure the request headers to include the JWT token
       const header = {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       };
-      setIsLoading(true);
-      // console.log(config);
       const response = await axios.get(`${apiUrl}/users/me`, header);
       const userData = response.data;
-      console.log(userData);
-      console.log(userData.username);
-      console.log("fetched");
-      console.log(apiUrl);
-      //Populate the form data with user name and email
       setFormData((prevFormData) => ({
         ...prevFormData,
         id: userData.id,
         username: userData.username,
         email: userData.email,
+        bio: userData.bio,
+        photo: userData.photo,
+        dob: userData.dob,
+        gender: userData.gender,
+        pronouns: userData.pronouns,
+        jobTitle: userData.jobTitle,
+        minSalary: userData.minSalary,
+        maxSalary: userData.maxSalary,
+        linkedin: userData.linkedin,
+        portfolio: userData.portfolio,
+        address: userData.address,
+        phone: userData.phone,
+        mobile: userData.mobile,
+        resume: userData.resume,
+        skills: userData.skills,
+        institute: userData.institute,
+        degree: userData.degree,
+        company: userData.company,
+        position: userData.position,
+
       }));
     } catch (error) {
       console.error(error);
@@ -70,31 +87,45 @@ export default function TalentProfileForm() {
 
   const handleInputChange = (e) => {
     const { name, value, files } = e.target;
-    
+  
     if (files && files.length > 0) {
       const file = files[0];
-      const imageUrl = URL.createObjectURL(file); // Create object URL for the file
-      
-      setFormData((prevState) => ({
-        ...prevState,
-        [name]: imageUrl, // Store the object URL in the form state
+      const imageUrl = URL.createObjectURL(file);
+  
+      setForm((prevForm) => ({
+        ...prevForm,
+        [name]: file,
+        photo: imageUrl,
+      }));
+  
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        [name]: imageUrl,
       }));
     } else {
-      setFormData((prevState) => ({
-        ...prevState,
+      setForm((prevForm) => ({
+        ...prevForm,
+        [name]: value,
+      }));
+  
+      setFormData((prevFormData) => ({
+        ...prevFormData,
         [name]: value,
       }));
     }
-  };  
+  };
+  
+  const router = useRouter();
 
   const handleSaveClick = async (e) => {
     e.preventDefault();
-    // Create the payload object
+
     const payload = {
       username: formData.username,
       email: formData.email,
       bio: formData.bio,
       photo: formData.photo,
+      resume: formData.resume,
       dob: formData.dob,
       gender: formData.gender,
       pronouns: formData.pronouns,
@@ -106,32 +137,61 @@ export default function TalentProfileForm() {
       address: formData.address,
       phone: formData.phone,
       mobile: formData.mobile,
-      resume: formData.resume,
       skills: formData.skills,
       institute: formData.institute,
       degree: formData.degree,
       company: formData.company,
       position: formData.position,
     };
+    console.log(payload);
 
-    console.log("Data to be sent:", payload); // Log the data
-
+    const data = {
+      data: payload,
+    }
+  
+    // Perform validation on form data
+    if (formData.email.length < 1 || formData.username.length < 1) {
+      setErrorMsg("Email and username must have at least 1 character.");
+      setTimeout(() => {
+        setErrorMsg("");
+      }, 3000);
+      return; // Exit the function if there are validation errors
+    }
+  
     try {
       setIsLoading(true);
-      const response = await axios.post(`${apiUrl}/talents/`, payload);
-      console.log(response.data); // Handle the response
-      setFormData(initialFormData);
+      const token = localStorage.getItem("token");
+      const header = {
+        Authorization: `Bearer ${token}`,
+      };
+  
+      const response = await axios.get(`${apiUrl}/users/me`, { headers: header });
+      const userData = response.data.id;
+  
+      const putResponse = await axios.put(`${apiUrl}/users/${userData}`, data, {
+        headers: header,
+      });
+
+      console.log(putResponse.data);
+      setForm(initialFormData);
+      setSuccessMsg("Profile updated successfully.");
       setTimeout(() => {
-        setIsSuccess(true);
+        setSuccessMsg("");
       }, 3000);
-      setIsEditMode(false);
+      router.push("/talent/profile");
+      fetchUserData();
     } catch (error) {
-      console.error(error); // Handle the error
+      setErrorMsg(error.message);
+      setTimeout(() => {
+        setErrorMsg("");
+      }, 3000);
+      console.error(error);
     } finally {
       setIsLoading(false);
     }
   };
-
+  
+  
   return (
     <div className="profile__page">
       <div className="profile__form">
@@ -198,34 +258,6 @@ export default function TalentProfileForm() {
         </div>
 
         <div className="form__group">
-          <label htmlFor="gender">Gender:</label>
-          <div className="gender__wrap">
-            <label className="gender__label">
-              <input
-                type="radio"
-                name="gender"
-                value="male"
-                checked={formData.gender === "male"}
-                onChange={handleInputChange}
-                className="gender__input"
-              />{" "}
-              Male
-            </label>
-            <label className="gender__label">
-              <input
-                type="radio"
-                name="gender"
-                value="female"
-                checked={formData.gender === "female"}
-                onChange={handleInputChange}
-                className="gender__input"
-              />{" "}
-              Female
-            </label>
-          </div>
-        </div>
-
-        <div className="form__group">
           <label htmlFor="pronouns">Pronouns:</label>
           <select
             name="pronouns"
@@ -233,9 +265,25 @@ export default function TalentProfileForm() {
             value={formData.pronouns}
             onChange={handleInputChange}
           >
-            <option value="she/her">She/Her</option>
-            <option value="he/him">He/Him</option>
-            <option value="they/them">They/Them</option>
+            <option value="">Select pronouns</option>
+            <option value="She/Her">She/Her</option>
+            <option value="He/Him">He/Him</option>
+            <option value="They/Them">They/Them</option>
+          </select>
+        </div>
+
+        <div className="form__group">
+          <label htmlFor="gender">Gender:</label>
+          <select
+            name="gender"
+            className="form__select"
+            value={formData.gender}
+            onChange={handleInputChange}
+          >
+            <option value="">Select gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Others">Others</option>
           </select>
         </div>
 
@@ -393,14 +441,10 @@ export default function TalentProfileForm() {
             placeholder="Enter your desired maximum salary"
           />
         </div>
-
+        {errorMsg && <p className="error">{errorMsg}</p>}
+        {successMsg && <p className="success">{successMsg}</p>}
         <button onClick={handleSaveClick} className="save__button">
-          {
-            isLoading ? (
-              <div className="spinner"> 
-              </div>
-            ) : "Save"
-          }
+          {isLoading ? <div className="spinner"></div> : "Save"}
         </button>
       </div>
     </div>

@@ -33,7 +33,7 @@ export default function Login() {
       // Store the token in localStorage
       localStorage.setItem("token", token);
       // Redirect to the dashboard page
-      window.location.href = "/talent/profile";
+      window.location.href = "/talent/profile-form";
       console.log("Logged in successfully!");
     } catch (error) {
       if (error.response && error.response.data) {

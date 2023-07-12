@@ -16,7 +16,7 @@ export default function TalentProfileInfo () {
   return (
     <div >
       {isEditMode ? (
-        <TalentProfileForm />
+        <TalentProfileForm setIsEditMode={setIsEditMode}/>
       ) : (
         <TalentProfileData handleEditClick={handleEditClick} />
       )}
