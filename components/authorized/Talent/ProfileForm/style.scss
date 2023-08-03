@@ -2,16 +2,24 @@
 
 .profile__page {
     margin: 2rem auto;
-    width: 90%;
+    width: 95%;
+
+    @media screen and (min-width: $breakpoint-3) {
+        width: 90%
+    }
 
     .profile__form {
         border: 1px solid $accent;
         border-radius: 10px;
-        padding: 2rem;
+        padding: 1rem;
         display: flex;
         flex-direction: column;
         gap: 2rem;
         max-width: 700px;
+
+        @media screen and (min-width: $breakpoint-3) {
+            padding: 2rem;
+        }
 
         .profile__image {
             width: 5rem;
