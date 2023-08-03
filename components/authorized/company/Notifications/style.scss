@@ -1,20 +1,18 @@
 @import "../../../../app/global.scss";
 
 .notifications__page {
-    padding: 20px;
-    max-width: 600px;
     margin: 0 auto;
   
-    h1 {
-      font-size: 24px;
-      margin-bottom: 20px;
+    .section__title {
+      display: flex;
+      align-items: center;
     }
   
     .notification__item {
-      border: 1px solid #ccc;
+        border: 1px solid #e0e6f7;
       padding: 10px;
-      margin-bottom: 10px;
-      border-radius: 4px;
+      margin-bottom: 1rem;
+      border-radius: 8px;
   
       .notification__title {
         font-size: 18px;

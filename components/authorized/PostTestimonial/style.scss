@@ -1,6 +1,11 @@
 @import "../../../app/global.scss";
 
 .testimonialPostForm__section {
+  .section__header{
+    .section__subtitle{
+      line-height: 1;
+    }
+  }
   .testimonialPostForm__form {
     display: flex;
     flex-direction: column;

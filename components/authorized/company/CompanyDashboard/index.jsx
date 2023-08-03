@@ -4,8 +4,8 @@ import InactiveJobs from "@components/authorized/Company/InactiveJobs";
 import JobPostForm from "@components/authorized/Company/JobPostForm";
 import React, { useState } from "react";
 import PostTestimonial from "@components/authorized/PostTestimonial";
-import "./style.scss";
 import NotificationTab from "../Notifications";
+import "./style.scss";
 
 const DashboardLayout = () => {
   const [activeTab, setActiveTab] = useState("activeJobs");

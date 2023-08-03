@@ -90,7 +90,7 @@ const PostTestimonial = () => {
             name="name"
             value={formData.name}
             onChange={handleChange}
-            placeholder="Enter the person's name"
+            placeholder="Enter name"
             required
           />
         </div>
@@ -129,7 +129,7 @@ const PostTestimonial = () => {
             name="companyName"
             value={formData.companyName}
             onChange={handleChange}
-            placeholder="Enter the company name"
+            placeholder="Enter company name"
             required
           />
         </div>

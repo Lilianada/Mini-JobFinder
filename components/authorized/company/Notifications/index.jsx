@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './style.scss';
+import { MdNotifications } from 'react-icons/md';
 
 const notificationsData = [
   {
@@ -24,7 +25,11 @@ export default function NotificationTab() {
 
   return (
     <div className="notifications__page">
-      <h1>Notifications</h1>
+        <div className="section__header">
+            <h2 className="section__title">Notifications
+                <MdNotifications />
+            </h2>
+        </div>
       {notifications.map((notification) => (
         <div key={notification.id} className="notification__item">
           <h2 className="notification__title">
@@ -34,8 +39,8 @@ export default function NotificationTab() {
           </h2>
           <p className="notification__description">
             {notification.type === 'save'
-              ? `Talent ${notification.talentName} saved the job post for ${notification.jobTitle}.`
-              : `Talent ${notification.talentName} applied to the job post for ${notification.jobTitle}.`}
+              ? `${notification.talentName} saved the job post for ${notification.jobTitle}.`
+              : `${notification.talentName} applied to the job post for ${notification.jobTitle}.`}
           </p>
           <p className="notification__date">Date: {notification.date}</p>
         </div>
