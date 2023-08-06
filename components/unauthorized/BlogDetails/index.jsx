@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
-import "./style.scss";
 import { useRouter } from "next/navigation";
 import { Posts } from "../BlogList";
+import "./style.scss";
 
 const BlogDetails = () => {
   const router = useRouter();
@@ -41,10 +41,10 @@ const BlogDetails = () => {
           className="blogDetails__image"
         />
         <div className="blogDetails__image__overlay"></div>
-        <div className="blogDetails__image__text">
+        {/* <div className="blogDetails__image__text">
           <span className="blogDetails__image__category">Lifestyle</span>
           <span className="blogDetails__image__date">22 May, 2022</span>
-        </div>
+        </div> */}
         
         <div className="blogDetails__image__title">
           <h1 className="blogDetails__image__title__text">

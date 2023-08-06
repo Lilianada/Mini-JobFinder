@@ -1,8 +1,16 @@
 @import "../../../app//global.scss";
 
 .blogDetails__page {
-  padding: 2rem;
+  padding: 0rem;
   background-color: $backdrop;
+
+  @media screen and (min-width: $breakpoint-3) {
+    padding: 1rem;
+  }
+    
+  @media screen and (min-width: $breakpoint-4) {
+    padding: 2rem;
+  }
 
   .blogDetails__content {
     max-width: 800px;
