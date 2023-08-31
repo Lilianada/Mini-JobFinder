@@ -9,7 +9,6 @@ export default function TalentProfileData({ handleEditClick }) {
   const [isLoading, setIsLoading] = useState(false);
   const initialFormData = {
     id: "",
-    userId: "",
     username: "",
     email: "",
     bio: "",
@@ -39,48 +38,85 @@ export default function TalentProfileData({ handleEditClick }) {
     fetchUserData();
   }, []);
 
-  const fetchUserData = async () => {
+  useEffect(() => {
+    // Fetch the user ID first, then use it to fetch user data
+    const fetchInitialUserId = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        const headers = {
+          Authorization: `Bearer ${token}`,
+        };
+        const response = await axios.get(`${apiUrl}/users/me`, { headers });
+        const userId = response.data.id;
+        // Now that we have the userId, fetch the user data
+        if (userId) {
+          fetchUserData(userId);
+        }
+      } catch (error) {
+        console.error("An error occurred while fetching user ID:", error);
+      }
+    };
+    
+    fetchInitialUserId();
+  }, []);
+  
+  const fetchUserData = async (userId) => {
     try {
       const token = localStorage.getItem("token");
-      const header = {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+      if (!token) {
+        console.log("No token found");
+        return;
+      }
+      
+      const headers = {
+        Authorization: `Bearer ${token}`,
       };
-      const response = await axios.get(`${apiUrl}/users/me`, header);
-      const userData = response.data;
-      setFormData((prevFormData) => ({
-        ...prevFormData,
-        id: userData.id,
-        username: userData.username,
-        email: userData.email,
-        bio: userData.bio,
-        photo: userData.photo,
-        dob: userData.dob,
-        gender: userData.gender,
-        pronouns: userData.pronouns,
-        jobTitle: userData.jobTitle,
-        minSalary: userData.minSalary,
-        maxSalary: userData.maxSalary,
-        linkedin: userData.linkedin,
-        portfolio: userData.portfolio,
-        address: userData.address,
-        phone: userData.phone,
-        mobile: userData.mobile,
-        resume: userData.resume,
-        skills: userData.skills,
-        institute: userData.institute,
-        degree: userData.degree,
-        company: userData.company,
-        position: userData.position,
+      
+      const response = await axios.get(`${apiUrl}/talents/${userId}`, { headers });
+      const fetchedUserData = response.data.data.attributes;
+      setFormData((fetchedUserData) => ({
+        ...fetchedUserData,
+        id: fetchedUserData.id,
+        username: fetchedUserData.username,
+        email: fetchedUserData.email,
+        bio: fetchedUserData.bio,
+        photo: fetchedUserData.photo,
+        dob: fetchedUserData.dob,
+        gender: fetchedUserData.gender,
+        pronouns: fetchedUserData.pronouns,
+        jobTitle: fetchedUserData.jobTitle,
+        minSalary: fetchedUserData.minSalary,
+        maxSalary: fetchedUserData.maxSalary,
+        linkedin: fetchedUserData.linkedin,
+        portfolio: fetchedUserData.portfolio,
+        address: fetchedUserData.address,
+        phone: fetchedUserData.phone,
+        mobile: fetchedUserData.mobile,
+        resume: fetchedUserData.resume,
+        skills: fetchedUserData.skills,
+        institute: fetchedUserData.institute,
+        degree: fetchedUserData.degree,
+        company: fetchedUserData.company,
+        position: fetchedUserData.position,
 
       }));
+      console.log(fetchUserData.photo)
+      if (!fetchedUserData) {
+        console.log("No user data returned from API");
+        return;
+      }
+  
+      // Update your state with the fetched user data
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        ...fetchedUserData
+      }));
+  
     } catch (error) {
-      console.error(error);
-      console.log("error");
+      console.error("An error occurred while fetching user data:", error);
     }
   };
-
+  
   return (
     <div className="profile__page">
       <div className="profile__details">

@@ -67,6 +67,10 @@ export default function Register() {
         console.log(data.data);
         // Send email confirmation
         await sendEmailConfirmation(email);
+        setSuccess("Signup successful, check email for confirmation.")
+        setTimeout(() => {
+          setSuccess("");
+        }, 3000);
         // Redirect to the login page
         window.location.href = "/login";
         router.push("/login");
@@ -85,6 +89,31 @@ export default function Register() {
       }
     }
   };
+
+  const handleTalentSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const responseData = await fetcher(
+        `${apiUrl}/auth/local/register`,
+        {
+          headers: {
+            'Content Type' : 'application/json',
+          },
+          body: JSON.stringify({
+            email: talentFormData.email,
+            password: talentFormData.password,
+            username: talentFormData.username
+          }),
+          method: 'POST',
+        }
+      );
+      // const data = await response.json();
+      setToken(responseData);
+      router.redirect('/talent/profile')
+    } catch (error) {
+      console.error(error);
+    }
+  }
   
   const handleCompanySub = async (companyFormData) => {
     if (passwordMatch) {

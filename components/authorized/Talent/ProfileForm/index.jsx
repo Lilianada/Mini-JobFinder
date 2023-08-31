@@ -4,11 +4,10 @@ import axios from "axios";
 import "./style.scss";
 import { useRouter } from "next/navigation";
 
-export default function TalentProfileForm({setIsEditMode}) {
+export default function TalentProfileForm() {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
   const initialFormData = {
-    id: "",
-    userId: "",
+    id: null,
     username: "",
     email: "",
     bio: "",
@@ -43,61 +42,99 @@ export default function TalentProfileForm({setIsEditMode}) {
     fetchUserData();
   }, []);
 
-  const fetchUserData = async () => {
+  useEffect(() => {
+    // Fetch the user ID first, then use it to fetch user data
+    const fetchInitialUserId = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        const headers = {
+          Authorization: `Bearer ${token}`,
+        };
+        const response = await axios.get(`${apiUrl}/users/me`, { headers });
+        const userId = response.data.id;
+        // Now that we have the userId, fetch the user data
+        if (userId) {
+          fetchUserData(userId);
+          handleSaveClick(userId);
+        }
+      } catch (error) {
+        console.error("An error occurred while fetching user ID:", error);
+      }
+    };
+
+    fetchInitialUserId();
+  }, []);
+
+  const fetchUserData = async (userId) => {
     try {
       const token = localStorage.getItem("token");
-      const header = {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+      if (!token) {
+        console.log("No token found");
+        return;
+      }
+
+      const headers = {
+        Authorization: `Bearer ${token}`,
       };
-      const response = await axios.get(`${apiUrl}/users/me`, header);
-      const userData = response.data;
+
+      const response = await axios.get(`${apiUrl}/talents/${userId}`, {
+        headers,
+      });
+      const fetchedUserData = response.data.data.attributes;
+
+      setFormData((fetchedUserData) => ({
+        ...fetchedUserData,
+        id: fetchedUserData.id,
+        username: fetchedUserData.username,
+        email: fetchedUserData.email,
+        bio: fetchedUserData.bio,
+        photo: fetchedUserData.photo,
+        dob: fetchedUserData.dob,
+        gender: fetchedUserData.gender,
+        pronouns: fetchedUserData.pronouns,
+        jobTitle: fetchedUserData.jobTitle,
+        minSalary: fetchedUserData.minSalary,
+        maxSalary: fetchedUserData.maxSalary,
+        linkedin: fetchedUserData.linkedin,
+        portfolio: fetchedUserData.portfolio,
+        address: fetchedUserData.address,
+        phone: fetchedUserData.phone,
+        mobile: fetchedUserData.mobile,
+        resume: fetchedUserData.resume,
+        skills: fetchedUserData.skills,
+        institute: fetchedUserData.institute,
+        degree: fetchedUserData.degree,
+        company: fetchedUserData.company,
+        position: fetchedUserData.position,
+      }));
+      if (!fetchedUserData) {
+        console.log("No user data returned from API");
+        return;
+      }
+
+      // Update your state with the fetched user data
       setFormData((prevFormData) => ({
         ...prevFormData,
-        id: userData.id,
-        username: userData.username,
-        email: userData.email,
-        bio: userData.bio,
-        photo: userData.photo,
-        dob: userData.dob,
-        gender: userData.gender,
-        pronouns: userData.pronouns,
-        jobTitle: userData.jobTitle,
-        minSalary: userData.minSalary,
-        maxSalary: userData.maxSalary,
-        linkedin: userData.linkedin,
-        portfolio: userData.portfolio,
-        address: userData.address,
-        phone: userData.phone,
-        mobile: userData.mobile,
-        resume: userData.resume,
-        skills: userData.skills,
-        institute: userData.institute,
-        degree: userData.degree,
-        company: userData.company,
-        position: userData.position,
-
+        ...fetchedUserData,
       }));
     } catch (error) {
-      console.error(error);
-      console.log("error");
+      console.error("An error occurred while fetching user data:", error);
     }
   };
 
   const handleInputChange = (e) => {
     const { name, value, files } = e.target;
-  
+
     if (files && files.length > 0) {
       const file = files[0];
       const imageUrl = URL.createObjectURL(file);
-  
+
       setForm((prevForm) => ({
         ...prevForm,
         [name]: file,
         photo: imageUrl,
       }));
-  
+
       setFormData((prevFormData) => ({
         ...prevFormData,
         [name]: imageUrl,
@@ -107,91 +144,79 @@ export default function TalentProfileForm({setIsEditMode}) {
         ...prevForm,
         [name]: value,
       }));
-  
+
       setFormData((prevFormData) => ({
         ...prevFormData,
         [name]: value,
       }));
     }
   };
-  
+
   const router = useRouter();
 
-  const handleSaveClick = async (e) => {
-    e.preventDefault();
-
-    const payload = {
-      username: formData.username,
-      email: formData.email,
-      bio: formData.bio,
-      photo: formData.photo,
-      resume: formData.resume,
-      dob: formData.dob,
-      gender: formData.gender,
-      pronouns: formData.pronouns,
-      jobTitle: formData.jobTitle,
-      minSalary: formData.minSalary,
-      maxSalary: formData.maxSalary,
-      linkedin: formData.linkedin,
-      portfolio: formData.portfolio,
-      address: formData.address,
-      phone: formData.phone,
-      mobile: formData.mobile,
-      skills: formData.skills,
-      institute: formData.institute,
-      degree: formData.degree,
-      company: formData.company,
-      position: formData.position,
-    };
-    console.log(payload);
-
-    const data = {
-      data: payload,
-    }
-  
-    // Perform validation on form data
+  const handleSaveClick = async (userId) => {
+    // e.preventDefault();
+    console.log(userId);
+    // Validate the form data
     if (formData.email.length < 1 || formData.username.length < 1) {
       setErrorMsg("Email and username must have at least 1 character.");
       setTimeout(() => {
         setErrorMsg("");
       }, 3000);
-      return; // Exit the function if there are validation errors
+      return;
     }
-  
+
     try {
       setIsLoading(true);
       const token = localStorage.getItem("token");
-      const header = {
+
+      // Set headers
+      const headers = {
         Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
       };
-  
-      const response = await axios.get(`${apiUrl}/users/me`, { headers: header });
-      const userData = response.data.id;
-  
-      const putResponse = await axios.put(`${apiUrl}/users/${userData}`, data, {
-        headers: header,
+
+      // Prepare the payload
+      const payload = {
+        data: {
+          formData,
+        },
+      };
+      console.log("payload:", payload);
+
+      // POST data to /api/talents
+      const response = await axios.put(`${apiUrl}/talents/${userId}`, payload, {
+        headers: headers,
       });
 
-      console.log(putResponse.data);
+      console.log("POST Response:", response.data);
+
+      // Reset the form and set a success message
       setForm(initialFormData);
       setSuccessMsg("Profile updated successfully.");
       setTimeout(() => {
         setSuccessMsg("");
       }, 3000);
+
+      // Redirect to the talent profile
       router.push("/talent/profile");
+
+      // Optional: Fetch updated user data
       fetchUserData();
     } catch (error) {
+      console.error(
+        "Error Response:",
+        error.response ? error.response.data : "No response data"
+      );
       setErrorMsg(error.message);
       setTimeout(() => {
         setErrorMsg("");
       }, 3000);
-      console.error(error);
     } finally {
       setIsLoading(false);
     }
   };
-  
-  
+
   return (
     <div className="profile__page">
       <div className="profile__form">
@@ -204,6 +229,7 @@ export default function TalentProfileForm({setIsEditMode}) {
               name="photo"
               onChange={handleInputChange}
               className="form__input"
+              // value={formData.photo}
             />
           </div>
           {formData.photo && (
@@ -219,6 +245,9 @@ export default function TalentProfileForm({setIsEditMode}) {
             onChange={handleInputChange}
             className="form__input"
             placeholder="Enter your name"
+            title="Start with capital letter and use only letters"
+            pattern="^[A-Z][a-z]+$"
+            required
           />
         </div>
 
@@ -231,17 +260,20 @@ export default function TalentProfileForm({setIsEditMode}) {
             onChange={handleInputChange}
             className="form__input"
             placeholder="Enter your email address"
+            required
           />
         </div>
 
         <div className="form__group">
           <label htmlFor="bio">Bio:</label>
-          <textarea
+          <input
+            type="text"
             name="bio"
             value={formData.bio}
             onChange={handleInputChange}
-            className="form__text"
+            className="form__input"
             placeholder="Enter your bio"
+            required
           />
         </div>
 
@@ -264,6 +296,7 @@ export default function TalentProfileForm({setIsEditMode}) {
             className="form__select"
             value={formData.pronouns}
             onChange={handleInputChange}
+            required
           >
             <option value="">Select pronouns</option>
             <option value="She/Her">She/Her</option>
@@ -296,6 +329,7 @@ export default function TalentProfileForm({setIsEditMode}) {
             onChange={handleInputChange}
             className="form__input"
             placeholder="Enter your job title"
+            required
           />
         </div>
 
@@ -332,6 +366,7 @@ export default function TalentProfileForm({setIsEditMode}) {
             onChange={handleInputChange}
             className="form__input"
             placeholder="Enter your address"
+            required
           />
         </div>
 
@@ -344,6 +379,7 @@ export default function TalentProfileForm({setIsEditMode}) {
             onChange={handleInputChange}
             className="form__input"
             placeholder="Enter your phone number"
+            required
           />
         </div>
 
@@ -368,6 +404,7 @@ export default function TalentProfileForm({setIsEditMode}) {
             onChange={handleInputChange}
             className="form__input"
             placeholder="Upload your resume"
+            required
           />
         </div>
 
@@ -380,6 +417,7 @@ export default function TalentProfileForm({setIsEditMode}) {
             onChange={handleInputChange}
             className="form__input"
             placeholder="Enter your skills"
+            required
           />
         </div>
         <div className="form__group">
@@ -399,6 +437,7 @@ export default function TalentProfileForm({setIsEditMode}) {
             onChange={handleInputChange}
             className="form__input"
             placeholder="Enter your degree"
+            required
           />
         </div>
 
@@ -411,6 +450,7 @@ export default function TalentProfileForm({setIsEditMode}) {
             onChange={handleInputChange}
             className="form__input"
             placeholder="Enter your company"
+            required
           />
           <input
             type="text"

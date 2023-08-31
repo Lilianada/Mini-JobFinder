@@ -18,27 +18,31 @@ export default function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
   
+    // Debugging
+    console.log(`Attempting to login with email: ${email} and password: ${password}`);
+    
     try {
-      // Send a POST request to the Strapi login endpoint
+      setIsLoading(true);
+      
       const response = await axios.post(
-       `${apiUrl}/auth/local`,
+        `${apiUrl}/auth/local`,
         {
           identifier: email,
           password: password,
         }
       );
-      setIsLoading(true);
+      
       const token = response.data.jwt;
       setToken(token);
-      // Store the token in localStorage
       localStorage.setItem("token", token);
-      // Redirect to the dashboard page
       window.location.href = "/talent/profile-form";
       console.log("Logged in successfully!");
     } catch (error) {
+      setIsLoading(false);
+      
       if (error.response && error.response.data) {
         const errorMessage = error.response.data.message;
-        setError(errorMessage); // Set the error message
+        setError(errorMessage);
         setTimeout(() => {
           setError("");
         }, 4000);
@@ -50,10 +54,9 @@ export default function Login() {
         }, 4000);
         console.error("Login failed:", error);
       }
-    } finally {
-      setIsLoading(false);
     }
   };
+  
   
 
   const handleInputChange = (e) => {
@@ -80,7 +83,7 @@ export default function Login() {
             <input
               type="text"
               name="email"
-              placeholder="Full name"
+              placeholder="Email"
               className="input__field"
               value={email}
               onChange={handleInputChange}
